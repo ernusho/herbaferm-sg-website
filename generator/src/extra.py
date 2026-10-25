@@ -213,7 +213,7 @@ HOME = '''
 
 <section class="ch" id="jr-origin" data-bg="#f2b73d" data-fg="#231600" data-ac="#0e2a1b" data-label="Origin">
   <i class="blob b1" data-par=".14"></i>
-  <div class="wrap jcol">
+  <div class="wrap jsplit"><div>
     <p class="kicker jv">Chapter one &middot; Where it began</p>
     <h2 class="jh2" data-split>It started in Hungary, with a scientist and a lot of herbs.</h2>
     <p class="jp jv">A Hungarian founding team, with a scientist at its centre, developed Herbaferm Drops. The Drops were registered in Hungary in 2018. Since 2023, Herbaferm has been a Singapore company.</p>
@@ -223,7 +223,7 @@ HOME = '''
       <li><strong><span data-count="2023">2023</span></strong><span>Herbaferm Pte. Ltd. in Singapore</span></li>
     </ul>
     <p class="jv"><a class="jlink" href="#about">Meet the team</a></p>
-  </div>
+  </div><div class="arch jv" data-par=".06"><img src="@@img:hero-bark@@" alt="Moss and oak bark, close up" loading="lazy"></div></div>
 </section>
 
 <section class="ch ch-herbs" id="jr-herbs" data-label="Seven herbs" data-dyn>
@@ -236,9 +236,9 @@ HOME = '''
   </div>
 </section>
 
-<section class="ch" id="jr-ferment" data-bg="#ff6b4a" data-fg="#1f0a05" data-ac="#fff1c9" data-label="Fermentation">
+<section class="ch" id="jr-ferment" data-bg="#e0794f" data-fg="#1f0a05" data-ac="#fff1d6" data-label="Fermentation">
   <i class="blob b2" data-par="-.1"></i>
-  <div class="wrap jcol">
+  <div class="wrap jsplit"><div>
     <p class="kicker jv">Chapter three &middot; How it is made</p>
     <h2 class="jh2" data-split>Slow on purpose.</h2>
     <ol class="jsteps">
@@ -247,10 +247,10 @@ HOME = '''
       <li class="jv"><b>03</b><div><h3>Bottle it, nothing added</h3><p>No preservatives and no artificial colours. The fridge does the job instead: keep the bottle at 5 to 12 &deg;C.</p></div></li>
     </ol>
     <p class="jv"><a class="jlink" href="#science">See the science and its limits</a></p>
-  </div>
+  </div><div class="arch jv" data-par=".06"><img src="@@img:flatlay@@" alt="The seven herbs in Herbaferm Drops, laid out flat" loading="lazy"></div></div>
 </section>
 
-<section class="ch" id="jr-range" data-bg="#b9a7ff" data-fg="#1b1036" data-ac="#1b1036" data-label="The range">
+<section class="ch" id="jr-range" data-bg="#cfe0b8" data-fg="#1d3318" data-ac="#1d3318" data-label="The range">
   <i class="blob b1" data-par=".12"></i>
   <div class="wrap">
     <p class="kicker jv">Chapter four &middot; The range</p>
@@ -271,14 +271,14 @@ HOME = '''
     <div class="arch jv" data-par=".06"><img src="@@img:drops-pour@@" alt="A hand adding Herbaferm Drops to a glass of water, with fruit in the background" style="object-position:55% 50%"></div>
   </div>
 </section>
-<section class="ch ch-day" data-bg="#3cc4b4" data-fg="#04201c" data-ac="#04201c" data-label="Midday">
+<section class="ch ch-day" data-bg="#7fc7a4" data-fg="#0b2a1d" data-ac="#0b2a1d" data-label="Midday">
   <div class="wrap jsplit rev">
     <div><h2 class="jh2" data-split>Midday: stirred into whatever you are eating.</h2>
     <p class="jp jv">Fiber Elite goes into porridge, yoghurt or a smoothie. It can be heated, so soups and warm bowls work too. Take 3.5 g a day with a meal, or on training days 3.5 g after exercise, up to three times.</p></div>
     <div class="jpack jv" data-par="-.05">@@PACK_FIBER@@</div>
   </div>
 </section>
-<section class="ch ch-day" data-bg="#2b2a6b" data-fg="#eceaff" data-ac="#ffcf6b" data-label="Evening">
+<section class="ch ch-day" data-bg="#1c3a33" data-fg="#eef6f2" data-ac="#f2b73d" data-label="Evening">
   <i class="blob b2" data-par=".1"></i>
   <div class="wrap jcol">
     <h2 class="jh2" data-split>Evening: the same glass, the same drops.</h2>
@@ -287,7 +287,7 @@ HOME = '''
   </div>
 </section>
 
-<section class="ch" id="jr-loved" data-bg="#ffc2d1" data-fg="#3a0f1f" data-ac="#3a0f1f" data-label="For you">
+<section class="ch" id="jr-loved" data-bg="#f4cfc0" data-fg="#4a1f12" data-ac="#4a1f12" data-label="For you">
   <i class="blob b1" data-par="-.12"></i>
   <div class="wrap">
     <p class="kicker jv">Chapter six &middot; For you, or someone you love</p>
@@ -302,7 +302,7 @@ HOME = '''
   </div>
 </section>
 
-<section class="ch" id="jr-proof" data-bg="#12233f" data-fg="#f1f4fb" data-ac="#ffd15c" data-label="Trust">
+<section class="ch" id="jr-proof" data-bg="#0f3b3a" data-fg="#eef6f2" data-ac="#f2b73d" data-label="Trust">
   <i class="blob b2" data-par=".1"></i>
   <div class="wrap">
     <p class="kicker jv">Chapter seven &middot; Why you can trust it</p>
@@ -520,7 +520,7 @@ PROD = {
   check=["You are coeliac or avoid gluten (it contains barley malt and oat flour)","You are pregnant or take medication","You have a diagnosed condition"],
   shelf="Store as printed on the pack. Herbaferm's notes do not give a shelf life for Fiber Elite yet. @@TAG_CONFIRM@@",
   also=[("drops","Herbaferm Drops","S$55 \u00b7 30 ml"),("prefer","Prefer HF400","S$45 \u00b7 14 capsules")]),
-  pt="#ffa43a",
+  pt="#e8a33a",
   trust=["Can be heated and cooked with", "Vegan and GMO-free, per the leaflet", "Contains gluten", "Fine powder, malty aroma"],
   glance=[("3.5 g", "a day, with a meal"), ("125 g", "pouch, 35 servings"), ("About a month", "from one pouch"), ("S$1.54", "a day")],
   steps=[("Measure 3.5 g", "A small spoonful of the fine powder."), ("Stir it in", "Porridge, yoghurt, a smoothie or a protein shake. It can be heated too."), ("On training days", "3.5 g two to three times a day, after exercise.")],
@@ -534,7 +534,7 @@ PROD = {
   check=["You are vegetarian or need halal (the shell is gelatine)","You are sensitive to histamine: use only under professional supervision","You have an immune system disorder, are pregnant or take medication"],
   shelf="Herbaferm's notes give about 1 year for the capsules. @@TAG_CONFIRM@@ The best-before date is printed on the pack.",
   also=[("drops","Herbaferm Drops","S$55 \u00b7 30 ml"),("fiber","Fiber Elite","S$55 \u00b7 125 g")]),
-  pt="#9d86ff",
+  pt="#c8a27c",
   trust=["Made to go with Drops", "A one-week trial pack", "Gelatine capsule", "Ask first if histamine-sensitive"],
   glance=[("2", "capsules a day"), ("14", "capsules, one week"), ("200 mg", "fermented herb fibres each"), ("S$3.21", "per capsule")],
   steps=[("Morning", "One capsule with your glass of water."), ("Evening", "One more capsule with your second glass."), ("Alongside Drops", "Prefer HF400 was developed to complement Herbaferm Drops.")],

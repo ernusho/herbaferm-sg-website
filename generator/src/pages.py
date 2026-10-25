@@ -263,6 +263,7 @@ PAGES.append(("shop", "Shop | Herbaferm Singapore", '''
   </div>
 </div></section>
 
+@@VIZ_COST@@
 <section><div class="wrap">
   <p class="eyebrow">Compare</p><h2>The range side by side</h2>
   <div class="tblwrap" style="margin-top:30px"><table>

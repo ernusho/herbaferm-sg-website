@@ -568,11 +568,46 @@ def prod_sections(pid, faqs):
       "nav": nav, "fit": fit, "extra": extra, "deliv": deliv,
       "trust": '<ul class="ptrust">%s</ul>' % trust,
       "after": (
-        '<section class="pglance"><div class="wrap"><div class="gtiles">%(glance)s</div></div></section>'
+        '<section class="pglance"><div class="wrap"><div class="gtiles">%(glance)s</div></div></section>%(viz)s'
         '<section class="phow" id="%(p)s-how"><div class="wrap"><div class="pcols"><div><h2>How to take it</h2><ol class="psteps">%(steps)s</ol><p class="note" style="margin-top:18px">%(note)s</p></div>'
         '<div class="pimg">%(img)s</div></div></div></section>'
         '%(fit)s<section class="pinside" id="%(p)s-inside"><div class="wrap"><div class="pbox"><h2>%(ih)s</h2><div>%(inside)s</div></div></div></section>'
-        '<section class="pdet" id="%(p)s-det"><div class="wrap"><h2>Details and safety</h2><div class="pgrid"><div class="tabs-wrap">') % dict(glance=glance, steps=steps, note=d["stepnote"], img=d["img"], ih=d["inside_h"], inside=d["inside"], p=pid, fit=fit),
+        '<section class="pdet" id="%(p)s-det"><div class="wrap"><h2>Details and safety</h2><div class="pgrid"><div class="tabs-wrap">') % dict(viz=VIZ[pid], glance=glance, steps=steps, note=d["stepnote"], img=d["img"], ih=d["inside_h"], inside=d["inside"], p=pid, fit=fit),
       "faq": '<section class="pfaq" id="%s-faq"><div class="wrap"><h2>Questions before you buy</h2><div class="faq" style="margin-top:22px">%s</div><p class="note" style="margin-top:16px">More answers on the <a href="#faq">FAQ page</a>, or ask the Herbaferm assistant.</p></div></section>' % (pid, faq),
       "pt": d["pt"],
     }
+
+
+# ---------------------------------------------------------------- visuals (only numbers already stated on the product pages)
+def bars(rows, unit, maxv=None, cls=""):
+    maxv = maxv or max(r[1] for r in rows)
+    out = ""
+    for lab, v, txt in rows:
+        out += ('<div class="brow"><span class="bl">%s</span><span class="bt"><i style="width:%.1f%%"></i></span><b>%s</b></div>' % (lab, 100.0 * v / maxv, txt))
+    return '<div class="bars %s">%s</div>' % (cls, out)
+
+
+VIZ_COST = ('<section class="pviz"><div class="wrap"><h2>What a day costs</h2><p class="lede">At list price and the regular amount. Prices are before any offers.</p>'
+            + bars([("Fiber Elite, 3.5 g", 1.54, "S$1.54"), ("Herbaferm Drops, 16 drops", 1.83, "S$1.83"), ("Drops + Fiber Elite", 3.37, "S$3.37"),
+                    ("Prefer HF400, 2 capsules", 6.43, "S$6.43"), ("All three", 9.80, "S$9.80")], "S$", 9.8)
+            + '<p class="note" style="margin-top:14px">Drops: S$55 for about 30 days. Fiber Elite: S$55 for about 35 days. Prefer HF400: S$45 for 7 days at two capsules a day.</p></div></section>')
+
+VIZ = {}
+VIZ["drops"] = ('<section class="pviz"><div class="wrap"><div class="vgrid"><div><h2>How the first weeks build up</h2><p class="lede">The leaflet suggests starting small and settling at 8 drops twice a day. @@TAG_CONFIRM@@</p></div><div>'
+    + bars([("Days 1 to 3", 10, "10 drops a day"), ("Weeks 1 to 3", 30, "up to 30 a day at most"), ("Regular amount", 16, "16 drops a day")], "", 30)
+    + '<div class="bottle"><div class="bfill" style="--p:100%"></div><span><b>480 drops</b> in one 30 ml bottle, about one month</span></div></div></div></div></section>')
+dots = "".join('<i class="%s"></i>' % ("on" if n < 35 else "half") for n in range(36))
+VIZ["fiber"] = ('<section class="pviz"><div class="wrap"><div class="vgrid"><div><h2>One pouch, about 35 servings</h2><p class="lede">At 3.5 g a day, a 125 g pouch lasts about five weeks. Each dot is one day.</p>'
+    '<div class="dots">%s</div></div><div><h3>Everyday and training days</h3>' % dots
+    + bars([("Everyday", 3.5, "3.5 g"), ("Training day, 2 servings", 7, "7 g"), ("Training day, 3 servings", 10.5, "10.5 g")], "g", 10.5)
+    + '<div class="vtiles"><div><b>31 days</b><span>study length</span></div><div><b>20</b><span>elite water polo players</span></div><div><b>2024</b><span>published</span></div></div>'
+    '<p class="note">The study looked at a vegan protein supplement with pre- and probiotics. The abstract does not name Fiber Elite. <a href="#science">See the reference</a>.</p></div></div></div></section>')
+parts = [("Fermented herb fibres", 200, "var(--pt)"), ("Fulvic acid", 120, "#6f8f4a"), ("Humic acid", 51, "#8a6d3b"), ("Vitamin C", 29, "#e8a33a")]
+off, svg, leg = 25, "", ""
+for n, v, c in parts:
+    p = 100.0 * v / 400
+    svg += '<circle r="15.9155" cx="21" cy="21" fill="none" stroke="%s" stroke-width="7" stroke-dasharray="%.2f %.2f" stroke-dashoffset="%.2f"></circle>' % (c, p, 100 - p, off)
+    off -= p
+    leg += '<li><i style="background:%s"></i><span>%s</span><b>%d mg</b></li>' % (c, n, v)
+VIZ["prefer"] = ('<section class="pviz"><div class="wrap"><div class="vgrid"><div><h2>What is in one capsule</h2><p class="lede">Each 400 mg capsule, by weight.</p>'
+    '<ul class="vleg">%s</ul></div><div class="donut"><svg viewBox="0 0 42 42" role="img" aria-label="Contents of one 400 mg Prefer HF400 capsule: 200 mg fermented herb fibres, 120 mg fulvic acid, 51 mg humic acid, 29 mg vitamin C">%s</svg><span><b>400 mg</b>per capsule</span></div></div></div></section>' % (leg, svg))

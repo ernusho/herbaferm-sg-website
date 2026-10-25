@@ -92,7 +92,7 @@ for _i, (_k, _t, _h) in enumerate(P.PAGES):
         _h = _h.replace('<div class="tabs-wrap">', '</div></section>' + _s["nav"] + _s["after"], 1)
         _h, _n = re.subn(r'</div></section>\s*<section class="alt">', lambda m: _s["extra"] + '</div></div></section>' + _s["faq"] + '\n<section class="alt">', _h, count=1)
         assert _n == 1, _k
-        _h = re.sub(r'<section class="(pglance|phow|pfit|pinside|pdet|pfaq)"', lambda m: '<section style="--pt:%s" class="%s"' % (_s["pt"], m.group(1)), _h)
+        _h = re.sub(r'<section class="(pglance|pviz|phow|pfit|pinside|pdet|pfaq)"', lambda m: '<section style="--pt:%s" class="%s"' % (_s["pt"], m.group(1)), _h)
         P.PAGES[_i] = (_k, _t, _h)
 
 TOK["SLOT_MORNING"] = X.slot("r34", "Morning routine photo", "A real person with their morning drops. Faces and hands are what the eye finds first.")
@@ -113,6 +113,7 @@ def _jh(i, h):
             '<div class="arch hph"><img src="@@img:herb-%s@@" alt="%s" loading="lazy"></div></article>') % (
             " on" if i == 0 else "", bg, fg, ac, h[1], h[2], h[4], h[0], h[3])
 TOK["JHERBS"] = "".join(_jh(i, h) for i, h in enumerate(P.HERBS))
+TOK["VIZ_COST"] = X.VIZ_COST
 TOK["JALL"] = "".join(X.jcard(a) for a in X.ARTICLES)
 
 def expand(s):

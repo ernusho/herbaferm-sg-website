@@ -499,78 +499,55 @@ INSIGHT = '''
 '''
 
 
-# ---------------------------------------------------------------- product page chapters
-LIGHT = 'data-bg="var(--bg)" data-fg="var(--fg)" data-ac="var(--forest)"'
-PROD_CH = {}
-PROD_CH["drops"] = '''
-<section class="ch ch-prod" data-bg="#ff7a59" data-fg="#2a0e05" data-ac="#fff1c9" data-label="Daily routine"><i class="blob b1" data-par=".12"></i>
-  <div class="wrap jsplit">
-    <div><p class="kicker jv">The routine</p><h2 class="jh2" data-split>Eight drops. One glass. Twice a day.</h2>
-    <p class="jp jv">Fill a glass with about 1.5 dl of water, add 8 drops, and drink. That is the whole routine.</p>
-    <ul class="jstats jv" style="grid-template-columns:repeat(3,1fr)"><li><strong>8</strong><span>drops</span></li><li><strong>1.5<small style="font-size:.4em"> dl</small></strong><span>of water</span></li><li><strong>2&times;</strong><span>a day</span></li></ul></div>
-    <div class="arch jv" data-par=".06"><img src="@@img:drops-pour@@" alt="A hand adding Herbaferm Drops to a glass of water" loading="lazy" style="object-position:55% 50%"></div>
-  </div>
-</section>
-<section class="ch ch-prod" data-bg="#0e2a1b" data-fg="#f3f7ee" data-ac="#f2b73d" data-label="Seven herbs"><i class="blob b2" data-par="-.1"></i>
-  <div class="wrap jcol"><p class="kicker jv">Inside the bottle</p><h2 class="jh2" data-split>Seven herbs, fermented slowly.</h2>
-  <p class="jp jv">Chamomile, yarrow, elderflower, rosehip, propolis, oak bark and white wormwood. Kitchen and herbal-tea plants from Europe, fermented the traditional way, with no preservatives and no artificial colours.</p>
-  <p class="jv" style="margin-top:26px"><a class="jbtn" href="#ingredients">Meet the seven</a> &nbsp; <a class="jlink" href="#science">How fermentation works</a></p></div>
-</section>
-<section class="ch ch-prod" data-bg="#f2b73d" data-fg="#231600" data-ac="#0e2a1b" data-label="Getting started"><i class="blob b1" data-par="-.1"></i>
-  <div class="wrap"><p class="kicker jv">Getting started</p><h2 class="jh2" data-split>Ease in. There is no prize for going faster.</h2>
-    <ol class="jsteps"><li class="jv"><b>1</b><div><h3>Days one to three</h3><p>5 drops in the morning and 5 in the evening.</p></div></li>
-    <li class="jv"><b>2</b><div><h3>Weeks one to three</h3><p>Add a drop or two every few days, up to 15 drops twice a day at most. If your stomach feels unsettled, stay where you are or step back.</p></div></li>
-    <li class="jv"><b>3</b><div><h3>Your regular amount</h3><p>8 drops twice a day. @@TAG_CONFIRM@@ The Singapore label may be worded differently, so go by the pack in your hand.</p></div></li></ol>
-    <p class="jv"><a class="jlink" href="#a-month">Read the first-month guide</a></p></div>
-</section>
-<section class="ch ch-prod" data-bg="#7cc4ff" data-fg="#06213a" data-ac="#06213a" data-label="Storage"><i class="blob b2" data-par=".1"></i>
-  <div class="wrap jcol"><p class="kicker jv">Keep it cool</p><h2 class="jh2" data-split>The fridge does the job of a preservative.</h2>
-  <p class="jp jv">Drops contain no preservatives, so keep the bottle at 5 to 12 &deg;C and check the best-before date on the pack.</p>
-  <ul class="jstats jv"><li><strong>480</strong><span>drops in a 30 ml bottle</span></li><li><strong>1 month</strong><span>at the regular amount</span></li><li><strong>S$1.83</strong><span>a day</span></li></ul></div>
-</section>
-<section class="ch ch-pd ch-light" id="drops-details" ''' + LIGHT + ' data-label="Details">'
-PROD_CH["fiber"] = '''
-<section class="ch ch-prod" data-bg="#ffa43a" data-fg="#2b1500" data-ac="#2b1500" data-label="One spoon"><i class="blob b1" data-par=".12"></i>
-  <div class="wrap jsplit">
-    <div><p class="kicker jv">The routine</p><h2 class="jh2" data-split>One small spoon, with a meal.</h2>
-    <p class="jp jv">The everyday amount is 3.5 g, a small spoonful of a fine powder with a malty smell. It can be heated, so it is the one product in the range that works in cooking.</p>
-    <ul class="jstats jv" style="grid-template-columns:repeat(3,1fr)"><li><strong>3.5<small style="font-size:.4em"> g</small></strong><span>a day</span></li><li><strong>125<small style="font-size:.4em"> g</small></strong><span>pack, about a month</span></li><li><strong>S$1.54</strong><span>a day</span></li></ul></div>
-    <div class="jpack jv" data-par="-.05">@@PACK_FIBER@@</div>
-  </div>
-</section>
-<section class="ch ch-prod" data-bg="#8fc29a" data-fg="#0c2a16" data-ac="#0c2a16" data-label="Ways to eat it">
-  <div class="wrap"><p class="kicker jv">Four easy ways</p><h2 class="jh2" data-split>Stir it into what you already eat.</h2>
-    <div class="jcards4">
-      <article class="pcd glass jv"><small>Breakfast</small><h3>Porridge</h3><p>Add it near the end of cooking so it blends in, then top with fruit and seeds.</p></article>
-      <article class="pcd glass jv"><small>After training</small><h3>Shake</h3><p>Blend it into a protein shake or a smoothie.</p></article>
-      <article class="pcd glass jv"><small>Any time</small><h3>Smoothie</h3><p>Banana, berries, your usual milk and a spoonful of Fiber Elite.</p></article>
-      <article class="pcd glass jv"><small>Snack</small><h3>Yoghurt</h3><p>Mix into plain yoghurt, then add nuts and a drizzle of honey.</p></article>
-    </div>
-    <p class="jv"><a class="jlink" href="#a-fiber">More detail in the kitchen guide</a></p></div>
-</section>
-<section class="ch ch-prod" data-bg="#12233f" data-fg="#f1f4fb" data-ac="#ffd15c" data-label="Training days"><i class="blob b2" data-par=".1"></i>
-  <div class="wrap jcol"><p class="kicker jv">For training days</p><h2 class="jh2" data-split>Three small spoons, after exercise.</h2>
-  <p class="jp jv">People who train hard take 3.5 g two to three times a day, after exercise, stirred into a smoothie or protein shake.</p>
-  <p class="jp jv">A 31-day study in 20 elite male water polo players, published in 2024, looked at a vegan protein supplement with and without pre- and probiotics. Herbaferm's founders are among the authors, and the abstract does not name Fiber Elite. It is part of the story, not proof that Fiber Elite works.</p>
-  <p class="jv" style="margin-top:22px"><a class="jlink" href="#science">See the reference and its limits</a></p></div>
-</section>
-<section class="ch ch-pd ch-light" id="fiber-details" ''' + LIGHT + ' data-label="Details">'
-PROD_CH["prefer"] = '''
-<section class="ch ch-prod" data-bg="#b9a7ff" data-fg="#1b1036" data-ac="#1b1036" data-label="Routine"><i class="blob b1" data-par=".12"></i>
-  <div class="wrap jsplit">
-    <div><p class="kicker jv">The routine</p><h2 class="jh2" data-split>One capsule in the morning, one in the evening.</h2>
-    <p class="jp jv">Prefer HF400 was developed to go with Herbaferm Drops. Take a capsule alongside your morning and evening glass of water.</p></div>
-    <div class="arch jv" data-par=".06" style="aspect-ratio:1"><img src="@@img:prefer-bark@@" alt="Prefer HF400 bottle and carton on mossy bark, with a capsule in front" loading="lazy" style="object-position:30% 55%"></div>
-  </div>
-</section>
-<section class="ch ch-prod" data-bg="#3cc4b4" data-fg="#04201c" data-ac="#04201c" data-label="Inside a capsule"><i class="blob b2" data-par="-.1"></i>
-  <div class="wrap"><p class="kicker jv">Inside one 400 mg capsule</p><h2 class="jh2" data-split>Fermented herb fibres, and little else.</h2>
-    <ul class="jstats jv" style="grid-template-columns:repeat(4,1fr)"><li><strong>200<small style="font-size:.4em"> mg</small></strong><span>fermented herb fibres</span></li><li><strong>120<small style="font-size:.4em"> mg</small></strong><span>fulvic acid</span></li><li><strong>51<small style="font-size:.4em"> mg</small></strong><span>humic acid</span></li><li><strong>29<small style="font-size:.4em"> mg</small></strong><span>vitamin C</span></li></ul>
-    <p class="jp jv">The herb fibres come from chamomile, yarrow, rosehip, elderflower, propolis, oak bark and wormwood.</p></div>
-</section>
-<section class="ch ch-prod" data-bg="#ffc2d1" data-fg="#3a0f1f" data-ac="#3a0f1f" data-label="Trial pack"><i class="blob b1" data-par="-.1"></i>
-  <div class="wrap jcol"><p class="kicker jv">A small first step</p><h2 class="jh2" data-split>A one-week trial pack.</h2>
-  <p class="jp jv">14 capsules is one week at two a day, which makes it an easy way to try it alongside Drops. @@TAG_CONFIRM@@ Another Herbaferm document describes a different dose.</p>
-  <p class="jp jv">The capsule shell is gelatine, so it is not suitable for vegetarians. Halal status is not confirmed yet. If you are sensitive to histamine, ask a healthcare professional first.</p></div>
-</section>
-<section class="ch ch-pd ch-light" id="prefer-details" ''' + LIGHT + ' data-label="Details">'
+# ---------------------------------------------------------------- product page sections
+PROD = {
+ "drops": dict(
+  pt="#6fbf8b",
+  trust=["No preservatives", "No artificial colours", "Registered in Hungary, 2018", "Seven herbs, naturally fermented"],
+  glance=[("8", "drops, twice a day"), ("480", "drops in a 30 ml bottle"), ("1 month", "from one bottle"), ("S$1.83", "a day")],
+  steps=[("Fill a glass", "About 1.5 dl of water."), ("Add 8 drops", "Morning and evening. Shake the bottle first."), ("Back in the fridge", "Keep it at 5 to 12 \u00b0C. There are no preservatives.")],
+  stepnote='New to it? Start with 5 drops morning and evening and build up over two to three weeks. <a href="#a-month">Read the first-month guide</a>. @@TAG_CONFIRM@@',
+  img='<img src="@@img:drops-pour@@" alt="A hand adding Herbaferm Drops to a glass of water" loading="lazy" style="object-position:55% 50%">',
+  inside_h="Seven herbs, fermented slowly",
+  inside='<p>Chamomile, yarrow, elderflower, rosehip, propolis, oak bark and white wormwood. Kitchen and herbal-tea plants from Europe, fermented the traditional way. No artificial additives, preservatives or colours.</p><p style="margin-top:12px"><a class="more" href="#ingredients">Meet the seven herbs</a></p>',
+  faq=[0, 1, 2, 15, 11, 5, 19, 20]),
+ "fiber": dict(
+  pt="#ffa43a",
+  trust=["Can be heated and cooked with", "Vegan and GMO-free, per the leaflet", "Contains gluten", "Fine powder, malty aroma"],
+  glance=[("3.5 g", "a day, with a meal"), ("125 g", "pouch, 35 servings"), ("About a month", "from one pouch"), ("S$1.54", "a day")],
+  steps=[("Measure 3.5 g", "A small spoonful of the fine powder."), ("Stir it in", "Porridge, yoghurt, a smoothie or a protein shake. It can be heated too."), ("On training days", "3.5 g two to three times a day, after exercise.")],
+  stepnote='Need ideas? <a href="#a-fiber">Four easy ways to eat Fiber Elite</a>.',
+  img='@@PACK_FIBER@@',
+  inside_h="What is in the pouch",
+  inside='<p>75% whole barley malt and 12.5% oat flour, with a characteristic malt aroma. Contains gluten. @@TAG_CONFIRM@@ The final composition is still to be confirmed with Herbaferm.</p><p style="margin-top:12px">A 31-day study in 20 elite water polo players looked at a vegan protein supplement with pre- and probiotics. Herbaferm\'s founders are among its authors and the abstract does not name Fiber Elite. <a class="more" href="#science">See the reference</a></p>',
+  faq=[3, 8, 14, 5, 19, 20]),
+ "prefer": dict(
+  pt="#9d86ff",
+  trust=["Made to go with Drops", "A one-week trial pack", "Gelatine capsule", "Ask first if histamine-sensitive"],
+  glance=[("2", "capsules a day"), ("14", "capsules, one week"), ("200 mg", "fermented herb fibres each"), ("S$3.21", "per capsule")],
+  steps=[("Morning", "One capsule with your glass of water."), ("Evening", "One more capsule with your second glass."), ("Alongside Drops", "Prefer HF400 was developed to complement Herbaferm Drops.")],
+  stepnote='A 14-capsule pack lasts 7 days, so it works well as a trial. @@TAG_CONFIRM@@ Another Herbaferm document describes a different dose.',
+  img='<img src="@@img:prefer-bark@@" alt="Prefer HF400 bottle and carton on mossy bark, with a capsule in front" loading="lazy" style="object-position:30% 55%">',
+  inside_h="What is in one 400 mg capsule",
+  inside='<ul class="ilist"><li><b>200 mg</b> fermented herb fibres (chamomile, yarrow, rosehip, elderflower, propolis, oak bark, wormwood)</li><li><b>120 mg</b> fulvic acid</li><li><b>51 mg</b> humic acid</li><li><b>29 mg</b> vitamin C</li></ul><p style="margin-top:12px">Gelatine capsule shell, so not suitable for vegetarians. Halal status is not confirmed yet. @@TAG_CONFIRM@@</p>',
+  faq=[4, 9, 5, 19, 20]),
+}
+
+
+def prod_sections(pid, faqs):
+    d = PROD[pid]
+    trust = "".join('<li>%s</li>' % t for t in d["trust"])
+    glance = "".join('<div><b>%s</b><span>%s</span></div>' % g for g in d["glance"])
+    steps = "".join('<li><i>%d</i><div><h3>%s</h3><p>%s</p></div></li>' % (n + 1, s[0], s[1]) for n, s in enumerate(d["steps"]))
+    faq = "".join(P.faq_item(*faqs[k]) for k in d["faq"])
+    return {
+      "trust": '<ul class="ptrust">%s</ul>' % trust,
+      "after": (
+        '<section class="pglance"><div class="wrap"><div class="gtiles">%s</div></div></section>'
+        '<section class="phow"><div class="wrap"><div class="pcols"><div><h2>How to take it</h2><ol class="psteps">%s</ol><p class="note" style="margin-top:18px">%s</p></div>'
+        '<div class="pimg">%s</div></div></div></section>'
+        '<section class="pinside"><div class="wrap"><div class="pbox"><h2>%s</h2><div>%s</div></div></div></section>'
+        '<section class="pdet"><div class="wrap"><h2>Details and safety</h2><div style="margin-top:22px"><div class="tabs-wrap">') % (glance, steps, d["stepnote"], d["img"], d["inside_h"], d["inside"]),
+      "faq": '<section class="pfaq"><div class="wrap"><h2>Questions before you buy</h2><div class="faq" style="margin-top:22px">%s</div><p class="note" style="margin-top:16px">More answers on the <a href="#faq">FAQ page</a>, or ask the Herbaferm assistant.</p></div></section>' % faq,
+      "pt": d["pt"],
+    }

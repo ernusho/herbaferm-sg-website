@@ -79,12 +79,16 @@ patch("science", '<section class="alt"><div class="wrap">\n  <p class="eyebrow">
 # remove small-caps eyebrows inside page bodies (page heroes keep theirs)
 P.PAGES = [(k, t, re.sub(r'<p class="eyebrow"[^>]*>[^<]*</p>\s*', "", h)) for k, t, h in P.PAGES]
 for _i, (_k, _t, _h) in enumerate(P.PAGES):
-    if _k in X.PROD_CH:
+    if _k in X.PROD:
+        _s = X.prod_sections(_k, P.FAQS)
         assert _h.count('<div class="tabs-wrap">') == 1 and _h.lstrip().startswith('<section style="padding-block:40px 70px">'), _k
-        _h = _h.replace('<section style="padding-block:40px 70px">', '<div class="jr" data-journey>\n<section class="ch ch-pd" ' + X.LIGHT + ' data-label="Product" style="padding-block:40px 70px">', 1)
-        _h = _h.replace('<div class="tabs-wrap">', '</div></section>' + X.PROD_CH[_k] + '<div class="wrap"><div class="tabs-wrap">', 1)
-        _h = _h.replace('<section class="alt"><div class="wrap"><div class="sechead">', '<section class="alt ch ch-pd ch-light" ' + X.LIGHT + ' data-label="Pairs well"><div class="wrap"><div class="sechead">', 1)
-        _h = _h.rstrip() + '\n</div>\n'
+        _h = _h.replace('<section style="padding-block:40px 70px">', '<section class="ptop" style="--pt:%s">' % _s["pt"], 1)
+        _h = _h.replace('<div class="keyfacts">', _s["trust"] + '<div class="keyfacts">', 1)
+        _h = _h.replace('<div class="tabs-wrap">', '</div></section>' + _s["after"], 1)
+        # original tail closes tabs-wrap, wrap, section; close our extra wrappers too
+        _h, _n = re.subn(r'</div></section>\s*<section class="alt">', lambda m: '</div></div></section>' + _s["faq"] + '\n<section class="alt">', _h, count=1)
+        assert _n == 1, _k
+        _h = re.sub(r'<section class="(pglance|phow|pinside|pdet|pfaq)">', lambda m: '<section class="%s" style="--pt:%s">' % (m.group(1), _s["pt"]), _h)
         P.PAGES[_i] = (_k, _t, _h)
 
 TOK["SLOT_MORNING"] = X.slot("r34", "Morning routine photo", "A real person with their morning drops. Faces and hands are what the eye finds first.")

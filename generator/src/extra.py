@@ -502,6 +502,10 @@ INSIGHT = '''
 # ---------------------------------------------------------------- product page sections
 PROD = {
  "drops": dict(
+  more=dict(suits=["Adults who like a small, simple daily routine","People who already pour a glass of water morning and evening","Anyone shopping for a parent or loved one, once their healthcare professional is happy"],
+  check=["You are pregnant or breastfeeding","You take medication or have a diagnosed condition","You are sensitive to histamine","You are thinking of giving it to a child"],
+  shelf="Keep the bottle in the fridge at 5 to 12 \u00b0C and shake before use. Herbaferm's notes give about 6 months of shelf life. @@TAG_CONFIRM@@ The best-before date is printed on the pack.",
+  also=[("fiber","Fiber Elite","S$55 \u00b7 125 g"),("prefer","Prefer HF400","S$45 \u00b7 14 capsules")]),
   pt="#6fbf8b",
   trust=["No preservatives", "No artificial colours", "Registered in Hungary, 2018", "Seven herbs, naturally fermented"],
   glance=[("8", "drops, twice a day"), ("480", "drops in a 30 ml bottle"), ("1 month", "from one bottle"), ("S$1.83", "a day")],
@@ -512,6 +516,10 @@ PROD = {
   inside='<p>Chamomile, yarrow, elderflower, rosehip, propolis, oak bark and white wormwood. Kitchen and herbal-tea plants from Europe, fermented the traditional way. No artificial additives, preservatives or colours.</p><p style="margin-top:12px"><a class="more" href="#ingredients">Meet the seven herbs</a></p>',
   faq=[0, 1, 2, 15, 11, 5, 19, 20]),
  "fiber": dict(
+  more=dict(suits=["People who like to stir something into the meals they already make","Active people who want an after-training add-in","Anyone who prefers a powder to drops or capsules"],
+  check=["You are coeliac or avoid gluten (it contains barley malt and oat flour)","You are pregnant or take medication","You have a diagnosed condition"],
+  shelf="Store as printed on the pack. Herbaferm's notes do not give a shelf life for Fiber Elite yet. @@TAG_CONFIRM@@",
+  also=[("drops","Herbaferm Drops","S$55 \u00b7 30 ml"),("prefer","Prefer HF400","S$45 \u00b7 14 capsules")]),
   pt="#ffa43a",
   trust=["Can be heated and cooked with", "Vegan and GMO-free, per the leaflet", "Contains gluten", "Fine powder, malty aroma"],
   glance=[("3.5 g", "a day, with a meal"), ("125 g", "pouch, 35 servings"), ("About a month", "from one pouch"), ("S$1.54", "a day")],
@@ -522,6 +530,10 @@ PROD = {
   inside='<p>75% whole barley malt and 12.5% oat flour, with a characteristic malt aroma. Contains gluten. @@TAG_CONFIRM@@ The final composition is still to be confirmed with Herbaferm.</p><p style="margin-top:12px">A 31-day study in 20 elite water polo players looked at a vegan protein supplement with pre- and probiotics. Herbaferm\'s founders are among its authors and the abstract does not name Fiber Elite. <a class="more" href="#science">See the reference</a></p>',
   faq=[3, 8, 14, 5, 19, 20]),
  "prefer": dict(
+  more=dict(suits=["People who prefer a capsule to drops","Anyone who already uses Herbaferm Drops","Anyone who wants to try the range for a week first"],
+  check=["You are vegetarian or need halal (the shell is gelatine)","You are sensitive to histamine: use only under professional supervision","You have an immune system disorder, are pregnant or take medication"],
+  shelf="Herbaferm's notes give about 1 year for the capsules. @@TAG_CONFIRM@@ The best-before date is printed on the pack.",
+  also=[("drops","Herbaferm Drops","S$55 \u00b7 30 ml"),("fiber","Fiber Elite","S$55 \u00b7 125 g")]),
   pt="#9d86ff",
   trust=["Made to go with Drops", "A one-week trial pack", "Gelatine capsule", "Ask first if histamine-sensitive"],
   glance=[("2", "capsules a day"), ("14", "capsules, one week"), ("200 mg", "fermented herb fibres each"), ("S$3.21", "per capsule")],
@@ -536,18 +548,31 @@ PROD = {
 
 def prod_sections(pid, faqs):
     d = PROD[pid]
+    m = d["more"]
     trust = "".join('<li>%s</li>' % t for t in d["trust"])
     glance = "".join('<div><b>%s</b><span>%s</span></div>' % g for g in d["glance"])
     steps = "".join('<li><i>%d</i><div><h3>%s</h3><p>%s</p></div></li>' % (n + 1, s[0], s[1]) for n, s in enumerate(d["steps"]))
     faq = "".join(P.faq_item(*faqs[k]) for k in d["faq"])
+    lis = lambda a: "".join("<li>%s</li>" % t for t in a)
+    also = "".join('<div><span><b>%s</b><small>%s</small></span><a class="btn btn-line sm" href="#%s">View</a><button class="btn btn-honey sm" type="button" data-add="%s">Add</button></div>' % (n, p, i, i) for i, n, p in m["also"])
+    deliv = ('<ul class="pdeliv"><li><b>Delivery in Singapore</b><span>Details to follow @@TAG_SUPPLY@@</span></li><li><b>Returns</b><span>Terms to follow @@TAG_SUPPLY@@</span></li>'
+             '<li><b>Payment</b><span>Major cards and wallets @@TAG_CONFIRM@@</span></li><li><b>Questions?</b><span>Ask the Herbaferm assistant (bottom right) or see the <a href="#faq">FAQ</a></span></li></ul>'
+             '<div class="pbundle"><small>Goes well with</small>%s</div>') % also
+    nav = ('<nav class="psub" aria-label="On this page"><div class="wrap">%s</div></nav>' % "".join(
+        '<a href="#%s" data-to="%s-%s">%s</a>' % (pid, pid, s, l) for s, l in (("top", "Overview"), ("how", "How to take it"), ("fit", "Is it for you?"), ("inside", "Inside"), ("det", "Details"), ("faq", "Questions"))))
+    fit = ('<section class="pfit" id="%s-fit"><div class="wrap"><h2>Is it right for you?</h2><div class="fitgrid"><div class="fit yes"><h3>Suits you if&hellip;</h3><ul>%s</ul></div>'
+           '<div class="fit chk"><h3>Check with a healthcare professional first if&hellip;</h3><ul>%s</ul></div></div></div></section>') % (pid, lis(m["suits"]), lis(m["check"]))
+    extra = ('<div class="dcard"><h3>Storage and shelf life</h3><p>%s</p></div>'
+             '<div class="dcard"><h3>Delivery, returns and payment</h3><p>Singapore delivery times and fees, returns terms and payment methods will be listed here. @@TAG_SUPPLY@@ Also listed on the ConnectingDNA marketplace in Singapore. @@TAG_CONFIRM@@</p></div>') % m["shelf"]
     return {
+      "nav": nav, "fit": fit, "extra": extra, "deliv": deliv,
       "trust": '<ul class="ptrust">%s</ul>' % trust,
       "after": (
-        '<section class="pglance"><div class="wrap"><div class="gtiles">%s</div></div></section>'
-        '<section class="phow"><div class="wrap"><div class="pcols"><div><h2>How to take it</h2><ol class="psteps">%s</ol><p class="note" style="margin-top:18px">%s</p></div>'
-        '<div class="pimg">%s</div></div></div></section>'
-        '<section class="pinside"><div class="wrap"><div class="pbox"><h2>%s</h2><div>%s</div></div></div></section>'
-        '<section class="pdet"><div class="wrap"><h2>Details and safety</h2><div style="margin-top:22px"><div class="tabs-wrap">') % (glance, steps, d["stepnote"], d["img"], d["inside_h"], d["inside"]),
-      "faq": '<section class="pfaq"><div class="wrap"><h2>Questions before you buy</h2><div class="faq" style="margin-top:22px">%s</div><p class="note" style="margin-top:16px">More answers on the <a href="#faq">FAQ page</a>, or ask the Herbaferm assistant.</p></div></section>' % faq,
+        '<section class="pglance"><div class="wrap"><div class="gtiles">%(glance)s</div></div></section>'
+        '<section class="phow" id="%(p)s-how"><div class="wrap"><div class="pcols"><div><h2>How to take it</h2><ol class="psteps">%(steps)s</ol><p class="note" style="margin-top:18px">%(note)s</p></div>'
+        '<div class="pimg">%(img)s</div></div></div></section>'
+        '%(fit)s<section class="pinside" id="%(p)s-inside"><div class="wrap"><div class="pbox"><h2>%(ih)s</h2><div>%(inside)s</div></div></div></section>'
+        '<section class="pdet" id="%(p)s-det"><div class="wrap"><h2>Details and safety</h2><div class="pgrid"><div class="tabs-wrap">') % dict(glance=glance, steps=steps, note=d["stepnote"], img=d["img"], ih=d["inside_h"], inside=d["inside"], p=pid, fit=fit),
+      "faq": '<section class="pfaq" id="%s-faq"><div class="wrap"><h2>Questions before you buy</h2><div class="faq" style="margin-top:22px">%s</div><p class="note" style="margin-top:16px">More answers on the <a href="#faq">FAQ page</a>, or ask the Herbaferm assistant.</p></div></section>' % (pid, faq),
       "pt": d["pt"],
     }

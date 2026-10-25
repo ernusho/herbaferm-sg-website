@@ -82,13 +82,17 @@ for _i, (_k, _t, _h) in enumerate(P.PAGES):
     if _k in X.PROD:
         _s = X.prod_sections(_k, P.FAQS)
         assert _h.count('<div class="tabs-wrap">') == 1 and _h.lstrip().startswith('<section style="padding-block:40px 70px">'), _k
-        _h = _h.replace('<section style="padding-block:40px 70px">', '<section class="ptop" style="--pt:%s">' % _s["pt"], 1)
+        _h = _h.replace('<section style="padding-block:40px 70px">', '<section class="ptop" id="%s-top" style="--pt:%s">' % (_k, _s["pt"]), 1)
         _h = _h.replace('<div class="keyfacts">', _s["trust"] + '<div class="keyfacts">', 1)
-        _h = _h.replace('<div class="tabs-wrap">', '</div></section>' + _s["after"], 1)
-        # original tail closes tabs-wrap, wrap, section; close our extra wrappers too
-        _h, _n = re.subn(r'</div></section>\s*<section class="alt">', lambda m: '</div></div></section>' + _s["faq"] + '\n<section class="alt">', _h, count=1)
+        _h = _h.replace('<p class="note">', _s["deliv"] + '<p class="note">', 1)
+        # tabs become visible cards
+        _labels = dict(re.findall(r'aria-controls="([\w-]+)">([^<]+)</button>', _h))
+        _h = re.sub(r'<div class="tabs" role="tablist">.*?</div>', '', _h, count=1, flags=re.S)
+        _h = re.sub(r'<div class="tabpanel" id="([\w-]+)"( hidden)?>', lambda m: '<div class="tabpanel dcard" id="%s"><h3>%s</h3>' % (m.group(1), _labels.get(m.group(1), "")), _h)
+        _h = _h.replace('<div class="tabs-wrap">', '</div></section>' + _s["nav"] + _s["after"], 1)
+        _h, _n = re.subn(r'</div></section>\s*<section class="alt">', lambda m: _s["extra"] + '</div></div></section>' + _s["faq"] + '\n<section class="alt">', _h, count=1)
         assert _n == 1, _k
-        _h = re.sub(r'<section class="(pglance|phow|pinside|pdet|pfaq)">', lambda m: '<section class="%s" style="--pt:%s">' % (m.group(1), _s["pt"]), _h)
+        _h = re.sub(r'<section class="(pglance|phow|pfit|pinside|pdet|pfaq)"', lambda m: '<section style="--pt:%s" class="%s"' % (_s["pt"], m.group(1)), _h)
         P.PAGES[_i] = (_k, _t, _h)
 
 TOK["SLOT_MORNING"] = X.slot("r34", "Morning routine photo", "A real person with their morning drops. Faces and hands are what the eye finds first.")

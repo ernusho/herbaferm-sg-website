@@ -223,7 +223,7 @@ HOME = '''
       <li><strong><span data-count="2023">2023</span></strong><span>Herbaferm Pte. Ltd. in Singapore</span></li>
     </ul>
     <p class="jv"><a class="jlink" href="#about">Meet the team</a></p>
-  </div><div class="arch jv" data-par=".06"><img src="@@img:hero-bark@@" alt="Moss and oak bark, close up" loading="lazy"></div></div>
+  </div><div class="arch jv" data-par=".06"><img src="@@img:ai-meadow@@" alt="A flowering meadow with chamomile and yarrow at sunset (illustrative image)" loading="lazy"><span class="ill">Illustrative image</span></div></div>
 </section>
 
 <section class="ch ch-herbs" id="jr-herbs" data-label="Seven herbs" data-dyn>
@@ -247,7 +247,7 @@ HOME = '''
       <li class="jv"><b>03</b><div><h3>Bottle it, nothing added</h3><p>No preservatives and no artificial colours. The fridge does the job instead: keep the bottle at 5 to 12 &deg;C.</p></div></li>
     </ol>
     <p class="jv"><a class="jlink" href="#science">See the science and its limits</a></p>
-  </div><div class="arch jv" data-par=".06"><img src="@@img:flatlay@@" alt="The seven herbs in Herbaferm Drops, laid out flat" loading="lazy"></div></div>
+  </div><div class="arch jv" data-par=".06"><img src="@@img:ai-jars@@" alt="Chamomile and yarrow fermenting in glass jars (illustrative image)" loading="lazy"><span class="ill">Illustrative image</span></div></div>
 </section>
 
 <section class="ch" id="jr-range" data-bg="#cfe0b8" data-fg="#1d3318" data-ac="#1d3318" data-label="The range">
@@ -504,7 +504,7 @@ PROD = {
  "drops": dict(
   more=dict(suits=["Adults who like a small, simple daily routine","People who already pour a glass of water morning and evening","Anyone shopping for a parent or loved one, once their healthcare professional is happy"],
   check=["You are pregnant or breastfeeding","You take medication or have a diagnosed condition","You are sensitive to histamine","You are thinking of giving it to a child"],
-  shelf="Keep the bottle in the fridge at 5 to 12 \u00b0C and shake before use. Herbaferm's notes give about 6 months of shelf life. @@TAG_CONFIRM@@ The best-before date is printed on the pack.",
+  shelf="<img class=\"pfridge\" src=\"@@img:ai-fridge@@\" alt=\"Small dark bottles and a jar on a fridge door shelf (illustrative image)\" loading=\"lazy\"><br>Keep the bottle in the fridge at 5 to 12 \u00b0C and shake before use. Herbaferm's notes give about 6 months of shelf life. @@TAG_CONFIRM@@ The best-before date is printed on the pack.",
   also=[("fiber","Fiber Elite","S$55 \u00b7 125 g"),("prefer","Prefer HF400","S$45 \u00b7 14 capsules")]),
   pt="#6fbf8b",
   trust=["No preservatives", "No artificial colours", "Registered in Hungary, 2018", "Seven herbs, naturally fermented"],
@@ -513,7 +513,7 @@ PROD = {
   stepnote='New to it? Start with 5 drops morning and evening and build up over two to three weeks. <a href="#a-month">Read the first-month guide</a>. @@TAG_CONFIRM@@',
   img='<img src="@@img:drops-pour@@" alt="A hand adding Herbaferm Drops to a glass of water" loading="lazy" style="object-position:55% 50%">',
   inside_h="Seven herbs, fermented slowly",
-  inside='<p>Chamomile, yarrow, elderflower, rosehip, propolis, oak bark and white wormwood. Kitchen and herbal-tea plants from Europe, fermented the traditional way. No artificial additives, preservatives or colours.</p><p style="margin-top:12px"><a class="more" href="#ingredients">Meet the seven herbs</a></p>',
+  inside='<figure class="pfig"><img src="@@img:ai-herbs@@" alt="Chamomile, elderflower, oak bark and rosehip on a linen cloth (illustrative image)" loading="lazy"><span class="ill">Illustrative image</span></figure><p>Chamomile, yarrow, elderflower, rosehip, propolis, oak bark and white wormwood. Kitchen and herbal-tea plants from Europe, fermented the traditional way. No artificial additives, preservatives or colours.</p><p style="margin-top:12px"><a class="more" href="#ingredients">Meet the seven herbs</a></p>',
   faq=[0, 1, 2, 15, 11, 5, 19, 20]),
  "fiber": dict(
   more=dict(suits=["People who like to stir something into the meals they already make","Active people who want an after-training add-in","Anyone who prefers a powder to drops or capsules"],
@@ -525,7 +525,7 @@ PROD = {
   glance=[("3.5 g", "a day, with a meal"), ("125 g", "pouch, 35 servings"), ("About a month", "from one pouch"), ("S$1.54", "a day")],
   steps=[("Measure 3.5 g", "A small spoonful of the fine powder."), ("Stir it in", "Porridge, yoghurt, a smoothie or a protein shake. It can be heated too."), ("On training days", "3.5 g two to three times a day, after exercise.")],
   stepnote='Need ideas? <a href="#a-fiber">Four easy ways to eat Fiber Elite</a>.',
-  img='@@PACK_FIBER@@',
+  img='<img src="@@img:ai-porridge@@" alt="A spoonful of fine powder being stirred into porridge with berries (illustrative image)" loading="lazy"><span class="ill">Illustrative image</span>',
   inside_h="What is in the pouch",
   inside='<p>75% whole barley malt and 12.5% oat flour, with a characteristic malt aroma. Contains gluten. @@TAG_CONFIRM@@ The final composition is still to be confirmed with Herbaferm.</p><p style="margin-top:12px">A 31-day study in 20 elite water polo players looked at a vegan protein supplement with pre- and probiotics. Herbaferm\'s founders are among its authors and the abstract does not name Fiber Elite. <a class="more" href="#science">See the reference</a></p>',
   faq=[3, 8, 14, 5, 19, 20]),

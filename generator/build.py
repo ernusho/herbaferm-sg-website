@@ -13,7 +13,7 @@ def uri(name):
     f = root / "assets" / (name + ".jpg")
     return "data:image/jpeg;base64," + base64.b64encode(f.read_bytes()).decode()
 
-IMGS = {"drops": "drops", "prefer": "prefer", "award": "award-cim-2026", "awardtop": "award-top10", "plate": "award-plate", "book": "book-microbiome", "flatlay": "herbs-flatlay"}
+IMGS = {"drops": "drops", "prefer": "prefer", "award": "award-cim-2026", "awardtop": "award-top10", "plate": "award-plate", "ai-jars": "ai-jars", "ai-meadow": "ai-meadow", "ai-porridge": "ai-porridge", "ai-fridge": "ai-fridge", "ai-herbs": "ai-herbs", "book": "book-microbiome", "flatlay": "herbs-flatlay"}
 for h in P.HERBS:
     IMGS["herb-" + h[0]] = "herb-" + h[0]
 IMGS["herbs-flatlay"] = "herbs-flatlay"

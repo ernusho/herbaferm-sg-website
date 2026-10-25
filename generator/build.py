@@ -110,7 +110,7 @@ HCOL = {"chamomile": ("#f6d04d", "#2a2100", "#2a2100"), "yarrow": ("#f7b5c6", "#
 def _jh(i, h):
     bg, fg, ac = HCOL[h[0]]
     return ('<article class="hpane%s" data-bg="%s" data-fg="%s" data-ac="%s"><div class="hcopy"><h2>%s</h2><p class="lat">%s</p><p class="jp">%s</p></div>'
-            '<div class="arch hph"><img src="@@img:herb-%s@@" alt="%s" loading="lazy"></div></article>') % (
+            '<figure class="hph"><img src="@@img:herb-%s@@" alt="%s" loading="lazy"><figcaption>Botanical illustration</figcaption></figure></article>') % (
             " on" if i == 0 else "", bg, fg, ac, h[1], h[2], h[4], h[0], h[3])
 TOK["JHERBS"] = "".join(_jh(i, h) for i, h in enumerate(P.HERBS))
 TOK["VIZ_COST"] = X.VIZ_COST

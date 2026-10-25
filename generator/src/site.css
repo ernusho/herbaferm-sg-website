@@ -954,3 +954,4 @@ section.pviz:not(:has(.vgrid)) .wrap{background:color-mix(in srgb,var(--leaf) 10
 .vleg i{width:16px;height:16px;border-radius:5px}
 @media(max-width:860px){.vgrid{grid-template-columns:1fr}.brow{grid-template-columns:1fr auto}.brow .bt{grid-column:1/-1;order:3}}
 @media (prefers-reduced-motion:reduce){.brow .bt i,.dots i{animation:none}}
+.hart img{width:auto;height:auto;max-width:100%;max-height:100%}

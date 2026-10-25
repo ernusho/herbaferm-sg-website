@@ -140,3 +140,9 @@
 .hpane .hph img{position:absolute;inset:0}
 @media(max-width:760px){.hpane .hph{width:min(100%,260px);height:min(34svh,260px);order:-1}}
 .hstage>.wrap{width:100%}
+/* herb plates: show the small source illustrations at their natural size instead of stretching them */
+.hpane .hph{margin:0;width:auto;height:auto;max-width:min(100%,400px);aspect-ratio:auto;border-radius:28px;background:#f7f1e4;padding:22px 22px 14px;box-shadow:0 36px 70px -32px rgba(0,0,0,.55);display:grid;gap:10px;justify-items:center;position:relative;transform:scale(.95) rotate(-2deg)}
+.hpane.on .hph{transform:rotate(-1.5deg)}
+.hpane .hph img{position:static;width:auto;height:auto;max-width:100%;max-height:34svh;object-fit:contain;display:block}
+.hpane .hph figcaption{font:600 .72rem var(--body);letter-spacing:.12em;text-transform:uppercase;color:#6b5f48}
+@media(max-width:760px){.hpane .hph{width:auto;height:auto;order:-1}.hpane .hph img{max-height:22svh}}

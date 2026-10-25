@@ -1,0 +1,3 @@
+name = "herbaferm-chat"
+main = "chat-worker.js"
+compatibility_date = "2026-01-01"

@@ -13,7 +13,7 @@ def uri(name):
     f = root / "assets" / (name + ".jpg")
     return "data:image/jpeg;base64," + base64.b64encode(f.read_bytes()).decode()
 
-IMGS = {"drops": "drops", "prefer": "prefer", "award": "award-cim-2026", "awardtop": "award-top10", "plate": "award-plate", "ai-jars": "ai-jars", "ai-meadow": "ai-meadow", "ai-porridge": "ai-porridge", "ai-fridge": "ai-fridge", "ai-herbs": "ai-herbs", "book": "book-microbiome", "flatlay": "herbs-flatlay"}
+IMGS = {"drops": "drops", "prefer": "prefer", "award": "award-cim-2026", "awardtop": "award-top10", "plate": "award-plate", "ai-jars": "ai-jars", "ai-morning": "ai-morning", "ai-meadow": "ai-meadow", "ai-porridge": "ai-porridge", "ai-fridge": "ai-fridge", "ai-herbs": "ai-herbs", "book": "book-microbiome", "flatlay": "herbs-flatlay"}
 for h in P.HERBS:
     IMGS["herb-" + h[0]] = "herb-" + h[0]
 IMGS["herbs-flatlay"] = "herbs-flatlay"
@@ -189,7 +189,7 @@ __PAGES__
     <div><h4>Learn</h4><a href="#learn">Guides</a><a href="#ingredients">Ingredients</a><a href="#science">Science</a><a href="#about">About</a><a href="#awards">Awards</a><a href="#quality">Quality</a></div>
     <div><h4>Help</h4><a href="#partners">Partners</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#policies">Policies</a><a href="#insight">Design evidence</a><a href="https://herbafermsg.com/" target="_blank" rel="noopener">Current store</a></div>
   </div>
-  <div class="legal"><p>These products are food supplements. They are not intended to diagnose, treat, cure or prevent any disease and are not a substitute for a varied diet or medical advice. Speak to a healthcare professional if you are pregnant, breastfeeding, have a medical condition or take medication.</p><p>&copy; 2026 Herbaferm Pte. Ltd. Prototype built for the NUS FSP4003 consulting project. <button type="button" id="still" class="linkbtn" aria-pressed="false">Pause motion</button></p></div>
+  <div class="legal"><p>These products are food supplements. They are not intended to diagnose, treat, cure or prevent any disease and are not a substitute for a varied diet or medical advice. Speak to a healthcare professional if you are pregnant, breastfeeding, have a medical condition or take medication. Some scene and ingredient images on this site are AI-generated illustrations.</p><p>&copy; 2026 Herbaferm Pte. Ltd. Prototype built for the NUS FSP4003 consulting project. <button type="button" id="still" class="linkbtn" aria-pressed="false">Pause motion</button></p></div>
 </div></footer>
 <div class="srch" id="srch" hidden><div class="srchbox" role="dialog" aria-modal="true" aria-label="Search the site">
   <div class="srchin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input id="srch-q" type="search" placeholder="Search products, ingredients, guides, questions" autocomplete="off" aria-label="Search"><button type="button" id="srch-x" aria-label="Close search">Esc</button></div>

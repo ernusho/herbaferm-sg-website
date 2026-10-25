@@ -66,9 +66,16 @@ IMG_DROPS = '<img src="@@img:drops@@" alt="Herbaferm Drops 30 ml bottle with car
 IMG_PREFER = '<img src="@@img:prefer@@" alt="Prefer HF400 bottle with a capsule" data-thumb="prefer">'
 
 
+HERO = {"Shop": ("ai-morning", "#e8b04a"), "Learn": ("ai-herbs", "#7fc79a"), "About": ("hero-bark", "#8fb86a"), "Partners": ("range", "#d9a27a"),
+        "FAQ": ("ai-fridge", "#a9d3c8"), "Contact": ("ai-meadow", "#cfe0b8"), "Awards": (None, "#f2b73d"), "Ingredients": ("ai-herbs", "#7fc79a"),
+        "Science": (None, "#a9d3c8"), "Quality": (None, "#8fb86a"), "Policies": (None, "#d8c7a5")}
+
+
 def phero(crumb, eyebrow, title, lede, trail=""):
-    return ('<div class="phero"><div class="wrap"><div class="crumbs"><a href="#home">Home</a> / %s</div>'
-            '<p class="eyebrow">%s</p><h1>%s</h1><p class="lede">%s</p>%s</div></div>') % (crumb, eyebrow, title, lede, trail)
+    img, pt = HERO.get(crumb, (None, "#7fc79a"))
+    bg = '<img class="phbg" src="@@img:%s@@" alt="" loading="lazy">' % img if img else ""
+    return ('<div class="phero phx" style="--pt:%s">%s<div class="wrap"><div class="crumbs"><a href="#home">Home</a> / %s</div>'
+            '<p class="eyebrow">%s</p><h1>%s</h1><p class="lede">%s</p>%s</div></div>') % (pt, bg, crumb, eyebrow, title, lede, trail)
 
 
 def faq_item(cat, q, a):

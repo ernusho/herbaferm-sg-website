@@ -161,6 +161,22 @@ _merge("about", "PHERO_ABOUT", [("about", "sec-about", "Our story", "Who is behi
         ("quality", "sec-quality", "Quality and documents", "Registrations, lab documents and manufacturing information, with what is still being updated.")],
        [("about", "sec-about", "Our story"), ("awards", "sec-awards", "Awards"), ("quality", "sec-quality", "Quality")])
 
+def _band(pid, before, img, alt, cap):
+    """Insert a wide illustrative image band before the first occurrence of `before` on page pid."""
+    fig = ('<section class="band"><div class="wrap"><figure><img src="@@img:%s@@" alt="%s (illustrative image)" loading="lazy">'
+           '<figcaption><span>%s</span><span class="ill">Illustrative image</span></figcaption></figure></div></section>') % (img, alt, cap)
+    for i, (k, t, h) in enumerate(P.PAGES):
+        if k == pid and before in h:
+            at = h.index(before)
+            if before.startswith("<h"):
+                at = h.rindex("<section", 0, at)
+            P.PAGES[i] = (k, t, h[:at] + fig + h[at:])
+            return
+    raise SystemExit("band anchor not found: %s %s" % (pid, before))
+_band("partners", '<h2>Six places to find Herbaferm</h2>', "ai-jars", "Chamomile and yarrow fermenting in glass jars", "Fermented in small batches, then bottled")
+_band("about", '<section class="subhead" id="sec-awards">', "ai-meadow", "A flowering meadow with chamomile and yarrow", "A Hungarian formula built on traditional herbs")
+_band("learn", '<section class="subhead" id="sec-science">', "ai-morning", "A glass of water and a dropper bottle on a kitchen counter", "Part of an ordinary morning")
+
 pages_html = ""
 for pid, title, body in P.PAGES:
     hidden = "" if pid == "home" else " hidden"

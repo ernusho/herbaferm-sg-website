@@ -962,6 +962,21 @@ section.pviz:not(:has(.vgrid)) .wrap{background:color-mix(in srgb,var(--leaf) 10
 .band figcaption{position:absolute;inset:auto 0 0 0;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:46px 22px 16px;color:#fff;font:600 1.05rem var(--display);background:linear-gradient(to top,rgba(20,35,20,.72),transparent)}
 .band .ill{position:static;font:500 .72rem var(--body,inherit);opacity:.85;background:rgba(0,0,0,.28);padding:3px 9px;border-radius:99px}
 
+/* ---------- design pass: contrast, mobile header, type scale ---------- */
+.cv2{background:linear-gradient(135deg,#6e4610,#a8700f)!important}
+.cv3{background:linear-gradient(135deg,#1f4a43,#3f7a6c)!important}
+.cv4{background:linear-gradient(135deg,#5a3c20,#8f6431)!important}
+.cv5{background:linear-gradient(135deg,#3f4c29,#627a35)!important}
+h3{font-size:1.4rem}
+h4{font-size:1.1rem}
+.band .ill{font-size:.8rem}
+@media (max-width:440px){
+  .brand i{display:none}
+  .nav{gap:6px}
+  .icon-btn{min-width:40px;height:40px;padding:0 10px}
+  .cart-n{min-width:18px;height:18px}
+}
+
 /* ================= scroll journey (home) ================= */
 .jr{--jbg:#0e2a1b;--jfg:#f3f7ee;--jac:#f2b73d;background:var(--jbg);color:var(--jfg);transition:background-color .9s ease,color .9s ease;position:relative;overflow-x:clip}
 .jr .kicker{color:var(--jac);font:700 .8rem/1 var(--body);letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;transition:color .9s}

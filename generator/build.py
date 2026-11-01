@@ -78,6 +78,22 @@ patch("science", '<section class="alt"><div class="wrap">\n  <p class="eyebrow">
       SEC % ("", '<h2>From herb to bottle</h2><p class="lede">Select a step, or let it play.</p>' + X.stepper()))
 # remove small-caps eyebrows inside page bodies (page heroes keep theirs)
 P.PAGES = [(k, t, re.sub(r'<p class="eyebrow"[^>]*>[^<]*</p>\s*', "", h)) for k, t, h in P.PAGES]
+# keep heading order valid: pages whose first body heading after the h1 is an h3 get h2 (styled as h3)
+def _fix_levels(h):
+    if "@@PHERO_" not in h or "<h3" not in h:
+        return h
+    m = re.search(r"<h[23][\s>]", h)
+    if not m or not m.group(0).startswith("<h3"):
+        return h
+    def one(mo):
+        attrs = mo.group(1)
+        if 'class="' in attrs:
+            attrs = attrs.replace('class="', 'class="as3 ', 1)
+        else:
+            attrs += ' class="as3"'
+        return "<h2%s>" % attrs
+    return re.sub(r"</h3>", "</h2>", re.sub(r"<h3([^>]*)>", one, h))
+P.PAGES = [(k, t, _fix_levels(h) if k in ("shop", "contact", "policies") else h) for k, t, h in P.PAGES]
 for _i, (_k, _t, _h) in enumerate(P.PAGES):
     if _k in X.PROD:
         _s = X.prod_sections(_k, P.FAQS)

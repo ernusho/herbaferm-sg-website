@@ -976,6 +976,7 @@ h4{font-size:1.1rem}
   .icon-btn{min-width:40px;height:40px;padding:0 10px}
   .cart-n{min-width:18px;height:18px}
 }
+h2.as3{font-size:1.4rem}
 
 /* ================= scroll journey (home) ================= */
 .jr{--jbg:#0e2a1b;--jfg:#f3f7ee;--jac:#f2b73d;background:var(--jbg);color:var(--jfg);transition:background-color .9s ease,color .9s ease;position:relative;overflow-x:clip}

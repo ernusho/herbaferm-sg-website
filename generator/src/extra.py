@@ -201,7 +201,7 @@ HOME = '''
   <i class="blob b1" data-par="-.12"></i><i class="blob b2" data-par=".1"></i>
   <div class="wrap herojr">
     <div class="jtxt">
-      <p class="kicker jv">Fermented herbal food supplements</p>
+      <p class="kicker jv">Fermented herbal food supplements for everyday gut health, in Singapore</p>
       <h1 class="jh1"><span class="jv" data-split>Seven herbs.</span><span class="rot" aria-live="off"><b class="on">Fermented slowly.</b><b>Born in Hungary.</b><b>Now in Singapore.</b></span></h1>
       <p class="jsub jv">Scroll down. We will show you where it comes from, how it is made, and how it fits into a day.</p>
       <div class="btns jv"><a class="jbtn" href="#shop">Shop the range</a><a class="jbtn ghost" href="#science">How it is made</a></div>

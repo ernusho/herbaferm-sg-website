@@ -1,0 +1,20 @@
+# Herbaferm Singapore. Bot access follows slide 31 of the brand deck.
+User-agent: *
+Allow: /
+
+# Search and AI-search bots: allowed
+User-agent: Googlebot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# AI training bots: optional. Allowed for now; uncomment to block.
+# Blocking these does not remove the site from Google or ChatGPT search.
+# User-agent: GPTBot
+# Disallow: /
+#
+# User-agent: Google-Extended
+# Disallow: /
+
+Sitemap: https://herbafermsg.com/sitemap.xml

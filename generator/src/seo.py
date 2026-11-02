@@ -42,20 +42,26 @@ def faq_ld(pairs):
             "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in pairs]}
 
 
-def root_ld(base, faqs):
-    """JSON-LD for index.html: Organization, WebSite, Product x3, FAQPage (confirmed answers only)."""
+def route_ld(route, base, routes, faqs, title):
+    """JSON-LD for one SPA route: Organization and WebSite everywhere, Product on shop and product pages,
+    FAQPage on /faq/ (confirmed answers only), BreadcrumbList on every page except home."""
     org = sub(dict(ORG, **{"@context": "https://schema.org"}), base)
     site = {"@context": "https://schema.org", "@type": "WebSite", "name": "Herbaferm Singapore", "url": base, "publisher": {"@id": base + "#org"}}
-    prods = []
+    out = [org, site]
     for pid, name, desc, price, img in PRODUCTS:
-        prods.append({"@context": "https://schema.org", "@type": "Product", "name": name, "description": desc,
-                      "image": base + "assets/images/" + img, "brand": {"@type": "Brand", "name": "Herbaferm"},
-                      "url": base + "#" + pid,
-                      # availability left out on purpose: checkout is not connected yet
-                      "offers": {"@type": "Offer", "price": str(price), "priceCurrency": "SGD", "url": base + "#" + pid, "seller": {"@id": base + "#org"}}})
-    # only FAQ answers that carry no "To confirm" tag
-    ok = [(q, strip(a)) for _c, q, a in faqs if 'class="tag"' not in a]
-    return ld(org, site, *prods, faq_ld(ok))
+        if route in ("shop", pid):
+            out.append({"@context": "https://schema.org", "@type": "Product", "name": name, "description": desc,
+                        "image": base + "assets/images/" + img, "brand": {"@type": "Brand", "name": "Herbaferm"},
+                        "url": base + routes[pid],
+                        # availability left out on purpose: checkout is not connected yet
+                        "offers": {"@type": "Offer", "price": str(price), "priceCurrency": "SGD", "url": base + routes[pid], "seller": {"@id": base + "#org"}}})
+    if route == "faq":
+        out.append(faq_ld([(q, strip(a)) for _c, q, a in faqs if 'class="tag"' not in a]))
+    if route != "home":
+        out.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": base},
+            {"@type": "ListItem", "position": 2, "name": title.split(" | ")[0], "item": base + routes[route]}]})
+    return ld(*out)
 
 
 def _cite(body_parts, used):
@@ -69,7 +75,7 @@ def _cite(body_parts, used):
     return [re.sub(r"\{\{r:(\w+)\}\}", one, p) for p in body_parts]
 
 
-def article_html(a, others, base, shell_head, header, footer):
+def article_html(a, others, base, shell_head, header, footer, routes):
     """Full standalone page for one blog article (a is a dict from blog.ARTICLES or blog.DYS)."""
     used = []
     short_html, body, faq_html_ = None, None, None
@@ -93,10 +99,10 @@ def article_html(a, others, base, shell_head, header, footer):
     is_dys = a["slug"] == B.DYS["slug"]
     if is_dys:
         by = ('<p class="byline"><span>Based on <i>The Holistic Microbiome</i> by <b>Adam Bóday</b>, founder of Herbaferm Hungary</span>'
-              '<span>Page drafted by the Herbaferm editorial team</span><span>Review by Adam Bóday: <span class="tag">To confirm</span></span>'
-              '<span>Medical reviewer: <span class="tag">To supply</span></span><span>Published %s (draft)</span></p>') % "2 Nov 2026"
+              '<span>Page drafted by the Herbaferm editorial team</span><span>Review by Adam Bóday: <span class="tag">Pending confirmation</span></span>'
+              '<span>Medical reviewer: <span class="tag">Pending</span></span><span>Published %s (draft)</span></p>') % "2 Nov 2026"
     else:
-        by = ('<p class="byline"><span>By <b>%s</b></span><span>Medical reviewer: <span class="tag">To supply</span></span>'
+        by = ('<p class="byline"><span>By <b>%s</b></span><span>Medical reviewer: <span class="tag">Pending</span></span>'
               '<span>Published %s (draft)</span></p>') % (B.AUTHOR, "2 Nov 2026")
     authbox = ""
     if is_dys:
@@ -135,10 +141,10 @@ def article_html(a, others, base, shell_head, header, footer):
     graph.append(faq_ld(a["faq"]))
     graph.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": base},
-        {"@type": "ListItem", "position": 2, "name": "Learn", "item": base + "#learn"},
+        {"@type": "ListItem", "position": 2, "name": "Learn", "item": base + routes["learn"]},
         {"@type": "ListItem", "position": 3, "name": a["title"], "item": url}]})
     graph.insert(0, sub(dict(ORG, **{"@context": "https://schema.org"}), base))
-    head = shell_head.format(title=_h.escape(title), desc=_h.escape(a["desc"]), url=url, og_img=base + "assets/images/ai-morning.jpg") + ld(*graph)
+    head = shell_head.format(title=_h.escape(title), desc=_h.escape(a["desc"]), url=url, og_img=base + "assets/images/ai-morning.jpg", robots="") + ld(*graph)
     js = ('<script>(function(){var r=document.documentElement,t=document.getElementById("theme"),b=document.getElementById("burger");'
           'function d(){var a=r.getAttribute("data-theme");return a?a==="dark":matchMedia("(prefers-color-scheme: dark)").matches}'
           'function l(){t.textContent=d()?"Light":"Dark";t.setAttribute("aria-label",d()?"Switch to light mode":"Switch to dark mode")}'
@@ -158,7 +164,7 @@ def robots(base):
             "Sitemap: %ssitemap.xml\n" % base)
 
 
-def sitemap(base):
-    urls = [base] + ["%slearn/%s/" % (base, a["slug"]) for a in B.ARTICLES + [B.DYS]]
+def sitemap(base, route_ids, routes):
+    urls = [base + routes[r] for r in route_ids] + ["%slearn/%s/" % (base, a["slug"]) for a in B.ARTICLES + [B.DYS]]
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + "".join("<url><loc>%s</loc><lastmod>%s</lastmod></url>\n" % (u, B.PUBLISHED) for u in urls) + "</urlset>\n")

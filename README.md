@@ -13,8 +13,9 @@ Static website for Herbaferm Pte. Ltd. (Singapore): Shop, Learn, About and Partn
 
 ## Search (SEO and AI search) additions
 
-- Ten sourced blog articles and a microbial dysbiosis explainer live at real URLs, `site/learn/<slug>/index.html`, written in `generator/src/blog.py`. The Learn page has a Blog tab that lists them.
+- Nine sourced blog articles and a microbial dysbiosis explainer live at real URLs, `site/learn/<slug>/index.html`, written in `generator/src/blog.py`. The Learn page has a Blog tab that lists them.
 - `generator/src/seo.py` builds the JSON-LD (Organization, WebSite, Product, FAQPage on the home page; Article, FAQPage, BreadcrumbList, plus Book and Person on the dysbiosis page), `robots.txt` and `sitemap.xml`.
+- Every page has a real URL (for example `/shop/`, `/learn/`, `/guides/month/`). Each folder holds a copy of the app shell with that page visible, and `site.js` switches pages with the History API. Old `#page` links redirect to the real URL.
 - Canonical URLs, the sitemap and the schema use the GitHub Pages address by default (`https://ernusho.github.io/herbaferm-sg-website/`). To use another domain, build with `HF_SITE_URL=https://example.com/ python3 generator/build.py --site site`.
 - Everything marked To confirm or To supply (medical reviewer, review by Adam Bóday, ResearchGate link) still needs Herbaferm's input.
 
@@ -39,7 +40,7 @@ If you would rather edit HTML directly, delete `generator/` and treat `site/` as
 
 **Netlify or Cloudflare Pages.** Connect this repo, leave the build command empty and set the publish directory to `site`.
 
-The site uses `#` links for pages (for example `/#drops`), so no server rewrite rules are needed.
+Pages are real folders with their own index.html (for example `/drops/`), so no server rewrite rules are needed.
 
 ## Turn on the live chat assistant
 

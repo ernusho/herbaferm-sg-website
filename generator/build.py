@@ -11,7 +11,7 @@ import extra as X
 import blog as B
 
 CSS = (root / "src/site.css").read_text() + (root / "src/journey.css").read_text() + (root / "src/blog.css").read_text()
-SITE_URL = (__import__("os").environ.get("HF_SITE_URL") or "https://herbafermsg.com/").rstrip("/") + "/"  # TO CONFIRM at launch
+SITE_URL = (__import__("os").environ.get("HF_SITE_URL") or "https://ernusho.github.io/herbaferm-sg-website/").rstrip("/") + "/"  # GitHub Pages address (assumed); override with HF_SITE_URL
 
 def uri(name):
     f = root / "assets" / (name + ".jpg")

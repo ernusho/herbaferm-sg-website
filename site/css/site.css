@@ -1125,6 +1125,10 @@ h2.as3{font-size:1.4rem}
 .hpane .hph img{position:static;width:auto;height:auto;max-width:100%;max-height:34svh;object-fit:contain;display:block}
 .hpane .hph figcaption{font:600 .72rem var(--body);letter-spacing:.12em;text-transform:uppercase;color:#6b5f48}
 @media(max-width:760px){.hpane .hph{width:auto;height:auto;order:-1}.hpane .hph img{max-height:22svh}}
+
+.hpane .hph.ph{padding:10px 10px 12px;max-width:min(100%,440px);width:min(100%,440px)}
+.hpane .hph.ph img{width:100%;height:min(46svh,430px);max-height:none;object-fit:cover;border-radius:20px}
+@media(max-width:760px){.hpane .hph.ph{width:min(100%,300px)}.hpane .hph.ph img{height:26svh}}
 /* Blog articles, citations, tables (v10 SEO/AIO) */
 .atable{width:100%;border-collapse:collapse;margin-top:22px;font-size:1rem;line-height:1.5}
 .atable th,.atable td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}

@@ -66,9 +66,9 @@ IMG_DROPS = '<img src="@@img:drops@@" alt="Herbaferm Drops 30 ml bottle with car
 IMG_PREFER = '<img src="@@img:prefer@@" alt="Prefer HF400 bottle with a capsule" data-thumb="prefer">'
 
 
-HERO = {"Shop": ("ai-morning", "#e8b04a"), "Learn": ("ai-herbs", "#7fc79a"), "About": ("hero-bark", "#8fb86a"), "Partners": ("range", "#d9a27a"),
-        "FAQ": ("ai-fridge", "#a9d3c8"), "Contact": ("ai-meadow", "#cfe0b8"), "Awards": (None, "#f2b73d"), "Ingredients": ("ai-herbs", "#7fc79a"),
-        "Science": (None, "#a9d3c8"), "Quality": (None, "#8fb86a"), "Policies": (None, "#d8c7a5")}
+HERO = {"Shop": ("ai-morning", "#e8b04a"), "Learn": ("ai-herbs", "#7fc79a"), "About": ("hero-bark", "#8fb86a"), "Partners": ("ai-clinic", "#d9a27a"),
+        "FAQ": ("ai-fridge", "#a9d3c8"), "Contact": ("ai-field", "#cfe0b8"), "Awards": ("ai-propolis", "#f2b73d"), "Ingredients": ("ai-chamomile", "#7fc79a"),
+        "Science": ("ai-shelf", "#a9d3c8"), "Quality": (None, "#8fb86a"), "Policies": (None, "#d8c7a5")}
 
 
 def phero(crumb, eyebrow, title, lede, trail=""):

@@ -17,7 +17,7 @@ def uri(name):
     f = root / "assets" / (name + ".jpg")
     return "data:image/jpeg;base64," + base64.b64encode(f.read_bytes()).decode()
 
-IMGS = {"drops": "drops", "prefer": "prefer", "award": "award-cim-2026", "awardtop": "award-top10", "plate": "award-plate", "ai-jars": "ai-jars", "ai-morning": "ai-morning", "ai-meadow": "ai-meadow", "ai-porridge": "ai-porridge", "ai-fridge": "ai-fridge", "ai-herbs": "ai-herbs", "book": "book-microbiome", "flatlay": "herbs-flatlay"}
+IMGS = {"drops": "drops", "prefer": "prefer", "award": "award-cim-2026", "awardtop": "award-top10", "plate": "award-plate", "ai-jars": "ai-jars", "ai-morning": "ai-morning", "ai-meadow": "ai-meadow", "ai-porridge": "ai-porridge", "ai-fridge": "ai-fridge", "ai-herbs": "ai-herbs", "book": "book-microbiome", "flatlay": "herbs-flatlay", "ai-field": "ai-field", "ai-chamomile": "ai-chamomile", "ai-kitchen": "ai-kitchen", "ai-oak": "ai-oak", "ai-rosehip": "ai-rosehip", "ai-propolis": "ai-propolis", "ai-shelf": "ai-shelf", "ai-clinic": "ai-clinic"}
 for h in P.HERBS:
     IMGS["herb-" + h[0]] = "herb-" + h[0]
 IMGS["herbs-flatlay"] = "herbs-flatlay"
@@ -174,11 +174,15 @@ HCOL = {"chamomile": ("#f6d04d", "#2a2100", "#2a2100"), "yarrow": ("#f7b5c6", "#
         "elderflower": ("#efe7c8", "#2c2a14", "#5a6b1f"), "rosehip": ("#e5484d", "#fff4f2", "#ffd6a0"),
         "propolis": ("#c9822b", "#1f1100", "#1f1100"), "oak-bark": ("#5b3d24", "#f6ead9", "#f2b73d"),
         "wormwood": ("#8fc29a", "#0c2a16", "#0c2a16")}
+HPHOTO = {"chamomile": ("ai-chamomile", "28% 50%"), "yarrow": ("ai-chamomile", "85% 30%"), "elderflower": ("ai-oak", "80% 50%"),
+          "oak-bark": ("ai-oak", "15% 50%"), "rosehip": ("ai-rosehip", "15% 70%"), "wormwood": ("ai-rosehip", "80% 30%"),
+          "propolis": ("ai-propolis", "50% 50%")}
 def _jh(i, h):
     bg, fg, ac = HCOL[h[0]]
+    img, pos = HPHOTO[h[0]]
     return ('<article class="hpane%s" data-bg="%s" data-fg="%s" data-ac="%s"><div class="hcopy"><h2>%s</h2><p class="lat">%s</p><p class="jp">%s</p></div>'
-            '<figure class="hph"><img src="@@img:herb-%s@@" alt="%s" loading="lazy"><figcaption>Botanical illustration</figcaption></figure></article>') % (
-            " on" if i == 0 else "", bg, fg, ac, h[1], h[2], h[4], h[0], h[3])
+            '<figure class="hph ph"><img src="@@img:%s@@" style="object-position:%s" alt="%s (illustrative image)" loading="lazy"><figcaption>Illustrative image</figcaption></figure></article>') % (
+            " on" if i == 0 else "", bg, fg, ac, h[1], h[2], h[4], img, pos, h[3])
 TOK["JHERBS"] = "".join(_jh(i, h) for i, h in enumerate(P.HERBS))
 TOK["VIZ_COST"] = X.VIZ_COST
 TOK["JALL"] = "".join(X.jcard(a) for a in X.ARTICLES)
@@ -243,8 +247,8 @@ def _band(pid, before, img, alt, cap):
             return
     raise SystemExit("band anchor not found: %s %s" % (pid, before))
 _band("partners", '<h2>Six places to find Herbaferm</h2>', "ai-jars", "Chamomile and yarrow fermenting in glass jars", "Fermented in small batches, then bottled")
-_band("about", '<section class="subhead" id="sec-awards">', "ai-meadow", "A flowering meadow with chamomile and yarrow", "A Hungarian formula built on traditional herbs")
-_band("learn", '<section class="subhead" id="sec-science">', "ai-morning", "A glass of water and a dropper bottle on a kitchen counter", "Part of an ordinary morning")
+_band("about", '<section class="subhead" id="sec-awards">', "ai-field", "A flowering meadow with chamomile and yarrow", "A Hungarian formula built on traditional herbs")
+_band("learn", '<section class="subhead" id="sec-science">', "ai-kitchen", "A glass of water, a dropper bottle and a bowl of oats on a kitchen counter", "Part of an ordinary morning")
 
 
 # ---------- SEO: keyword-led titles and meta descriptions (brand deck slide 29) ----------

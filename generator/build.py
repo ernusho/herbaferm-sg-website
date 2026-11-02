@@ -182,6 +182,7 @@ def _jh(i, h):
 TOK["JHERBS"] = "".join(_jh(i, h) for i, h in enumerate(P.HERBS))
 TOK["VIZ_COST"] = X.VIZ_COST
 TOK["JALL"] = "".join(X.jcard(a) for a in X.ARTICLES)
+TOK["JHOME"] = TOK["JALL"] + "".join(_bcard(a, i) for i, a in enumerate(B.ARTICLES[:4] + [B.DYS]))
 
 def expand(s):
     for _ in range(4):  # tokens can nest (cards inside pages)
@@ -299,7 +300,7 @@ __PAGES__
   <div class="grid">
     <div><b class="logo">herbaferm</b>Vitality &amp; Balance. Fermented herbal food supplements, available in Singapore.<br><br>Herbaferm Pte. Ltd.<br>UEN 202350449W</div>
     <div><h4>Shop</h4><a href="#drops">Herbaferm Drops</a><a href="#fiber">Fiber Elite</a><a href="#prefer">Prefer HF400</a></div>
-    <div><h4>Learn</h4><a href="#learn">Guides</a><a href="#ingredients">Ingredients</a><a href="#science">Science</a><a href="#about">About</a><a href="#awards">Awards</a><a href="#quality">Quality</a></div>
+    <div><h4>Learn</h4><a href="#learn">Guides</a><a href="#ingredients">Ingredients</a><a href="#science">Science</a><a href="#blog">Gut health blog</a><a href="learn/microbial-dysbiosis/">Microbial dysbiosis</a><a href="#about">About</a><a href="#awards">Awards</a><a href="#quality">Quality</a></div>
     <div><h4>Help</h4><a href="#partners">Partners</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#policies">Policies</a><a href="#insight">Design evidence</a><a href="https://herbafermsg.com/" target="_blank" rel="noopener">Current store</a></div>
   </div>
   <div class="legal"><p>These products are food supplements. They are not intended to diagnose, treat, cure or prevent any disease and are not a substitute for a varied diet or medical advice. Speak to a healthcare professional if you are pregnant, breastfeeding, have a medical condition or take medication. Some scene and ingredient images on this site are AI-generated illustrations.</p><p>&copy; 2026 Herbaferm Pte. Ltd. Prototype built for the NUS FSP4003 consulting project. <button type="button" id="still" class="linkbtn" aria-pressed="false">Pause motion</button></p></div>
@@ -394,6 +395,7 @@ def make_site(dest):
     # --- standalone article pages (real URLs) + robots.txt + sitemap.xml
     def sub_root(h):  # rewrite shell links for pages two folders deep
         h = re.sub(r'href="#', 'href="../../#', h)
+        h = h.replace('href="learn/', 'href="../../learn/')
         h = h.replace('href="assets/', 'href="../../assets/').replace('src="assets/', 'src="../../assets/')
         return h
     hdr = re.search(r'<header class="top">.*?</header>', out_pre, re.S).group(0)

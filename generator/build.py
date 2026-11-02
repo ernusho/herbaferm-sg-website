@@ -465,7 +465,8 @@ def make_site(dest):
     (dest / "js/search-index.js").write_text(SEARCH_JS)
     (dest / "js/site.js").write_text(site_js)
     (dest / "js/chat.js").write_text(chat_js)
-    used = set(re.findall(r"assets/images/([\w\-]+\.jpg)", rest)) | {"ai-morning.jpg", "book-microbiome.jpg", "hero-bark.jpg"}
+    _pages_txt = rest + "".join(f.read_text() for f in dest.glob("learn/*/index.html"))
+    used = set(re.findall(r"assets/images/([\w\-]+\.jpg)", _pages_txt)) | {"ai-morning.jpg", "book-microbiome.jpg", "hero-bark.jpg"}
     for f in used:
         shutil.copy(root / "assets" / f, dest / "assets/images" / f)
     (dest / "assets/favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1f4d34"/><path d="M16 7c5 3 7 8 4 13-1 2-3 3-4 5-1-2-3-3-4-5-3-5-1-10 4-13z" fill="#eaf3ea"/></svg>')

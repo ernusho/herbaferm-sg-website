@@ -302,3 +302,8 @@ TTL = {
     "microbial-dysbiosis": "Microbial dysbiosis and rebiosis explained",
 }
 DYS["desc"] = "What microbial dysbiosis is, what research links it to, and what rebiosis means in Herbaferm founder Adam B\u00f3day's book The Holistic Microbiome."
+
+HERO = {"microbiome-test-singapore": "kit", "best-supplements-for-gut-health": "checklist", "natural-supplements-for-gut-health": "ai-herbs",
+        "gut-health-supplement-reviews": "evidence", "best-probiotics-for-gut-health": "triad", "best-supplements-for-gut-health-and-weight-loss": "ai-porridge",
+        "what-is-gut-health": "pillars", "how-to-improve-gut-health": "ai-morning", "fermented-foods-gut-health": "ai-jars", "microbial-dysbiosis": "ai-meadow"}
+DYS["body"] = DYS["body"].replace("<h2>What causes dysbiosis?</h2>", "{{fig:dysbiosis}}\n<h2>What causes dysbiosis?</h2>", 1)

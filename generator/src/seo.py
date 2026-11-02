@@ -1,6 +1,7 @@
 """SEO / AIO helpers: JSON-LD, standalone article pages, robots.txt and sitemap.xml (slides 29-31 of the brand deck)."""
 import html as _h, json, re
 import blog as B
+import figures as FG
 
 ORG = {
     "@type": "Organization", "@id": "{base}#org", "name": "Herbaferm Pte. Ltd.", "alternateName": "Herbaferm Singapore",
@@ -81,6 +82,8 @@ def article_html(a, others, base, shell_head, header, footer, routes):
     short_html, body, faq_html_ = None, None, None
     short = _cite(a["short"], used)
     body = _cite([a["body"]], used)[0]
+    body = re.sub(r"\{\{fig:(\w+)\}\}", lambda m: FG.fig(m.group(1)), body)
+    hero = FG.fig(B.HERO[a["slug"]])
     def _lab(m):
         t = m.group(0)
         heads = [strip(x) for x in re.findall(r"<th>(.*?)</th>", t)]
@@ -118,7 +121,7 @@ def article_html(a, others, base, shell_head, header, footer, routes):
             '<section><div class="wrap"><article class="article">%s<aside class="inshort"><b>In short</b><ul>%s</ul></aside>%s\n%s\n'
             '<h2>Frequently asked questions</h2><div class="faqs">%s</div>\n<h2>References</h2><ol class="refs">%s</ol>\n'
             '<p class="note">%s</p>\n<h2>Read next</h2><div class="rnext">%s</div>\n</article></div></section>\n</main>\n'
-            ) % (crumb, a["cat"], a["title"], a["dek"], by, "".join("<li>%s</li>" % x for x in short), "", body + authbox, faq, refs, B.DISCLAIM, nxt)
+            ) % (crumb, a["cat"], a["title"], a["dek"], by, "".join("<li>%s</li>" % x for x in short), hero, body + authbox, faq, refs, B.DISCLAIM, nxt)
     # schema: Article + FAQPage + BreadcrumbList (+ Book and Person on the dysbiosis page)
     graph = []
     art = {"@context": "https://schema.org", "@type": "Article", "headline": a["title"], "description": a["desc"],

@@ -31,7 +31,7 @@ REFS = {
     "hsa": ("Health Sciences Authority, Singapore. Health supplements.", "https://www.hsa.gov.sg/health-supplements"),
     "fritz2020": ("Fritz P, Bóday Á. The role and restoration of the symbiosis of microbiome and human body. <i>recreation</i> 2020;10(3):10-13.", "https://doi.org/10.21486/recreation.2020.10.3.1"),
     "mao_franke": ("Mao L, Franke J. Symbiosis, dysbiosis and rebiosis: the value of metaproteomics in human microbiome monitoring. <i>Proteomics</i> (doi 10.1002/pmic.201400329).", "https://doi.org/10.1002/pmic.201400329"),
-    "boday_book": ("Bóday A. <i>The Holistic Microbiome: Nature is complex but never complicated.</i> Herbaferm, 2026. ISBN 9781036960094 (as listed by a retailer; to be confirmed by Herbaferm).", RESEARCHGATE_BOOK),
+    "boday_book": ("B\u00f3day AJ (ed.), B\u00f3day AJ, B\u00f3day \u00c1B. <i>The Holistic Microbiome: Nature is complex but never complicated.</i> Herbaferm Ltd., 2026 (textbook and methodological guide; chapter titles and opening chapter read from the publisher's sample).", RESEARCHGATE_BOOK),
     "boday_pres": ("Bóday A. The natural way to restore symbiosis in the digestion and microbiota (Herbaferm R&amp;D presentation, 2 February 2022). Company material, cites no sources.", "https://herbaferm.hu/img/cms/doc/AdamBoday-Presentation_2022_02_02.pdf"),
 }
 
@@ -59,6 +59,7 @@ ARTICLES = [
 </tbody></table>
 <h2>How reliable is a consumer microbiome test?</h2>
 <p>This is the main caution. In a 2024 preprint, researchers sent the same standardised human stool material to seven commercial direct-to-consumer services. The results differed widely within and between companies, by roughly as much as the biological differences between donors, and the authors called for quality standards and regulatory oversight.{{r:servetas2024}} A preprint has not completed peer review, but it is a useful reminder that two tests on the same sample can read differently.</p>
+<p>Herbaferm founder Adam B\u00f3day's textbook <i>The Holistic Microbiome</i> includes a supplementary chapter on interpreting stool microbiome reports. Its section titles flag the same issues: relative abundance versus absolute quantity (the "snapshot fallacy"), correlation versus causation, reproducibility, and the need for standardisation.{{r:boday_book}}</p>
 <h2>When is a microbiome test worth considering?</h2>
 <p>If you are curious, a test can be a starting point for a discussion about food and routine. If you have persistent digestive symptoms, blood in the stool, unexplained weight loss or pain, see a doctor first: a stool microbiome report is not the right tool to investigate these.</p>
 <h2>Does a microbiome test relate to Herbaferm products?</h2>
@@ -66,7 +67,7 @@ ARTICLES = [
          faq=[("Does a microbiome test diagnose a condition?", "No. It describes which microbes were detected in a stool sample. It cannot diagnose a disease, and independent testing shows that results can vary between commercial services."),
               ("How is a gut microbiome test done?", "You collect a small stool sample at home, post it to a laboratory, and the lab sequences the microbial DNA and compiles a report."),
               ("Is there a microbiome test made in Singapore?", "Yes. AMILI, a Singapore company, launched a stool-based test in 2021. Herbaferm is not affiliated with AMILI and does not endorse any test.")],
-         refs=["amili_na", "amili_astar", "servetas2024", "lynch2016", "david2014", "hsa"]),
+         refs=["amili_na", "amili_astar", "servetas2024", "lynch2016", "david2014", "hsa", "boday_book"]),
 
     dict(slug="best-supplements-for-gut-health", kw="best supplements for gut health", cat="Supplements",
          title="Best supplements for gut health: how to choose, and what the evidence says",
@@ -275,6 +276,9 @@ DYS = dict(
 <p>Studies have found altered gut microbial communities in people with a wide range of conditions, including inflammatory bowel disease, obesity and type 2 diabetes. In most cases it remains unclear whether the change helps cause the condition, results from it, or both.{{r:levy2017}}{{r:lynch2016}} Herbaferm does not claim that any product treats, prevents or reverses any of these conditions.</p>
 <h2>What is rebiosis?</h2>
 <p>Rebiosis is a term used by Herbaferm's founder, Adam Bóday, for an eco-physiological process of regeneration, rebalance or re-establishment of the symbiosis between the human host and its microbes after a disturbed state.{{r:boday_pres}}{{r:fritz2020}} It is not a standard clinical term. The word has also appeared in the research literature, for example in a review of metaproteomics for monitoring the human microbiome.{{r:mao_franke}} We use it here to describe the idea of recovery, not to promise an outcome.</p>
+<h2>What does <i>The Holistic Microbiome</i> say about dysbiosis and rebiosis?</h2>
+<p>The book is a 2026 textbook and methodological guide by Adam B\u00f3day and \u00c1bel B\u00f3day. Its sixth chapter is titled "Eubiosis, dysbiosis, rebiosis: dynamic equilibrium and regeneration", with sections on a functioning ecology, patterns of dysbiosis and "natural regeneration and clear-cutting-free stewardship".{{r:boday_book}} We read that last title as a forestry-style image: support the ecosystem so it can regrow, rather than wipe it out and start again. We have only seen the book's opening chapter and contents list, so this page summarises its framing, not the chapter's detail.</p>
+<p>The author's note says the book is "a synthesis of currently available literature on the microbiome and a decade of dedicated research", not "a collection of absolute truths or dogmatic assertions", and that it is not a substitute for medical advice.{{r:boday_book}} We have tried to keep to that spirit.</p>
 <h2>What does the founder say supports recovery?</h2>
 <p>In his writing and talks, Bóday argues that a recovering community needs diverse natural microbial input, unprocessed plant foods, activity and rest, and that the aim is to supply the natural diversity that is missing from modern diets and water rather than to find a single "best" microbe.{{r:boday_pres}}{{r:boday_book}} This overlaps with general dietary advice: a variety of plant foods, fibre and fermented foods.{{r:zmora2019}}{{r:marco2021}} Where these ideas go beyond published evidence, we say so.</p>
 <h2>Where do Herbaferm products fit?</h2>

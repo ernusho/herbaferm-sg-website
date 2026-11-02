@@ -100,10 +100,10 @@ def article_html(a, others, base, shell_head, header, footer):
               '<span>Published %s (draft)</span></p>') % (B.AUTHOR, "2 Nov 2026")
     authbox = ""
     if is_dys:
-        authbox = ('<aside class="authbox"><img src="../../assets/images/book-microbiome.jpg" alt="Cover of The Holistic Microbiome by Adam Bóday (cover image to be confirmed by Herbaferm)" width="110" height="113" loading="lazy">'
-                   '<div><h3>About the author and the book</h3><p><b>Adam Bóday</b> is the founder of Herbaferm Hungary and the scientist behind its fermentation work. He is the author of <i>The Holistic Microbiome: Nature is complex but never complicated</i> (Herbaferm, 2026) '
+        authbox = ('<aside class="authbox"><img src="../../assets/images/book-microbiome.jpg" alt="Cover of The Holistic Microbiome by Adam Bóday, with the herbaferm logo" width="110" height="113" loading="lazy">'
+                   '<div><h3>About the author and the book</h3><p><b>Adam Bóday</b> is the founder of Herbaferm Hungary and the scientist behind its fermentation work. He is the author of <i>The Holistic Microbiome: Nature is complex but never complicated</i> (Herbaferm Ltd., 2026), written with \u00c1bel B\u00f3day, '
                    'and co-author of a 2020 paper on restoring the symbiosis of microbiome and human body.</p>'
-                   '<p><a href="%s" target="_blank" rel="noopener">Read the publication on ResearchGate</a> <span class="tag">Link to confirm</span> &middot; <a href="%s" target="_blank" rel="noopener">Author profile on ResearchGate</a></p></div></aside>'
+                   '<p><a href="%s" target="_blank" rel="noopener">Read the publication on ResearchGate</a> &middot; <a href="%s" target="_blank" rel="noopener">Author profile on ResearchGate</a></p></div></aside>'
                    ) % (B.RESEARCHGATE_BOOK, B.RESEARCHGATE_PROFILE)
     nxt = "".join('<a href="../%s/"><small>%s</small>%s</a>' % (o["slug"], o["cat"], o["title"]) for o in others)
     title = "%s | Herbaferm" % B.TTL[a["slug"]]
@@ -127,8 +127,8 @@ def article_html(a, others, base, shell_head, header, footer):
         person = {"@type": "Person", "@id": base + "#adam-boday", "name": "Adam Bóday", "jobTitle": "Founder, Herbaferm Hungary",
                   "worksFor": {"@id": base + "#org"}, "sameAs": [B.RESEARCHGATE_PROFILE]}
         book = {"@context": "https://schema.org", "@type": "Book", "name": "The Holistic Microbiome: Nature is complex but never complicated",
-                "author": person, "publisher": {"@type": "Organization", "name": "Herbaferm"}, "datePublished": "2026",
-                "isbn": "9781036960094", "inLanguage": "en", "sameAs": [B.RESEARCHGATE_BOOK]}
+                "author": [person, {"@type": "Person", "name": "\u00c1bel B\u00f3day"}], "publisher": {"@type": "Organization", "name": "Herbaferm Ltd."}, "datePublished": "2026-04-27",
+                "isbn": ["9781036960094", "978-615-02-6126-3"], "inLanguage": "en", "sameAs": [B.RESEARCHGATE_BOOK]}
         art["isBasedOn"] = {"@id": base + "#book"}
         book["@id"] = base + "#book"
         graph += [book]

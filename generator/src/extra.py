@@ -201,7 +201,7 @@ HOME = '''
   <i class="blob b1" data-par="-.12"></i><i class="blob b2" data-par=".1"></i>
   <div class="wrap herojr">
     <div class="jtxt">
-      <p class="kicker jv">Fermented herbal food supplements</p>
+      <p class="kicker jv">Fermented herbal food supplements for everyday gut health, in Singapore</p>
       <h1 class="jh1"><span class="jv" data-split>Seven herbs.</span><span class="rot" aria-live="off"><b class="on">Fermented slowly.</b><b>Born in Hungary.</b><b>Now in Singapore.</b></span></h1>
       <p class="jsub jv">Scroll down. We will show you where it comes from, how it is made, and how it fits into a day.</p>
       <div class="btns jv"><a class="jbtn" href="#shop">Shop the range</a><a class="jbtn ghost" href="#science">How it is made</a></div>
@@ -330,7 +330,7 @@ HOME = '''
     <h2 class="jh2" data-split>Find your starting point.</h2>
     <div class="jv" style="margin-top:28px">@@QUIZ@@</div>
     <div class="sechead" style="margin-top:56px"><div><h2>From the journal</h2><p class="lede">Guides, kitchen ideas and plain-language science.</p></div><a class="btn btn-line" href="#learn">All articles</a></div>
-    <div class="jcar" data-auto="jcar"><div class="jtrack" tabindex="0" aria-label="Journal articles">@@JALL@@</div><div class="jnav"><button type="button" data-d="-1" aria-label="Previous articles">&larr;</button><button type="button" data-d="1" aria-label="Next articles">&rarr;</button></div></div>
+    <div class="jcar" data-auto="jcar"><div class="jtrack" tabindex="0" aria-label="Journal articles">@@JHOME@@</div><div class="jnav"><button type="button" data-d="-1" aria-label="Previous articles">&larr;</button><button type="button" data-d="1" aria-label="Next articles">&rarr;</button></div></div>
   </div>
 </section>
 
@@ -556,7 +556,7 @@ def prod_sections(pid, faqs):
     lis = lambda a: "".join("<li>%s</li>" % t for t in a)
     also = "".join('<div><span><b>%s</b><small>%s</small></span><a class="btn btn-line sm" href="#%s">View</a><button class="btn btn-honey sm" type="button" data-add="%s">Add</button></div>' % (n, p, i, i) for i, n, p in m["also"])
     deliv = ('<ul class="pdeliv"><li><b>Delivery in Singapore</b><span>Details to follow @@TAG_SUPPLY@@</span></li><li><b>Returns</b><span>Terms to follow @@TAG_SUPPLY@@</span></li>'
-             '<li><b>Payment</b><span>Major cards and wallets @@TAG_CONFIRM@@</span></li><li><b>Questions?</b><span>Ask the Herbaferm assistant (bottom right) or see the <a href="#faq">FAQ</a></span></li></ul>'
+             '<li><b>Payment</b><span>Major cards and wallets @@TAG_CONFIRM@@</span></li><li><b>Reading</b><span><a href="learn/best-supplements-for-gut-health/">How to choose a gut health supplement</a></span></li><li><b>Questions?</b><span>Ask the Herbaferm assistant (bottom right) or see the <a href="#faq">FAQ</a></span></li></ul>'
              '<div class="pbundle"><small>Goes well with</small>%s</div>') % also
     nav = ('<nav class="psub" aria-label="On this page"><div class="wrap">%s</div></nav>' % "".join(
         '<a href="#%s" data-to="%s-%s">%s</a>' % (pid, pid, s, l) for s, l in (("top", "Overview"), ("how", "How to take it"), ("fit", "Is it for you?"), ("inside", "Inside"), ("det", "Details"), ("faq", "Questions"))))

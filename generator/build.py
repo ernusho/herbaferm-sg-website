@@ -8,6 +8,10 @@ root = pathlib.Path(__file__).parent
 sys.path.insert(0, str(root / "src"))
 import pages as P
 import extra as X
+import blog as B
+
+CSS = (root / "src/site.css").read_text() + (root / "src/journey.css").read_text() + (root / "src/blog.css").read_text()
+SITE_URL = (__import__("os").environ.get("HF_SITE_URL") or "https://herbafermsg.com/").rstrip("/") + "/"  # TO CONFIRM at launch
 
 def uri(name):
     f = root / "assets" / (name + ".jpg")
@@ -65,6 +69,39 @@ P.PAGES.insert(0, ("home", "Herbaferm Singapore", X.HOME))
 P.PAGES.append(("insight", "Design evidence | Herbaferm Singapore", X.INSIGHT))
 P.PAGES.append(("awards", "Awards | Herbaferm Singapore", X.AWARDS))
 P.PAGES.insert(8, ("learn", "Learn | Herbaferm Singapore", X.LEARN))
+# ---------- SEO: question-style headings, answer-first boxes and sources on the existing articles ----------
+_QH = {"Where the herbs come in": "How are herbs fermented?", "What we can and cannot tell you": "What can Herbaferm tell you about its Drops?",
+       "A community, not a single thing": "Is the gut microbiome one single thing?", "Why food comes up so often": "Why does food matter for the gut microbiome?",
+       "Where Herbaferm fits": "Where do Herbaferm products fit?", "Want to read more?": "Where can I read more?",
+       "Probiotic: the living bugs": "What is a probiotic?", "Prebiotic: the food for the bugs": "What is a prebiotic?",
+       "Postbiotic: what is left of the bugs": "What is a postbiotic?", "So which is Herbaferm?": "Is Herbaferm a probiotic, prebiotic or postbiotic?",
+       "Before you start": "Who should check with a professional first?", "At home": "How should I store Drops at home?",
+       "If you run a clinic or a shop": "Can a clinic or shop stock Drops?", "Check the date": "How long does a bottle keep?"}
+def _refs_block(keys):
+    return '<h2>Sources</h2><ol class="refs">%s</ol>' % "".join('<li>%s <a href="%s" target="_blank" rel="noopener">Source</a></li>' % (B.REFS[k][0], B.REFS[k][1]) for k in keys)
+_SRC = {"a-labels": ["hill2014", "gibson2017", "salminen2021"], "a-gut": ["lynch2016", "sender2016"], "a-ferment": ["marco2021"]}
+_NEW = []
+for _a in X.ARTICLES:
+    _id, _cv, _cat, _t, _d, _b = _a
+    for _o, _n in _QH.items():
+        _b = _b.replace("<h2>%s</h2>" % _o, "<h2>%s</h2>" % _n)
+    if _id == "a-gut":
+        _b = _b.replace('See the <a href="#awards">About page</a> for details.', 'See <a href="learn/microbial-dysbiosis/">microbial dysbiosis and rebiosis</a> for an explainer based on it, and the <a href="#awards">About page</a> for the book.')
+    if _id in _SRC:
+        _b += _refs_block(_SRC[_id])
+    _NEW.append((_id, _cv, _cat, _t, _d, _b))
+X.ARTICLES[:] = _NEW
+X.SHORT.update({
+    "a-ferment": ["Fermentation is a food process in which microbes convert parts of the food, as in yoghurt, sourdough and kimchi.", "Herbaferm ferments seven herbs with a natural community of microorganisms and bottles the extract as a food supplement.", "No colony count is quoted because there is no verified figure."],
+    "a-month": ["Start with 5 drops in water in the morning and evening for the first three days, then build up slowly as the leaflet describes.", "Keep the bottle in the fridge at 5 to 12 \u00b0C, because there are no preservatives.", "Go by the label on your pack, and speak to a doctor or pharmacist first if you take medication or are pregnant."],
+    "a-fiber": ["Fiber Elite is a malty, flour-like fibre powder; the leaflet suggests 3.5 g with a meal.", "It can be heated, so it works in porridge as well as shakes, smoothies and yoghurt.", "It contains gluten (barley malt and oat flour)."],
+    "a-labels": ["A probiotic is a live microorganism that benefits the person taking it; a prebiotic is food for microbes already in the gut; a postbiotic is a preparation of non-living microbes.", "Herbaferm does not call any product a probiotic."],
+    "a-herbs": ["The seven herbs are chamomile, yarrow, elderflower, rosehip, propolis, oak bark and white wormwood.", "What is described is traditional use, not a health effect."],
+    "a-gut": ["The gut microbiome is the community of microorganisms in the digestive tract. Researchers are still working out what a healthy mix looks like.", "Diet is one everyday influence; Herbaferm products are food supplements that sit beside a varied diet."],
+    "a-fridge": ["Drops have no preservatives, so keep the bottle in the fridge at 5 to 12 \u00b0C.", "Fiber Elite and Prefer HF400 can sit on a normal shelf."],
+})
+
+
 for i in range(len(X.ARTICLES)):
     P.PAGES.append(X.article_page(i))
 
@@ -76,6 +113,20 @@ patch("fiber", '<section class="alt"><div class="wrap"><div class="sechead"><div
 patch("shop", '<section class="alt"><div class="wrap">\n  <p class="eyebrow">Not sure where to start?</p>', SEC % ("", X.CALC_DROPS))
 patch("science", '<section class="alt"><div class="wrap">\n  <p class="eyebrow">Plain-language glossary</p>',
       SEC % ("", '<h2>From herb to bottle</h2><p class="lede">Select a step, or let it play.</p>' + X.stepper()))
+
+# ---------- SEO: blog under Learn (articles are real pages at learn/<slug>/) ----------
+def _bcard(a, i):
+    return ('<a class="jcard rv" href="learn/%s/" data-c="Blog"><div class="cover cv%d"><span>%s</span></div><div><small>%s</small><h3>%s</h3><p>%s</p></div></a>'
+            % (a["slug"], (i % 6) + 1, a["kw"][0].upper() + a["kw"][1:], a["cat"], a["title"], a["dek"]))
+_BL = B.ARTICLES
+BLOG = ('<section><div class="wrap"><a class="jfeat rv" href="learn/microbial-dysbiosis/"><div class="cover cv4"><span>Microbial dysbiosis</span></div><div><p class="kicker" style="color:var(--leaf)">Start here</p>'
+        '<h2>%s</h2><p>%s</p><p><span class="more">Read the explainer</span></p></div></a>'
+        '<h3 style="margin-top:48px">Questions people search for</h3><div class="jgrid" id="b-grid">%s</div>'
+        '<p class="note" style="margin-top:36px">Articles are drafts written from published research for Herbaferm to review. Each names its sources, and a medical reviewer is still to be added. @@TAG_CONFIRM@@</p></div></section>'
+        % (B.DYS["title"], B.DYS["dek"], "".join(_bcard(a, i) for i, a in enumerate(_BL))))
+P.PAGES.append(("blog", "Blog | Herbaferm Singapore", BLOG))
+
+
 # remove small-caps eyebrows inside page bodies (page heroes keep theirs)
 P.PAGES = [(k, t, re.sub(r'<p class="eyebrow"[^>]*>[^<]*</p>\s*', "", h)) for k, t, h in P.PAGES]
 # keep heading order valid: pages whose first body heading after the h1 is an h3 get h2 (styled as h3)
@@ -131,6 +182,7 @@ def _jh(i, h):
 TOK["JHERBS"] = "".join(_jh(i, h) for i, h in enumerate(P.HERBS))
 TOK["VIZ_COST"] = X.VIZ_COST
 TOK["JALL"] = "".join(X.jcard(a) for a in X.ARTICLES)
+TOK["JHOME"] = TOK["JALL"] + "".join(_bcard(a, i) for i, a in enumerate(B.ARTICLES[:4] + [B.DYS]))
 
 def expand(s):
     for _ in range(4):  # tokens can nest (cards inside pages)
@@ -164,14 +216,15 @@ def _merge(host, hero_tok, parts, tabs):
         html += _strip_phero(body[pid][1])
     drop = {pid for pid, *_ in parts}
     P.PAGES = [(k, t, html if k == host else h) for k, t, h in P.PAGES if k == host or k not in drop]
-P.PHEROS["LEARN"] = P.phero("Learn", "Learn", "Guides, ingredients and science", "Everything behind the range in one place: how to use it, what is in it and what the research does and does not say.")
+P.PHEROS["LEARN"] = P.phero("Learn", "Learn", "Gut health guides, ingredients and science", "Gut health guides, a blog with sourced answers on microbiome tests, probiotics and fermented foods, and the ingredients and science behind the range.")
 P.PHEROS["ABOUT"] = P.phero("About", "About Herbaferm", "A Hungarian formula, in Singapore", "Who we are, where the range comes from, and the documents behind it.")
 for _k in ("LEARN", "ABOUT"):
     TOK["PHERO_" + _k] = P.PHEROS[_k]
 _merge("learn", "PHERO_LEARN", [("learn", "sec-guides", "Guides", "How to use the range, and the plain-English story behind it."),
         ("ingredients", "sec-ingredients", "Ingredients", "Seven herbs. Tap one to see what it is and which products use it. Descriptions refer to traditional use, not to health effects."),
-        ("science", "sec-science", "Science", "How fermentation works and what each study does and does not cover.")],
-       [("learn", "sec-guides", "Guides"), ("ingredients", "sec-ingredients", "Ingredients"), ("science", "sec-science", "Science")])
+        ("science", "sec-science", "Science", "How fermentation works and what each study does and does not cover."),
+        ("blog", "sec-blog", "Gut health blog", "Plain-language answers to the questions people search for, each with named sources.")],
+       [("learn", "sec-guides", "Guides"), ("ingredients", "sec-ingredients", "Ingredients"), ("science", "sec-science", "Science"), ("blog", "sec-blog", "Blog")])
 _merge("about", "PHERO_ABOUT", [("about", "sec-about", "Our story", "Who is behind Herbaferm and what we stand for."),
         ("awards", "sec-awards", "Awards", "What Herbaferm has been recognised for, and what is still to be confirmed."),
         ("quality", "sec-quality", "Quality and documents", "Registrations, lab documents and manufacturing information, with what is still being updated.")],
@@ -193,10 +246,38 @@ _band("partners", '<h2>Six places to find Herbaferm</h2>', "ai-jars", "Chamomile
 _band("about", '<section class="subhead" id="sec-awards">', "ai-meadow", "A flowering meadow with chamomile and yarrow", "A Hungarian formula built on traditional herbs")
 _band("learn", '<section class="subhead" id="sec-science">', "ai-morning", "A glass of water and a dropper bottle on a kitchen counter", "Part of an ordinary morning")
 
+
+# ---------- SEO: keyword-led titles and meta descriptions (brand deck slide 29) ----------
+TITLES = {
+    "home": "Herbaferm Singapore | Fermented herbal gut health supplements",
+    "shop": "Gut health supplements in Singapore | Herbaferm shop",
+    "drops": "Herbaferm Drops | Fermented herbal drops, Singapore",
+    "fiber": "Fiber Elite | Fibre add-in for smoothies, porridge and yoghurt",
+    "prefer": "Prefer HF400 | Fermented herb fibre capsules, Singapore",
+    "learn": "Gut health guides and blog: microbiome, probiotics, fermented foods | Herbaferm",
+    "about": "About Herbaferm | Awards, quality and the team behind the supplements",
+    "partners": "Partners | Stock Herbaferm gut health supplements in your clinic or shop",
+    "faq": "FAQ | Gut health supplement questions answered | Herbaferm Singapore",
+    "contact": "Contact | Herbaferm Singapore",
+}
+DESCS = {
+    "home": "Herbaferm brings fermented herbal food supplements from Hungary to Singapore: Drops, Fiber Elite and Prefer HF400. Gut health guides with sources.",
+    "shop": "Shop Herbaferm gut health supplements in Singapore: Drops, Fiber Elite and Prefer HF400. Food supplements, with ingredients and usage explained.",
+    "drops": "Herbaferm Drops: a fermented herbal extract of seven herbs, taken in a glass of water. A food supplement. Usage, storage and ingredients.",
+    "fiber": "Fiber Elite is a fibre-rich food additive for smoothies, shakes, yoghurt and porridge. See ingredients, usage ideas and allergen information.",
+    "prefer": "Prefer HF400 capsules contain fermented herb fibres and are taken alongside Herbaferm Drops. Food supplement, 14 capsules.",
+    "learn": "Plain-language gut health guides: microbiome tests in Singapore, supplements, probiotics, fermented foods and microbial dysbiosis, each with named sources.",
+    "about": "Who is behind Herbaferm, the awards it has received and the quality documents behind its fermented herbal food supplements.",
+    "partners": "Clinics, pharmacies and retailers: how to stock Herbaferm fermented herbal food supplements in Singapore and request the partner pack.",
+    "faq": "Answers on using, storing and buying Herbaferm Drops, Fiber Elite and Prefer HF400, and on how food supplements are regulated in Singapore.",
+    "contact": "Contact Herbaferm Singapore for questions, orders and partner enquiries.",
+}
+P.PAGES = [(k, TITLES.get(k, t), h) for k, t, h in P.PAGES]
+
 pages_html = ""
 for pid, title, body in P.PAGES:
     hidden = "" if pid == "home" else " hidden"
-    pages_html += '<main class="page" id="p-%s" data-title="%s"%s>%s</main>\n' % (pid, title, hidden, body)
+    pages_html += '<main class="page" id="p-%s" data-title="%s" data-desc="%s"%s>%s</main>\n' % (pid, title, DESCS.get(pid, DESCS["home"]), hidden, body)
 
 cart_svg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14l-1.3 10.2a2 2 0 0 1-2 1.8H8.3a2 2 0 0 1-2-1.8z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>'
 
@@ -219,7 +300,7 @@ __PAGES__
   <div class="grid">
     <div><b class="logo">herbaferm</b>Vitality &amp; Balance. Fermented herbal food supplements, available in Singapore.<br><br>Herbaferm Pte. Ltd.<br>UEN 202350449W</div>
     <div><h4>Shop</h4><a href="#drops">Herbaferm Drops</a><a href="#fiber">Fiber Elite</a><a href="#prefer">Prefer HF400</a></div>
-    <div><h4>Learn</h4><a href="#learn">Guides</a><a href="#ingredients">Ingredients</a><a href="#science">Science</a><a href="#about">About</a><a href="#awards">Awards</a><a href="#quality">Quality</a></div>
+    <div><h4>Learn</h4><a href="#learn">Guides</a><a href="#ingredients">Ingredients</a><a href="#science">Science</a><a href="#blog">Gut health blog</a><a href="learn/microbial-dysbiosis/">Microbial dysbiosis</a><a href="#about">About</a><a href="#awards">Awards</a><a href="#quality">Quality</a></div>
     <div><h4>Help</h4><a href="#partners">Partners</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#policies">Policies</a><a href="#insight">Design evidence</a><a href="https://herbafermsg.com/" target="_blank" rel="noopener">Current store</a></div>
   </div>
   <div class="legal"><p>These products are food supplements. They are not intended to diagnose, treat, cure or prevent any disease and are not a substitute for a varied diet or medical advice. Speak to a healthcare professional if you are pregnant, breastfeeding, have a medical condition or take medication. Some scene and ingredient images on this site are AI-generated illustrations.</p><p>&copy; 2026 Herbaferm Pte. Ltd. Prototype built for the NUS FSP4003 consulting project. <button type="button" id="still" class="linkbtn" aria-pressed="false">Pause motion</button></p></div>
@@ -248,7 +329,7 @@ __JS__
 '''
 
 out = shell
-out = out.replace("__CSS__", ((root / "src/site.css").read_text() + (root / "src/journey.css").read_text()))
+out = out.replace("__CSS__", CSS)
 out = out.replace("__NAV__", nav_links).replace("__MNAV__", mnav).replace("__CART__", cart_svg)
 out = out.replace("__PAGES__", expand(pages_html))
 
@@ -271,6 +352,8 @@ for pid, title, body in ORIG_PAGES:
     idx.append({"id": pid, "t": name, "k": KIND(pid), "x": t[:1600]})
 for cat, q, a in P.FAQS:
     idx.append({"id": "faq", "t": q, "k": "Question", "x": _txt(expand(a))[:400], "q": q})
+for _a in B.ARTICLES + [B.DYS]:
+    idx.append({"id": _a["slug"], "t": _a["title"], "k": "Guide", "x": _txt(_a["dek"] + " " + _a["body"])[:1600], "u": "learn/%s/" % _a["slug"]})
 out_js_pending = True
 SEARCH_JS = "window.HFIDX=" + json.dumps(idx, ensure_ascii=False, separators=(",", ":")) + ";\n"
 out = out.replace("__JS__", SEARCH_JS + ((root / "src/site.js").read_text() + "\n" + (root / "src/journey.js").read_text()) + "\n" + (root / "src/chat.js").read_text())
@@ -288,7 +371,7 @@ def make_site(dest):
     dest = pathlib.Path(dest)
     for d in ("css", "js", "assets/images"):
         (dest / d).mkdir(parents=True, exist_ok=True)
-    css = ((root / "src/site.css").read_text() + (root / "src/journey.css").read_text())
+    css = CSS
     site_js = ((root / "src/site.js").read_text() + "\n" + (root / "src/journey.js").read_text())
     chat_js = (root / "src/chat.js").read_text()
     html = out_pre
@@ -296,19 +379,45 @@ def make_site(dest):
     html = html.replace("<script>\n" + SEARCH_JS + site_js + "\n" + chat_js + "\n</script>",
                         '<script src="js/search-index.js"></script>\n<script src="js/site.js"></script>\n<script src="js/chat.js"></script>')
     assert "css/site.css" in html and "js/chat.js" in html, "shell replacement failed"
-    html = html.replace('<meta charset="utf-8">\n<title>Herbaferm Singapore</title>',
-        '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        '<title>Herbaferm Singapore</title>\n<meta name="description" content="Herbaferm fermented herbal food supplements in Singapore: Drops, Fiber Elite and Prefer HF400.">\n'
-        '<meta name="theme-color" content="#1f4d34">\n<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">', 1)
+    HEAD = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+            '<title>{title}</title>\n<meta name="description" content="{desc}">\n<link rel="canonical" href="{url}">\n'
+            '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Herbaferm Singapore">\n<meta property="og:title" content="{title}">\n'
+            '<meta property="og:description" content="{desc}">\n<meta property="og:url" content="{url}">\n<meta property="og:image" content="{og_img}">\n'
+            '<meta name="twitter:card" content="summary_large_image">\n'
+            '<meta name="theme-color" content="#1f4d34">\n<link rel="icon" href="%sassets/favicon.svg" type="image/svg+xml">\n<link rel="stylesheet" href="%scss/site.css">\n')
+    import seo as S
+    home_head = (HEAD % ("", "")).format(title=TITLES["home"], desc=DESCS["home"], url=SITE_URL, og_img=SITE_URL + "assets/images/hero-bark.jpg") + S.root_ld(SITE_URL, P.FAQS)
+    html = html.replace('<meta charset="utf-8">\n<title>Herbaferm Singapore</title>', home_head.replace('<link rel="stylesheet" href="css/site.css">\n', ""), 1)
     html = html.replace('<link rel="stylesheet" href="css/site.css">', '<link rel="stylesheet" href="css/site.css">\n</head>\n<body>', 1)
     html += "\n</body>\n</html>\n"
     html = re.sub(r"@@img:([a-z\-]+)@@", lambda m: "assets/images/%s.jpg" % IMGS[m.group(1)], html)
     (dest / "index.html").write_text(html)
+    # --- standalone article pages (real URLs) + robots.txt + sitemap.xml
+    def sub_root(h):  # rewrite shell links for pages two folders deep
+        h = re.sub(r'href="#', 'href="../../#', h)
+        h = h.replace('href="learn/', 'href="../../learn/')
+        h = h.replace('href="assets/', 'href="../../assets/').replace('src="assets/', 'src="../../assets/')
+        return h
+    hdr = re.search(r'<header class="top">.*?</header>', out_pre, re.S).group(0)
+    hdr = re.sub(r'<button class="icon-btn" id="(search-open|cart-open)".*?</button>\s*', "", hdr, flags=re.S)
+    hdr = '<a class="skip" href="#main">Skip to content</a>\n<div class="proto">Design prototype for review. Items marked <span class="tag">To confirm</span> or <span class="tag">To supply</span> need Herbaferm\'s input before launch.</div>\n' + sub_root(hdr)
+    ftr = sub_root(re.search(r'<footer class="site">.*?</footer>', out_pre, re.S).group(0))
+    ftr = ftr.replace('<button type="button" id="still" class="linkbtn" aria-pressed="false">Pause motion</button>', "")
+    shead = (HEAD % ("../../", "../../"))
+    allp = B.ARTICLES + [B.DYS]
+    for a in allp:
+        others = [o for o in allp if o is not a][(allp.index(a) % 4):(allp.index(a) % 4) + 2] if a is not B.DYS else allp[:2]
+        d = dest / "learn" / a["slug"]
+        d.mkdir(parents=True, exist_ok=True)
+        page = S.article_html(a, others, SITE_URL, shead, hdr, ftr)
+        (d / "index.html").write_text(page)
+    (dest / "robots.txt").write_text(S.robots(SITE_URL))
+    (dest / "sitemap.xml").write_text(S.sitemap(SITE_URL))
     (dest / "css/site.css").write_text(css)
     (dest / "js/search-index.js").write_text(SEARCH_JS)
     (dest / "js/site.js").write_text(site_js)
     (dest / "js/chat.js").write_text(chat_js)
-    used = set(re.findall(r"assets/images/([\w\-]+\.jpg)", html))
+    used = set(re.findall(r"assets/images/([\w\-]+\.jpg)", html)) | {"ai-morning.jpg", "book-microbiome.jpg", "hero-bark.jpg"}
     for f in used:
         shutil.copy(root / "assets" / f, dest / "assets/images" / f)
     (dest / "assets/favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1f4d34"/><path d="M16 7c5 3 7 8 4 13-1 2-3 3-4 5-1-2-3-3-4-5-3-5-1-10 4-13z" fill="#eaf3ea"/></svg>')

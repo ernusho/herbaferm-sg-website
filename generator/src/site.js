@@ -6,14 +6,14 @@
 
   /* ---------- router ---------- */
   var pages=$$(".page"),names=pages.map(function(p){return p.id.slice(2)});
-  var parents={drops:"shop",fiber:"shop",prefer:"shop",ingredients:"learn",science:"learn",quality:"about",awards:"about"};
-  var hosts={ingredients:"learn",science:"learn",quality:"about",awards:"about"};
+  var parents={drops:"shop",fiber:"shop",prefer:"shop",ingredients:"learn",science:"learn",blog:"learn",quality:"about",awards:"about"};
+  var hosts={ingredients:"learn",science:"learn",blog:"learn",quality:"about",awards:"about"};
   function route(first){
     var h=(location.hash||"").replace("#","");
     var host=hosts[h]||h;
     if(names.indexOf(host)<0){host="home";h="home"}
     pages.forEach(function(p){var on=p.id==="p-"+host;p.hidden=!on;p.classList.remove("in");if(on){void p.offsetWidth;p.classList.add("in")}});
-    var cur=$("#p-"+host);document.title=cur.getAttribute("data-title")||"Herbaferm Singapore";
+    var cur=$("#p-"+host);document.title=cur.getAttribute("data-title")||"Herbaferm Singapore";var md=document.querySelector('meta[name="description"]'),dd=cur.getAttribute("data-desc");if(md&&dd)md.setAttribute("content",dd);
     var key=parents[h]||(h.indexOf("a-")===0?"learn":h);
     $$(".nav nav a, .mnav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("data-r")===key)});
     $(".mnav").classList.remove("on");
@@ -344,7 +344,7 @@
     function close_(){ov.hidden=true;document.body.style.overflow=""}
     function go(i){var r=items[i];if(!r)return;close_();
       if(r.q){location.hash="#faq";setTimeout(function(){var f=$("#faq-q");if(f){f.value=r.q.split(" ").slice(0,4).join(" ");f.dispatchEvent(new Event("input",{bubbles:true}))}},60)}
-      else location.hash="#"+r.id}
+      else if(r.u)location.href=r.u;else location.hash="#"+r.id}
     $("#search-open").addEventListener("click",open_);
     $("#srch-x").addEventListener("click",close_);
     ov.addEventListener("click",function(e){if(e.target===ov)close_();if(e.target.closest("[data-close]"))close_()});

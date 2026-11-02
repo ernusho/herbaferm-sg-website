@@ -11,6 +11,13 @@ Static website for Herbaferm Pte. Ltd. (Singapore): Shop, Learn, About and Partn
 | `server/` | A small Cloudflare Worker that lets the chat assistant call a language-model API without exposing the key. |
 | `.github/workflows/pages.yml` | Publishes `site/` to GitHub Pages on every push to `main`. |
 
+## Search (SEO and AI search) additions
+
+- Ten sourced blog articles and a microbial dysbiosis explainer live at real URLs, `site/learn/<slug>/index.html`, written in `generator/src/blog.py`. The Learn page has a Blog tab that lists them.
+- `generator/src/seo.py` builds the JSON-LD (Organization, WebSite, Product, FAQPage on the home page; Article, FAQPage, BreadcrumbList, plus Book and Person on the dysbiosis page), `robots.txt` and `sitemap.xml`.
+- Set the real domain when you build for launch: `HF_SITE_URL=https://example.com/ python3 generator/build.py --site site`. The default is `https://herbafermsg.com/`.
+- Everything marked To confirm or To supply (medical reviewer, review by Adam Bóday, ResearchGate link) still needs Herbaferm's input.
+
 ## Run it on your computer
 
 ```bash

@@ -379,45 +379,93 @@ def make_site(dest):
     html = html.replace("<script>\n" + SEARCH_JS + site_js + "\n" + chat_js + "\n</script>",
                         '<script src="js/search-index.js"></script>\n<script src="js/site.js"></script>\n<script src="js/chat.js"></script>')
     assert "css/site.css" in html and "js/chat.js" in html, "shell replacement failed"
+    import seo as S
+    from urllib.parse import urlparse
+    PREFIX = urlparse(SITE_URL).path or "/"
+    # ---- routes: every page gets a real URL
+    ROUTES = {"home": ""}
+    for _pid, _t, _hh in ORIG_PAGES:
+        ROUTES[_pid] = "guides/%s/" % _pid[2:] if _pid.startswith("a-") else "%s/" % _pid
+    ROUTES["home"] = ""
+    ROUTES["blog"] = "blog/"
+    HOSTS = {"ingredients": "learn", "science": "learn", "blog": "learn", "quality": "about", "awards": "about"}
+    T2, D2 = dict(TITLES), dict(DESCS)
+    T2.update({"ingredients": "Ingredients | The seven herbs in Herbaferm Drops", "science": "Science | How fermentation works and what each study covers",
+               "blog": "Gut health blog | Sourced answers to common questions | Herbaferm", "awards": "Awards | TOP 10 Winner, Longevity Breakthrough Awards 2026",
+               "quality": "Quality and documents | Herbaferm Singapore", "policies": "Policies | Herbaferm Singapore", "insight": "Design evidence | Herbaferm Singapore"})
+    D2.update({"ingredients": "Seven herbs, described by traditional use: chamomile, yarrow, elderflower, rosehip, propolis, oak bark and white wormwood.",
+               "science": "How natural fermentation works, and what each study related to Herbaferm does and does not cover.",
+               "blog": "Plain-language gut health answers: microbiome tests, supplements, probiotics, fermented foods and dysbiosis, each with named sources.",
+               "awards": "Herbaferm was named a TOP 10 Winner at the TOP 10 Longevity Breakthrough Awards 2026 and received a CIM Gold Award.",
+               "quality": "Registrations, lab documents and manufacturing information for the Herbaferm range, with what is still being updated.",
+               "policies": "Shipping, returns, privacy and terms for Herbaferm Singapore.", "insight": "Design evidence behind the prototype."})
+    for _a in X.ARTICLES:
+        T2[_a[0]] = "%s | Herbaferm Journal" % _a[3]
+        D2[_a[0]] = _a[4]
+    META = {r: [T2.get(r, T2["home"]), D2.get(r, D2["home"])] for r in ROUTES}
+    GLOBALS = ('<script>window.HF_BASE=%s;window.HF_ORIGIN=%s;window.HF_ROUTES=%s;window.HF_META=%s;</script>\n'
+               % tuple(json.dumps(x, ensure_ascii=False, separators=(",", ":")) for x in (PREFIX, SITE_URL, ROUTES, META)))
+
+    def fix_links(h, rel=r"(?:\.\./)*"):
+        """#page links -> real paths; asset and learn/ links -> absolute-from-site-root paths."""
+        h = re.sub(r'href="%s#([\w-]+)"' % rel, lambda m: 'href="%s%s"' % (PREFIX, ROUTES[m.group(1)]) if m.group(1) in ROUTES else m.group(0), h)
+        h = re.sub(r'(href|src)="(?:\.\./)*(css|js|assets|learn|guides)/', lambda m: '%s="%s%s/' % (m.group(1), PREFIX, m.group(2)), h)
+        h = re.sub(r"url\(assets/", "url(%sassets/" % PREFIX, h)
+        return h
+
     HEAD = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-            '<title>{title}</title>\n<meta name="description" content="{desc}">\n<link rel="canonical" href="{url}">\n'
+            '<title>{title}</title>\n<meta name="description" content="{desc}">\n<link rel="canonical" href="{url}">\n{robots}'
             '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Herbaferm Singapore">\n<meta property="og:title" content="{title}">\n'
             '<meta property="og:description" content="{desc}">\n<meta property="og:url" content="{url}">\n<meta property="og:image" content="{og_img}">\n'
             '<meta name="twitter:card" content="summary_large_image">\n'
-            '<meta name="theme-color" content="#1f4d34">\n<link rel="icon" href="%sassets/favicon.svg" type="image/svg+xml">\n<link rel="stylesheet" href="%scss/site.css">\n')
-    import seo as S
-    home_head = (HEAD % ("", "")).format(title=TITLES["home"], desc=DESCS["home"], url=SITE_URL, og_img=SITE_URL + "assets/images/hero-bark.jpg") + S.root_ld(SITE_URL, P.FAQS)
-    html = html.replace('<meta charset="utf-8">\n<title>Herbaferm Singapore</title>', home_head.replace('<link rel="stylesheet" href="css/site.css">\n', ""), 1)
-    html = html.replace('<link rel="stylesheet" href="css/site.css">', '<link rel="stylesheet" href="css/site.css">\n</head>\n<body>', 1)
-    html += "\n</body>\n</html>\n"
-    html = re.sub(r"@@img:([a-z\-]+)@@", lambda m: "assets/images/%s.jpg" % IMGS[m.group(1)], html)
-    (dest / "index.html").write_text(html)
-    # --- standalone article pages (real URLs) + robots.txt + sitemap.xml
-    def sub_root(h):  # rewrite shell links for pages two folders deep
-        h = re.sub(r'href="#', 'href="../../#', h)
-        h = h.replace('href="learn/', 'href="../../learn/')
-        h = h.replace('href="assets/', 'href="../../assets/').replace('src="assets/', 'src="../../assets/')
-        return h
+            '<meta name="theme-color" content="#1f4d34">\n<link rel="icon" href="' + PREFIX + 'assets/favicon.svg" type="image/svg+xml">\n<link rel="stylesheet" href="' + PREFIX + 'css/site.css">\n')
+    rest = html.replace('<meta charset="utf-8">\n<title>Herbaferm Singapore</title>', "", 1)
+    rest = rest.replace('<link rel="stylesheet" href="css/site.css">', '</head>\n<body>', 1)
+    rest = rest.split("</head>\n<body>", 1)[1] + "\n</body>\n</html>\n"
+    rest = re.sub(r"@@img:([a-z\-]+)@@", lambda m: "assets/images/%s.jpg" % IMGS[m.group(1)], rest)
+    rest = re.sub(r'<script src="js/', '<script src="' + PREFIX + 'js/', rest)
+    rest = fix_links(rest)
+
+    def doc(route):
+        host = HOSTS.get(route, route)
+        def vis(m):
+            attrs = m.group(2).replace(" hidden", "")
+            return '<main class="page" id="p-%s"%s%s>' % (m.group(1), attrs, "" if m.group(1) == host else " hidden")
+        body = re.sub(r'<main class="page" id="p-([\w-]+)"([^>]*)>', vis, rest)
+        t, d = META[route]
+        url = SITE_URL + ROUTES[route]
+        og = SITE_URL + "assets/images/hero-bark.jpg"
+        head = HEAD.format(title=_h.escape(t), desc=_h.escape(d), url=url, og_img=og,
+                           robots='<meta name="robots" content="noindex">\n' if route == "insight" else "")
+        return head + GLOBALS + S.route_ld(route, SITE_URL, ROUTES, P.FAQS, t) + "</head>\n<body>\n" + body
+    for r in ROUTES:
+        if r == "home":
+            (dest / "index.html").write_text(doc(r))
+        else:
+            d = dest / ROUTES[r]
+            d.mkdir(parents=True, exist_ok=True)
+            (d / "index.html").write_text(doc(r))
+    # --- standalone article pages + robots.txt + sitemap.xml
     hdr = re.search(r'<header class="top">.*?</header>', out_pre, re.S).group(0)
     hdr = re.sub(r'<button class="icon-btn" id="(search-open|cart-open)".*?</button>\s*', "", hdr, flags=re.S)
-    hdr = '<a class="skip" href="#main">Skip to content</a>\n<div class="proto">Design prototype for review. Items marked <span class="tag">To confirm</span> or <span class="tag">To supply</span> need Herbaferm\'s input before launch.</div>\n' + sub_root(hdr)
-    ftr = sub_root(re.search(r'<footer class="site">.*?</footer>', out_pre, re.S).group(0))
+    hdr = '<a class="skip" href="#main">Skip to content</a>\n<div class="proto">Design prototype for review. Items marked <span class="tag">To confirm</span> or <span class="tag">To supply</span> need Herbaferm\'s input before launch.</div>\n' + fix_links(hdr)
+    ftr = fix_links(re.search(r'<footer class="site">.*?</footer>', out_pre, re.S).group(0))
     ftr = ftr.replace('<button type="button" id="still" class="linkbtn" aria-pressed="false">Pause motion</button>', "")
-    shead = (HEAD % ("../../", "../../"))
+    shead = HEAD
     allp = B.ARTICLES + [B.DYS]
     for a in allp:
         others = [o for o in allp if o is not a][(allp.index(a) % 4):(allp.index(a) % 4) + 2] if a is not B.DYS else allp[:2]
         d = dest / "learn" / a["slug"]
         d.mkdir(parents=True, exist_ok=True)
-        page = S.article_html(a, others, SITE_URL, shead, hdr, ftr)
-        (d / "index.html").write_text(page)
+        page = S.article_html(a, others, SITE_URL, shead, hdr, ftr, ROUTES)
+        (d / "index.html").write_text(fix_links(page).replace('src="../../assets/', 'src="%sassets/' % PREFIX))
     (dest / "robots.txt").write_text(S.robots(SITE_URL))
-    (dest / "sitemap.xml").write_text(S.sitemap(SITE_URL))
+    (dest / "sitemap.xml").write_text(S.sitemap(SITE_URL, [r for r in ROUTES if r != "insight"], ROUTES))
     (dest / "css/site.css").write_text(css)
     (dest / "js/search-index.js").write_text(SEARCH_JS)
     (dest / "js/site.js").write_text(site_js)
     (dest / "js/chat.js").write_text(chat_js)
-    used = set(re.findall(r"assets/images/([\w\-]+\.jpg)", html)) | {"ai-morning.jpg", "book-microbiome.jpg", "hero-bark.jpg"}
+    used = set(re.findall(r"assets/images/([\w\-]+\.jpg)", rest)) | {"ai-morning.jpg", "book-microbiome.jpg", "hero-bark.jpg"}
     for f in used:
         shutil.copy(root / "assets" / f, dest / "assets/images" / f)
     (dest / "assets/favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1f4d34"/><path d="M16 7c5 3 7 8 4 13-1 2-3 3-4 5-1-2-3-3-4-5-3-5-1-10 4-13z" fill="#eaf3ea"/></svg>')

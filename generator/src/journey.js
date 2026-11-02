@@ -46,7 +46,7 @@
   }
   function paintForce(el){jr.style.setProperty("--jbg",el.getAttribute("data-bg"));jr.style.setProperty("--jfg",el.getAttribute("data-fg"));jr.style.setProperty("--jac",el.getAttribute("data-ac"))}
   function tick(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
-  addEventListener("scroll",tick,{passive:true});addEventListener("resize",tick);addEventListener("hashchange",function(){setTimeout(tick,60)});
+  addEventListener("scroll",tick,{passive:true});addEventListener("resize",tick);addEventListener("hashchange",function(){setTimeout(tick,60)});addEventListener("hfroute",function(){setTimeout(tick,60)});addEventListener("popstate",function(){setTimeout(tick,60)});
   tick();setTimeout(tick,300);
   });
 })();

@@ -17,4 +17,4 @@ Allow: /
 # User-agent: Google-Extended
 # Disallow: /
 
-Sitemap: https://herbafermsg.com/sitemap.xml
+Sitemap: https://ernusho.github.io/herbaferm-sg-website/sitemap.xml

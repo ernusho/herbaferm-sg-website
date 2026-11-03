@@ -234,3 +234,7 @@
 :root:not([data-theme="light"]) .jcheck i{color:#1c1208}
 :root:not([data-theme="light"]) .jpick a,.jt{background:#2d2519;color:#f3e8d2;border-color:rgba(255,255,255,.1)}
 }
+.jcheck span{display:block;font-size:1.02rem;line-height:1.4}
+.jcheck span b{display:block;font:700 1.12rem/1.25 var(--display);margin-bottom:2px}
+.jcheck span em{font-style:normal;opacity:.82}
+.jdt .jh2{font-size:clamp(2rem,4vw,3.3rem)}.jdt .jp{margin-top:14px}.jcheck{margin-top:20px;gap:12px}.jbuy2{margin-top:22px}

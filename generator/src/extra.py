@@ -222,12 +222,7 @@ HOME = '''
       <p class="kicker jv">Meet Herbaferm Drops</p>
       <h2 class="jh2 jv">A small bottle for a simple daily habit.</h2>
       <p class="jp jv">Seven herbs, fermented slowly into a drop you stir into a glass of water.</p>
-      <ul class="jcheck jv">
-        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>Seven herbs</b> traditionally used in Europe to support digestion</span></li>
-        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>8 drops</b> in water, morning and evening</span></li>
-        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>Nothing extra:</b> no preservatives or artificial colours</span></li>
-        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>One bottle, about a month,</b> from S$1.83 a day</span></li>
-      </ul>
+      <ul class="jcheck jv"><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>Supports everyday digestion</b><em>Seven herbs traditionally used in Europe for gentle digestive comfort.</em></span></li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>Fits into your day in a minute</b><em>8 drops in a glass of water, morning and evening. Nothing to prepare.</em></span></li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>Gentle and simple</b><em>No preservatives, no artificial colours or additives.</em></span></li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>Good for a whole month</b><em>One 30 ml bottle, about 480 drops, from S$1.83 a day.</em></span></li></ul>
       <div class="jbuy2 jv"><b>S$55</b><button class="jbtn" type="button" data-add="drops">Add to cart</button><a class="jlink" href="#drops">See details</a></div>
       <p class="jnote jv">Food supplement. Speak to a healthcare professional if you are pregnant or take medication.</p>
     </div>
@@ -361,7 +356,7 @@ HOME = '''
 <section class="ch ch-end" data-bg="#2b3a24" data-fg="#fbf4e4" data-ac="#e9b04a" data-label="Join us">
   <i class="blob b1" data-par=".1"></i>
   <div class="wrap jsplit top">
-    <div><p class="kicker jv">Final chapter</p><h2 class="jh2" data-split>Clinic, retailer or distributor?</h2>
+    <div><p class="kicker jv">Partners</p><h2 class="jh2" data-split>Clinic, retailer or distributor?</h2>
     <p class="jp jv">Ask for the partner evidence pack: formulation, quality, testing, shelf life and literature.</p>
     <p class="jv"><a class="jbtn" href="#partners">Become a partner</a></p></div>
     <form class="form jform jv" data-proto="Thanks. This is a prototype, so nothing was sent." novalidate><h3>Guides and news</h3><p>An occasional email with usage guides, Fiber Elite ideas and Singapore stockist news.</p><label for="nl-email">Email address<input id="nl-email" type="email" autocomplete="email" placeholder="you@example.com"></label><button class="jbtn" type="submit">Subscribe</button><p class="note fnote">We will only use your email for Herbaferm news. @@TAG_CONFIRM@@</p></form>
@@ -530,7 +525,7 @@ PROD = {
   check=["You are pregnant or breastfeeding","You take medication or have a diagnosed condition","You are sensitive to histamine","You are thinking of giving it to a child"],
   shelf="<img class=\"pfridge\" src=\"@@img:ai-fridge@@\" alt=\"Small dark bottles and a jar on a fridge door shelf (illustrative image)\" loading=\"lazy\"><br>Keep the bottle in the fridge at 5 to 12 \u00b0C and shake before use. Herbaferm's notes give about 6 months of shelf life. @@TAG_CONFIRM@@ The best-before date is printed on the pack.",
   also=[("fiber","Fiber Elite","S$55 \u00b7 125 g"),("prefer","Prefer HF400","S$45 \u00b7 14 capsules")]),
-  pt="#6fbf8b",
+  pt="#c4a85a",
   trust=["No preservatives", "No artificial colours", "Registered in Hungary, 2018", "Seven herbs, naturally fermented"],
   glance=[("8", "drops, twice a day"), ("480", "drops in a 30 ml bottle"), ("1 month", "from one bottle"), ("S$1.83", "a day")],
   steps=[("Fill a glass", "About 1.5 dl of water."), ("Add 8 drops", "Morning and evening. Shake the bottle first."), ("Back in the fridge", "Keep it at 5 to 12 \u00b0C. There are no preservatives.")],

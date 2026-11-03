@@ -519,7 +519,7 @@ PAGES.append(("learn", "Learn | Herbaferm Singapore", '''
 PAGES.append(("about", "About | Herbaferm Singapore", '''
 @@PHERO_ABOUT@@
 <section><div class="wrap split top">
-  <div class="stack"><p class="eyebrow">Our story</p><h2>A Hungarian formula, now in Singapore</h2>
+  <div class="stack"><p class="eyebrow">Our story</p><span class="lgi" role="img" aria-label="Herbaferm leaf-in-circle emblem"></span><h2>A Hungarian formula, now in Singapore</h2>
     <p class="lede">Herbaferm develops food supplements by fermenting medicinal herbs with a natural community of microorganisms. The Drops were registered in Hungary in 2018, and the team set up Herbaferm Pte. Ltd. in Singapore in 2023.</p>
     <p class="lede">The founders come from food science, medicine and finance, and the company still works closely with the scientists behind the formula. @@TAG_CONFIRM@@</p></div>
   <div><img src="@@img:flatlay@@" alt="Propolis, oak bark, elderflower and wormwood arranged around a Herbaferm Drops bottle" style="border-radius:26px;width:100%"></div>

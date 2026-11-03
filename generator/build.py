@@ -292,7 +292,7 @@ __CSS__
 </style>
 <div class="proto">Design prototype for review. Items marked <span class="tag">To confirm</span> or <span class="tag">To supply</span> need Herbaferm's input before launch.</div>
 <header class="top"><div class="wrap nav">
-  <a class="brand" href="#home" aria-label="Herbaferm Singapore home"><b>herbaferm</b><i>VITALITY &amp; BALANCE</i></a>
+  <a class="brand" href="#home" aria-label="Herbaferm Singapore home"><span class="lg" role="img" aria-label="herbaferm, Vitality &amp; Balance"></span></a>
   <nav aria-label="Main">__NAV__</nav>
   <button class="icon-btn" id="search-open" type="button" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><span class="sl">Search</span></button>
   <button class="icon-btn" id="theme" type="button">Dark</button>
@@ -302,7 +302,7 @@ __CSS__
 __PAGES__
 <footer class="site"><div class="wrap">
   <div class="grid">
-    <div><b class="logo">herbaferm</b>Vitality &amp; Balance. Fermented herbal food supplements, available in Singapore.<br><br>Herbaferm Pte. Ltd.<br>UEN 202350449W</div>
+    <div><span class="lg lg-foot" role="img" aria-label="herbaferm, Vitality &amp; Balance"></span>Fermented herbal food supplements, available in Singapore.<br><br>Herbaferm Pte. Ltd.<br>UEN 202350449W</div>
     <div><h4>Shop</h4><a href="#drops">Herbaferm Drops</a><a href="#fiber">Fiber Elite</a><a href="#prefer">Prefer HF400</a></div>
     <div><h4>Learn</h4><a href="#learn">Guides</a><a href="#ingredients">Ingredients</a><a href="#science">Science</a><a href="#blog">Gut health blog</a><a href="learn/microbial-dysbiosis/">Microbial dysbiosis</a><a href="#about">About</a><a href="#awards">Awards</a><a href="#quality">Quality</a></div>
     <div><h4>Help</h4><a href="#partners">Partners</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#policies">Policies</a><a href="#insight">Design evidence</a><a href="https://herbafermsg.com/" target="_blank" rel="noopener">Current store</a></div>
@@ -422,7 +422,7 @@ def make_site(dest):
             '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Herbaferm Singapore">\n<meta property="og:title" content="{title}">\n'
             '<meta property="og:description" content="{desc}">\n<meta property="og:url" content="{url}">\n<meta property="og:image" content="{og_img}">\n'
             '<meta name="twitter:card" content="summary_large_image">\n'
-            '<meta name="theme-color" content="#1f4d34">\n<link rel="icon" href="' + PREFIX + 'assets/favicon.svg" type="image/svg+xml">\n<link rel="stylesheet" href="' + PREFIX + 'css/site.css">\n')
+            '<meta name="theme-color" content="#1f4d34">\n<link rel="icon" href="' + PREFIX + 'assets/logo/favicon-32.png" sizes="32x32" type="image/png">\n<link rel="icon" href="' + PREFIX + 'assets/logo/favicon-64.png" sizes="64x64" type="image/png">\n<link rel="apple-touch-icon" href="' + PREFIX + 'assets/logo/apple-touch-icon.png">\n<link rel="stylesheet" href="' + PREFIX + 'css/site.css">\n')
     rest = html.replace('<meta charset="utf-8">\n<title>Herbaferm Singapore</title>', "", 1)
     rest = rest.replace('<link rel="stylesheet" href="css/site.css">', '</head>\n<body>', 1)
     rest = rest.split("</head>\n<body>", 1)[1] + "\n</body>\n</html>\n"
@@ -438,7 +438,7 @@ def make_site(dest):
         body = re.sub(r'<main class="page" id="p-([\w-]+)"([^>]*)>', vis, rest)
         t, d = META[route]
         url = SITE_URL + ROUTES[route]
-        og = SITE_URL + "assets/images/hero-bark.jpg"
+        og = SITE_URL + "assets/logo/og-logo.jpg"
         head = HEAD.format(title=_h.escape(t), desc=_h.escape(d), url=url, og_img=og,
                            robots='<meta name="robots" content="noindex">\n' if route == "insight" else "")
         return head + GLOBALS + S.route_ld(route, SITE_URL, ROUTES, P.FAQS, t) + "</head>\n<body>\n" + body
@@ -474,6 +474,7 @@ def make_site(dest):
     for f in used:
         shutil.copy(root / "assets" / f, dest / "assets/images" / f)
     (dest / "assets/favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1f4d34"/><path d="M16 7c5 3 7 8 4 13-1 2-3 3-4 5-1-2-3-3-4-5-3-5-1-10 4-13z" fill="#eaf3ea"/></svg>')
+    shutil.copytree(root / "assets" / "logo", dest / "assets/logo", dirs_exist_ok=True)
     print("site ->", dest, len(used), "images")
 
 if "--site" in sys.argv:

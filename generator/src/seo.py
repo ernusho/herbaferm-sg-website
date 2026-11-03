@@ -5,7 +5,7 @@ import figures as FG
 
 ORG = {
     "@type": "Organization", "@id": "{base}#org", "name": "Herbaferm Pte. Ltd.", "alternateName": "Herbaferm Singapore",
-    "url": "{base}", "logo": "{base}assets/favicon.svg",
+    "url": "{base}", "logo": "{base}assets/logo/wordmark-green.png",
     "description": "Singapore company bringing Herbaferm's fermented herbal food supplements from Hungary to Singapore.",
     "identifier": "UEN 202350449W",
     "address": {"@type": "PostalAddress", "streetAddress": "10 Anson Road #22-02 International Plaza", "addressLocality": "Singapore", "postalCode": "079903", "addressCountry": "SG"},

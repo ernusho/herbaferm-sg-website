@@ -1003,7 +1003,7 @@ a[href^="#ref-"]{display:inline-block;min-width:28px;min-height:28px;line-height
 .jr .kicker{color:var(--jac);font:700 .8rem/1 var(--body);letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;transition:color .9s}
 .ch{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;padding-block:clamp(80px,12vh,140px);overflow:clip}
 .ch>.wrap{position:relative;z-index:1;width:100%}
-.ch-day{min-height:80vh}
+.ch-day{min-height:68vh}
 .jh1{font-size:clamp(2.8rem,9vw,7rem);line-height:.98;letter-spacing:-.035em;font-weight:800}
 .jh1>span.jv{display:block}
 .jh2{font-size:clamp(2.1rem,6vw,4.6rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;max-width:17ch}
@@ -1237,6 +1237,9 @@ a[href^="#ref-"]{display:inline-block;min-width:28px;min-height:28px;line-height
 .jcheck span b{display:block;font:700 1.12rem/1.25 var(--display);margin-bottom:2px}
 .jcheck span em{font-style:normal;opacity:.82}
 .jdt .jh2{font-size:clamp(2rem,4vw,3.3rem)}.jdt .jp{margin-top:14px}.jcheck{margin-top:20px;gap:12px}.jbuy2{margin-top:22px}
+.jcheck .jct{display:flex;flex-direction:column;gap:2px}
+.jcheck .jct strong{display:block;font:700 1.12rem/1.25 var(--display)}
+.jcheck .jct small{display:block;font-size:1rem;line-height:1.45;opacity:.82}
 /* Blog articles, citations, tables (v10 SEO/AIO) */
 .atable{width:100%;border-collapse:collapse;margin-top:22px;font-size:1rem;line-height:1.5}
 .atable th,.atable td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}

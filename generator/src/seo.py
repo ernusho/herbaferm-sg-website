@@ -153,7 +153,7 @@ def article_html(a, others, base, shell_head, header, footer, routes):
           'function l(){t.textContent=d()?"Light":"Dark";t.setAttribute("aria-label",d()?"Switch to light mode":"Switch to dark mode")}'
           't.addEventListener("click",function(){r.setAttribute("data-theme",d()?"light":"dark");l()});l();'
           'b.addEventListener("click",function(){document.querySelector(".mnav").classList.toggle("on")})})();</script>')
-    return "<!doctype html>\n<html lang=\"en\">\n<head>\n" + head + "</head>\n<body>\n" + header + main + footer + js + "\n</body>\n</html>\n"
+    return head + "</head>\n<body>\n" + header + main + footer + js + "\n</body>\n</html>\n"
 
 
 def robots(base):

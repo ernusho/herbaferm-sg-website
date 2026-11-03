@@ -441,7 +441,7 @@ def make_site(dest):
         og = SITE_URL + "assets/logo/og-logo.jpg"
         head = HEAD.format(title=_h.escape(t), desc=_h.escape(d), url=url, og_img=og,
                            robots='<meta name="robots" content="noindex">\n' if route == "insight" else "")
-        return head + GLOBALS + S.route_ld(route, SITE_URL, ROUTES, P.FAQS, t) + "</head>\n<body>\n" + body
+        return head + GLOBALS + S.route_ld(route, SITE_URL, ROUTES, P.FAQS, t) + "</head>\n<body>\n" + '<a class="skip" href="#main" onclick="var m=document.querySelector(\'main.page:not([hidden])\');if(m){m.setAttribute(\'tabindex\',\'-1\');m.focus();event.preventDefault()}">Skip to content</a>\n' + body
     for r in ROUTES:
         if r == "home":
             (dest / "index.html").write_text(doc(r))
@@ -463,6 +463,13 @@ def make_site(dest):
         d.mkdir(parents=True, exist_ok=True)
         page = S.article_html(a, others, SITE_URL, shead, hdr, ftr, ROUTES)
         (d / "index.html").write_text(fix_links(page).replace('src="../../assets/', 'src="%sassets/' % PREFIX))
+    nf = (HEAD.format(title="Page not found | Herbaferm", desc="This page could not be found.", url=SITE_URL, og_img=SITE_URL + "assets/logo/og-logo.jpg",
+                      robots='<meta name="robots" content="noindex">\n') + "</head>\n<body>\n" + hdr
+          + '<main id="main"><div class="phero"><div class="wrap"><p class="kicker">404</p><h1>We could not find that page</h1>'
+          + '<p class="lede">The link may be old or mistyped. Try the home page, the shop or the gut health guides.</p>'
+          + '<p><a class="btn" href="%s">Home</a> <a class="btn" href="%s">Shop</a> <a class="btn" href="%s">Learn</a></p></div></div></main>\n' % (PREFIX, PREFIX + ROUTES["shop"], PREFIX + ROUTES["learn"])
+          + ftr + "\n</body>\n</html>\n")
+    (dest / "404.html").write_text(fix_links(nf))
     (dest / "robots.txt").write_text(S.robots(SITE_URL))
     (dest / "sitemap.xml").write_text(S.sitemap(SITE_URL, [r for r in ROUTES if r != "insight"], ROUTES))
     (dest / "css/site.css").write_text(css)

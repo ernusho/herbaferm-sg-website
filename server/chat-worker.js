@@ -2,10 +2,10 @@
 // Deploy: `npx wrangler deploy`, then `npx wrangler secret put ANTHROPIC_API_KEY`.
 // Then add this line to site/index.html before the chat script:
 //   <script>window.HF_CHAT_ENDPOINT = "https://<your-worker>.workers.dev/";</script>
-const ALLOWED_ORIGINS = ["https://herbafermsg.com", "https://www.herbafermsg.com"]; // add your preview URL while testing
+const ALLOWED_ORIGINS = ["https://herbafermsg.com", "https://www.herbafermsg.com", "https://ernusho.github.io"]; // add your preview URL while testing
 const MODEL = "claude-haiku-5-5";
 const MAX_MESSAGES = 10;
-const MAX_CHARS = 8000;
+const MAX_CHARS = 30000; // the first message carries the fact sheet
 
 export default {
   async fetch(request, env) {

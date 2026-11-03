@@ -197,7 +197,7 @@ HOME = '''
 <div class="jr" data-journey>
 <nav class="jrail" aria-label="Page chapters"></nav>
 
-<section class="ch ch-hero" data-bg="#0e2a1b" data-fg="#f3f7ee" data-ac="#f2b73d" data-label="Start">
+<section class="ch ch-hero" data-bg="#2b3a24" data-fg="#fbf4e4" data-ac="#e9b04a" data-label="Start">
   <i class="blob b1" data-par="-.12"></i><i class="blob b2" data-par=".1"></i>
   <div class="wrap herojr">
     <div class="jtxt">
@@ -212,33 +212,46 @@ HOME = '''
   <a class="cue" href="#jr-benefits" data-go aria-label="Scroll to the next chapter"><span></span></a>
 </section>
 
-<section class="ch ch-auto" id="jr-benefits" data-bg="#f6f1e3" data-fg="#16301f" data-ac="#1f4d34" data-label="Benefits">
-  <div class="wrap">
-    <p class="kicker jv">What it is for</p>
-    <h2 class="jh2 jv">A simple daily routine for everyday gut care.</h2>
-    <div class="jbento">
-      <figure class="jbig jv"><img src="@@img:drops-pour@@" alt="Drops being added to a glass of water (illustrative image)" loading="lazy">
-        <figcaption><b>8 drops.<br>1 glass of water.<br>Morning and evening.</b><p class="jcap">That is the whole routine.</p></figcaption></figure>
-      <div class="jt jv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-5 6-8 10-10"/></svg></i><strong>7 herbs</strong><span>Traditionally used to support digestion</span></div>
-      <div class="jt jv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></i><strong>About 1 min</strong><span>a day, no prep</span></div>
-      <div class="jt jv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></i><strong>0 additives</strong><span>No preservatives or artificial colours</span></div>
-      <div class="jt jv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h16a8 8 0 0 1-16 0z"/><path d="M9 7c0-2 2-2 2-4M14 7c0-2 2-2 2-4"/></svg></i><strong>3.5 g</strong><span>of fibre, stirred into a meal</span></div>
+<section class="ch ch-auto" id="jr-benefits" data-bg="#f7efdc" data-fg="#2a2417" data-ac="#b4562b" data-label="Drops">
+  <div class="wrap jdrops">
+    <div class="jdv jv">
+      <div class="jdimg"><img src="@@img:drops@@" alt="Herbaferm Drops 30 ml bottle with carton and kraft wrapper"></div>
+      <figure class="jdpour"><img src="@@img:drops-pour@@" alt="Adding drops to a glass of water (illustrative image)" loading="lazy"></figure>
     </div>
-    <h3 class="jq jv">Which one is right for me?</h3>
-    <div class="jpick jv">
-      <a href="#drops"><img src="@@img:drops@@" alt="" loading="lazy"><em>Start simple</em><b>Herbaferm Drops</b><span>S$55 &middot; about a month</span></a>
-      <a href="#fiber"><img src="@@img:fiber@@" alt="" loading="lazy"><em>More fibre in meals</em><b>Fiber Elite</b><span>S$55 &middot; about a month</span></a>
-      <a href="#prefer"><img src="@@img:prefer@@" alt="" loading="lazy"><em>Prefer capsules</em><b>Prefer HF400</b><span>S$45 &middot; 14 capsules</span></a>
-      <a href="#a-month" class="jnew"><em>Not sure yet?</em><b>Read the first-month guide</b><span>A gentle plan, step by step</span></a>
+    <div class="jdt">
+      <p class="kicker jv">Meet Herbaferm Drops</p>
+      <h2 class="jh2 jv">A small bottle for a simple daily habit.</h2>
+      <p class="jp jv">Seven herbs, fermented slowly into a drop you stir into a glass of water.</p>
+      <ul class="jcheck jv">
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>Seven herbs</b> traditionally used in Europe to support digestion</span></li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>8 drops</b> in water, morning and evening</span></li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>Nothing extra:</b> no preservatives or artificial colours</span></li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>One bottle, about a month,</b> from S$1.83 a day</span></li>
+      </ul>
+      <div class="jbuy2 jv"><b>S$55</b><button class="jbtn" type="button" data-add="drops">Add to cart</button><a class="jlink" href="#drops">See details</a></div>
+      <p class="jnote jv">Food supplement. Speak to a healthcare professional if you are pregnant or take medication.</p>
     </div>
-    <p class="jnote jv">Food supplement. Speak to a healthcare professional if you are pregnant or take medication. Experiences vary from person to person.</p>
   </div>
 </section>
 
-<section class="ch" id="jr-origin" data-bg="#f2b73d" data-fg="#231600" data-ac="#0e2a1b" data-label="Origin">
+<section class="ch" id="jr-range" data-bg="#efdfc0" data-fg="#2f2615" data-ac="#b4562b" data-label="The range">
+  <i class="blob b1" data-par=".12"></i>
+  <div class="wrap">
+    <p class="kicker jv">The range</p>
+    <h2 class="jh2" data-split>Start with Drops. Add the rest when you want them.</h2>
+    <div class="jprods">
+      <article class="pcd jv"><a href="#drops" class="jimg"><img src="@@img:drops@@" alt="Herbaferm Drops bottle and carton"></a><small>Signature product</small><h3>Herbaferm Drops</h3><p>Herbal extract made by natural fermentation. 8 drops in a glass of water, twice a day.</p><div class="jbuy"><b>S$55</b><span>30 ml, about a month</span><button class="jbtn sm" type="button" data-add="drops">Add to cart</button></div></article>
+      <article class="pcd jv"><a href="#fiber" class="jimg white">@@PACK_FIBER@@</a><small>Everyday add-in</small><h3>Fiber Elite</h3><p>A fibre-rich additive for smoothies, shakes, yoghurt and porridge. 3.5 g a day with a meal.</p><div class="jbuy"><b>S$55</b><span>125 g, about a month</span><button class="jbtn sm" type="button" data-add="fiber">Add to cart</button></div></article>
+      <article class="pcd jv"><a href="#prefer" class="jimg white"><img src="@@img:prefer@@" alt="Prefer HF400 bottle and capsule"></a><small>Optional add-on</small><h3>Prefer HF400</h3><p>Capsules of fermented herb fibres, taken alongside Drops, morning and evening.</p><div class="jbuy"><b>S$45</b><span>14 capsules</span><button class="jbtn sm" type="button" data-add="prefer">Add to cart</button></div></article>
+    </div>
+    <p class="jv"><a class="jlink" href="#shop">Compare all three</a></p>
+  </div>
+</section>
+
+<section class="ch" id="jr-origin" data-bg="#e9c06a" data-fg="#2b1c05" data-ac="#6b3d12" data-label="Origin">
   <i class="blob b1" data-par=".14"></i>
   <div class="wrap jsplit"><div>
-    <p class="kicker jv">Chapter one &middot; Where it began</p>
+    <p class="kicker jv">Where it began</p>
     <h2 class="jh2" data-split>It started in Hungary, with a scientist and a lot of herbs.</h2>
     <p class="jp jv">A Hungarian founding team, with a scientist at its centre, developed Herbaferm Drops. The Drops were registered in Hungary in 2018. Since 2023, Herbaferm has been a Singapore company.</p>
     <ul class="jstats jv">
@@ -253,17 +266,17 @@ HOME = '''
 <section class="ch ch-herbs" id="jr-herbs" data-label="Seven herbs" data-dyn>
   <div class="hstage">
     <div class="wrap hwrap">
-      <p class="kicker">Chapter two &middot; Seven herbs you probably know</p>
+      <p class="kicker">Seven herbs you probably know</p>
       <div class="hpanes">@@JHERBS@@</div>
       <div class="hcount"><span id="hnow">1</span> / 7</div>
     </div>
   </div>
 </section>
 
-<section class="ch" id="jr-ferment" data-bg="#e0794f" data-fg="#1f0a05" data-ac="#fff1d6" data-label="Fermentation">
+<section class="ch" id="jr-ferment" data-bg="#c4683f" data-fg="#fff4e4" data-ac="#ffe2a8" data-label="Fermentation">
   <i class="blob b2" data-par="-.1"></i>
   <div class="wrap jsplit"><div>
-    <p class="kicker jv">Chapter three &middot; How it is made</p>
+    <p class="kicker jv">How it is made</p>
     <h2 class="jh2" data-split>Slow on purpose.</h2>
     <ol class="jsteps">
       <li class="jv"><b>01</b><div><h3>Pick the herbs</h3><p>Chamomile, yarrow, elderflower, rosehip, propolis, oak bark and white wormwood. Kitchen and herbal-tea plants from Europe.</p></div></li>
@@ -274,35 +287,22 @@ HOME = '''
   </div><div class="arch jv" data-par=".06"><img src="@@img:ai-jars@@" alt="Chamomile and yarrow fermenting in glass jars (illustrative image)" loading="lazy"><span class="ill">Illustrative image</span></div></div>
 </section>
 
-<section class="ch" id="jr-range" data-bg="#cfe0b8" data-fg="#1d3318" data-ac="#1d3318" data-label="The range">
-  <i class="blob b1" data-par=".12"></i>
-  <div class="wrap">
-    <p class="kicker jv">Chapter four &middot; The range</p>
-    <h2 class="jh2" data-split>Start with Drops. Add the rest when you want them.</h2>
-    <div class="jprods">
-      <article class="pcd jv"><a href="#drops" class="jimg"><img src="@@img:drops@@" alt="Herbaferm Drops bottle and carton"></a><small>Signature product</small><h3>Herbaferm Drops</h3><p>Herbal extract made by natural fermentation. 8 drops in a glass of water, twice a day.</p><div class="jbuy"><b>S$55</b><span>30 ml, about a month</span><button class="jbtn sm" type="button" data-add="drops">Add to cart</button></div></article>
-      <article class="pcd jv"><a href="#fiber" class="jimg white">@@PACK_FIBER@@</a><small>Everyday add-in</small><h3>Fiber Elite</h3><p>A fibre-rich additive for smoothies, shakes, yoghurt and porridge. 3.5 g a day with a meal.</p><div class="jbuy"><b>S$55</b><span>125 g, about a month</span><button class="jbtn sm" type="button" data-add="fiber">Add to cart</button></div></article>
-      <article class="pcd jv"><a href="#prefer" class="jimg white"><img src="@@img:prefer@@" alt="Prefer HF400 bottle and capsule"></a><small>Optional add-on</small><h3>Prefer HF400</h3><p>Capsules of fermented herb fibres, taken alongside Drops, morning and evening.</p><div class="jbuy"><b>S$45</b><span>14 capsules</span><button class="jbtn sm" type="button" data-add="prefer">Add to cart</button></div></article>
-    </div>
-    <p class="jv"><a class="jlink" href="#shop">Compare all three</a></p>
-  </div>
-</section>
 
-<section class="ch ch-day" data-bg="#ffd9a0" data-fg="#2e1a00" data-ac="#e0612b" data-label="Morning">
+<section class="ch ch-day" data-bg="#f3dcae" data-fg="#2e1a00" data-ac="#b4562b" data-label="Morning">
   <div class="wrap jsplit">
-    <div><p class="kicker jv">Chapter five &middot; A day with Herbaferm</p><h2 class="jh2" data-split>Morning: a glass of water, and a few drops.</h2>
+    <div><p class="kicker jv">A day with Herbaferm</p><h2 class="jh2" data-split>Morning: a glass of water, and a few drops.</h2>
     <p class="jp jv">Fill a glass with about 1.5 dl of water and add 8 drops of Herbaferm Drops. Take the capsule alongside, if you use Prefer HF400.</p></div>
     <div class="arch jv" data-par=".06"><img src="@@img:drops-pour@@" alt="A hand adding Herbaferm Drops to a glass of water, with fruit in the background" style="object-position:55% 50%"></div>
   </div>
 </section>
-<section class="ch ch-day" data-bg="#7fc7a4" data-fg="#0b2a1d" data-ac="#0b2a1d" data-label="Midday">
+<section class="ch ch-day" data-bg="#d3cf9c" data-fg="#2a2a10" data-ac="#6b3d12" data-label="Midday">
   <div class="wrap jsplit rev">
     <div><h2 class="jh2" data-split>Midday: stirred into whatever you are eating.</h2>
     <p class="jp jv">Fiber Elite goes into porridge, yoghurt or a smoothie. It can be heated, so soups and warm bowls work too. Take 3.5 g a day with a meal, or on training days 3.5 g after exercise, up to three times.</p></div>
     <div class="jpack jv" data-par="-.05">@@PACK_FIBER@@</div>
   </div>
 </section>
-<section class="ch ch-day" data-bg="#1c3a33" data-fg="#eef6f2" data-ac="#f2b73d" data-label="Evening">
+<section class="ch ch-day" data-bg="#3a2c1e" data-fg="#fbf1df" data-ac="#e9b04a" data-label="Evening">
   <i class="blob b2" data-par=".1"></i>
   <div class="wrap jcol">
     <h2 class="jh2" data-split>Evening: the same glass, the same drops.</h2>
@@ -311,10 +311,10 @@ HOME = '''
   </div>
 </section>
 
-<section class="ch" id="jr-loved" data-bg="#f4cfc0" data-fg="#4a1f12" data-ac="#4a1f12" data-label="For you">
+<section class="ch" id="jr-loved" data-bg="#efd5bf" data-fg="#43200f" data-ac="#b4562b" data-label="For you">
   <i class="blob b1" data-par="-.12"></i>
   <div class="wrap">
-    <p class="kicker jv">Chapter six &middot; For you, or someone you love</p>
+    <p class="kicker jv">For you, or someone you love</p>
     <h2 class="jh2" data-split>Shopping for yourself, or a loved one?</h2>
     <p class="jp jv">Buying for a parent, a grandparent or a new mum? Pick a routine that suits them. If they are pregnant, recovering from birth or on medication, check with their healthcare professional first. These are illustrative stories, not customers.</p>
     <div class="jstories">
@@ -326,10 +326,10 @@ HOME = '''
   </div>
 </section>
 
-<section class="ch" id="jr-proof" data-bg="#0f3b3a" data-fg="#eef6f2" data-ac="#f2b73d" data-label="Trust">
+<section class="ch" id="jr-proof" data-bg="#2b3a24" data-fg="#fbf4e4" data-ac="#e9b04a" data-label="Trust">
   <i class="blob b2" data-par=".1"></i>
   <div class="wrap">
-    <p class="kicker jv">Chapter seven &middot; Why you can trust it</p>
+    <p class="kicker jv">Why you can trust it</p>
     <h2 class="jh2" data-split>Awards, documents and honest limits.</h2>
     <div class="jaward">
       <img class="jv" src="@@img:award@@" alt="CIM Hong Kong Bay Area Vitality Living Brand Outstanding Award 2026, Gold Award, Herbaferm Pte Ltd" width="250" height="354">
@@ -350,7 +350,7 @@ HOME = '''
 
 <section class="ch ch-explore" id="jr-explore" data-bg="var(--bg)" data-fg="var(--fg)" data-ac="var(--forest)" data-label="Explore">
   <div class="wrap">
-    <p class="kicker jv">Chapter eight &middot; Keep exploring</p>
+    <p class="kicker jv">Keep exploring</p>
     <h2 class="jh2" data-split>Find your starting point.</h2>
     <div class="jv" style="margin-top:28px">@@QUIZ@@</div>
     <div class="sechead" style="margin-top:56px"><div><h2>From the journal</h2><p class="lede">Guides, kitchen ideas and plain-language science.</p></div><a class="btn btn-line" href="#learn">All articles</a></div>
@@ -358,7 +358,7 @@ HOME = '''
   </div>
 </section>
 
-<section class="ch ch-end" data-bg="#1f4d34" data-fg="#f2f7f1" data-ac="#f2b73d" data-label="Join us">
+<section class="ch ch-end" data-bg="#2b3a24" data-fg="#fbf4e4" data-ac="#e9b04a" data-label="Join us">
   <i class="blob b1" data-par=".1"></i>
   <div class="wrap jsplit top">
     <div><p class="kicker jv">Final chapter</p><h2 class="jh2" data-split>Clinic, retailer or distributor?</h2>

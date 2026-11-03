@@ -170,10 +170,10 @@ TOK["SLOT_USE_PREFER"] = X.slot("r43", "Prefer HF400 in use", "A person taking a
 TOK["EXPLORER"] = X.explorer()
 TOK["QUIZ"] = X.QUIZ
 TOK["JTEASE"] = "".join(X.jcard(a) for a in (X.ARTICLES[0], X.ARTICLES[1], X.ARTICLES[2]))
-HCOL = {"chamomile": ("#f6d04d", "#2a2100", "#2a2100"), "yarrow": ("#f7b5c6", "#3a0f1f", "#3a0f1f"),
-        "elderflower": ("#efe7c8", "#2c2a14", "#5a6b1f"), "rosehip": ("#e5484d", "#fff4f2", "#ffd6a0"),
-        "propolis": ("#c9822b", "#1f1100", "#1f1100"), "oak-bark": ("#5b3d24", "#f6ead9", "#f2b73d"),
-        "wormwood": ("#8fc29a", "#0c2a16", "#0c2a16")}
+HCOL = {"chamomile": ("#e8c45e", "#2a2100", "#6b3d12"), "yarrow": ("#e9bdb0", "#3a1710", "#8a3a22"),
+        "elderflower": ("#efe6cc", "#2c2a14", "#6b5a1f"), "rosehip": ("#b8473f", "#fff4ea", "#ffd9a0"),
+        "propolis": ("#b9772a", "#241200", "#fff0cf"), "oak-bark": ("#5b3d24", "#f6ead9", "#e9b04a"),
+        "wormwood": ("#aebb8c", "#1f2a10", "#4a3a14")}
 HPHOTO = {"chamomile": ("ai-chamomile", "50% 50%"), "yarrow": ("ai-field", "62% 60%"), "elderflower": ("ai-elder", "50% 40%"),
           "oak-bark": ("hero-bark", "50% 35%"), "rosehip": ("ai-rosehip", "20% 70%"), "wormwood": ("ai-wormwood", "50% 50%"),
           "propolis": ("ai-propolis", "50% 50%")}

@@ -984,3 +984,9 @@ h2.as3{font-size:1.4rem}
 .lg-foot{height:54px;background:var(--band-fg);margin:0 0 14px -4px}
 .lgi{display:block;width:64px;height:64px;margin-bottom:12px;background:var(--forest);-webkit-mask:url(../assets/logo/icon-mask.png) center/contain no-repeat;mask:url(../assets/logo/icon-mask.png) center/contain no-repeat}
 @media(max-width:520px){.lg{height:38px}}
+/* herb list: never push the page wider than the screen */
+.hlist{grid-template-columns:minmax(0,1fr)}
+@media (max-width:640px){.hlist{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.hlist button{flex-wrap:wrap;gap:2px 8px;padding:14px 4px;font-size:1.05rem}.hlist button span{font-size:.75rem}}
+html,body{overflow-x:clip}
+/* reference markers: larger tap area without changing the look */
+a[href^="#ref-"]{display:inline-block;min-width:28px;min-height:28px;line-height:28px;text-align:center;margin:-6px -4px}

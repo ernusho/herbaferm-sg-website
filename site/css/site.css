@@ -1202,6 +1202,30 @@ a[href^="#ref-"]{display:inline-block;min-width:28px;min-height:28px;line-height
 .pcd .jbtn{background:#b4562b;border-color:#b4562b}
 #jr-range .jh2{font-size:clamp(1.9rem,4.2vw,3.2rem);max-width:24ch}
 #jr-range .jprods{margin-top:30px}
+
+/* ---- dark mode: warm and low-glare ---- */
+:root[data-theme="dark"] .pcd{background:#2d2519;color:#f3e8d2;box-shadow:0 26px 50px -30px rgba(0,0,0,.8)}
+:root[data-theme="dark"] .pcd .jimg{background:#3a3023}.pcd .jimg.white{background:#f4efe3;border-color:#4a3d2b}
+:root[data-theme="dark"] .pcd .jbtn{background:#e08a52;border-color:#e08a52;color:#1c1208}
+:root[data-theme="dark"] .pcd.glass{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+:root[data-theme="dark"] .jdimg{background:radial-gradient(circle at 50% 35%,#4a3d2b,#2a2218)}
+:root[data-theme="dark"] .jdimg img{mix-blend-mode:normal;border-radius:18px}
+:root[data-theme="dark"] .jdpour{border-color:var(--jbg)}
+:root[data-theme="dark"] .jdt .jbtn{color:#1c1208}
+:root[data-theme="dark"] .jcheck i{color:#1c1208}
+:root[data-theme="dark"] .jpick a,.jt{background:#2d2519;color:#f3e8d2;border-color:rgba(255,255,255,.1)}
+@media (prefers-color-scheme:dark){
+:root:not([data-theme="light"]) .pcd{background:#2d2519;color:#f3e8d2;box-shadow:0 26px 50px -30px rgba(0,0,0,.8)}
+:root:not([data-theme="light"]) .pcd .jimg{background:#3a3023}.pcd .jimg.white{background:#f4efe3;border-color:#4a3d2b}
+:root:not([data-theme="light"]) .pcd .jbtn{background:#e08a52;border-color:#e08a52;color:#1c1208}
+:root:not([data-theme="light"]) .pcd.glass{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+:root:not([data-theme="light"]) .jdimg{background:radial-gradient(circle at 50% 35%,#4a3d2b,#2a2218)}
+:root:not([data-theme="light"]) .jdimg img{mix-blend-mode:normal;border-radius:18px}
+:root:not([data-theme="light"]) .jdpour{border-color:var(--jbg)}
+:root:not([data-theme="light"]) .jdt .jbtn{color:#1c1208}
+:root:not([data-theme="light"]) .jcheck i{color:#1c1208}
+:root:not([data-theme="light"]) .jpick a,.jt{background:#2d2519;color:#f3e8d2;border-color:rgba(255,255,255,.1)}
+}
 /* Blog articles, citations, tables (v10 SEO/AIO) */
 .atable{width:100%;border-collapse:collapse;margin-top:22px;font-size:1rem;line-height:1.5}
 .atable th,.atable td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}

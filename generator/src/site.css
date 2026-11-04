@@ -1091,3 +1091,8 @@ footer.site .soc{display:flex;gap:10px;margin:18px 0 0}footer.site .soc a{displa
 .pvlink{max-width:860px;margin:12px auto 0;font-size:.92rem;text-align:right}
 @media(max-width:640px){.vframe{border-radius:14px}.pvlink{text-align:left}}
 .pvideo{scroll-margin-top:130px}
+
+/* cart drawer: solid panel, toast moves out of the way */
+.drawer{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none}
+body:has(.drawer.on) .toast{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px));transform:translate(-50%,-20px)}
+body:has(.drawer.on) .toast.on{transform:translate(-50%,0)}

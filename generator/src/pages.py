@@ -595,7 +595,7 @@ PAGES.append(("partners", "Partners | Herbaferm Singapore", '''
   <p class="eyebrow">Who we work with</p><h2>Three kinds of partner</h2>
   <div class="three" style="margin-top:30px">
     <div class="card"><div class="ic">@@USERS@@</div><h3>Clinics and practitioners</h3><p>Longevity clinics and GPs who offer microbiome testing, personalised nutrition or structured protocols, and recommend supplements to their patients.</p></div>
-    <div class="card"><div class="ic">@@GLOBE@@</div><h3>Retailers</h3><p>Specialist health stores and premium retail. Drops need chilled shelves. Fiber Elite and Prefer HF400 suit ambient shelves.</p></div>
+    <div class="card"><div class="ic">@@GLOBE@@</div><h3>Retailers</h3><p>Specialist health stores and premium retail. Fiber Elite and Prefer HF400 suit ambient shelves. We suggest Drops are sold through our own store and through clinics and specialists. @@TAG_CONFIRM@@</p></div>
     <div class="card"><div class="ic">@@DOC@@</div><h3>Distributors</h3><p>Bulk and regional partners, and marketplace sellers for the ambient products.</p></div>
   </div>
 </div></section>
@@ -636,9 +636,9 @@ PAGES.append(("partners", "Partners | Herbaferm Singapore", '''
     <div class="card"><b class="ph1">1</b><h3>Longevity and preventive clinics</h3><p>Start here: practitioner-led and evidence-minded.</p></div>
     <div class="card"><b class="ph1">1</b><h3>Specialist and gastro clinics</h3><p>Digestive, wellness and sports practices.</p></div>
     <div class="card"><b class="ph1">2</b><h3>TCM clinics</h3><p>A natural fit for fermented herbal products. Classification to confirm.</p></div>
-    <div class="card"><b class="ph1">2</b><h3>Pharmacies and health retail</h3><p>Chilled shelves are needed for Drops.</p></div>
+    <div class="card"><b class="ph1">2</b><h3>Pharmacies and health retail</h3><p>Fiber Elite and Prefer HF400 on a normal shelf.</p></div>
     <div class="card"><b class="ph1">3</b><h3>Premium and supplement retail</h3><p>Specialist and department stores.</p></div>
-    <div class="card"><b class="ph1">3</b><h3>Online marketplaces</h3><p>Better for the ambient products than for chilled Drops.</p></div>
+    <div class="card"><b class="ph1">3</b><h3>Online marketplaces</h3><p>A fit for Fiber Elite and Prefer HF400. Drops stay with our own store and clinics.</p></div>
   </div>
   <p class="note" style="margin-top:14px">Numbers show the suggested order: 1 establish, 2 test, 3 scale. Taken from the project's distribution list and midterm plan. @@TAG_CONFIRM@@</p>
 </div></section>

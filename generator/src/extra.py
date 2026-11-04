@@ -81,7 +81,7 @@ ARTICLES = [
 <h2>At home</h2>
 <p>Keep it in the door shelf, next to the water you pour your morning glass from. Seeing the bottle when you reach for the water is the easiest reminder there is.</p>
 <h2>If you run a clinic or a shop</h2>
-<p>Drops need chilled storage, so they suit a clinic fridge or a chilled shelf better than an ambient display. Fiber Elite and Prefer HF400 are easier: they can sit on a normal shelf. We are happy to talk through storage and delivery with partners.</p>
+<p>Drops need chilled storage, so we suggest they are sold through our own store and through clinics and specialists, where a fridge is on hand. Fiber Elite and Prefer HF400 are easier: they can sit on a normal shelf. We are happy to talk through storage and delivery with partners.</p>
 <h2>Check the date</h2>
 <p>The best-before date is printed on each pack. Typical shelf-life periods will be added here once they are confirmed.</p>'''),
 ]

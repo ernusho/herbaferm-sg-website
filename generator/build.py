@@ -483,6 +483,14 @@ def make_site(dest):
         shutil.copy(root / "assets" / f, dest / "assets/images" / f)
     (dest / "assets/favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1f4d34"/><path d="M16 7c5 3 7 8 4 13-1 2-3 3-4 5-1-2-3-3-4-5-3-5-1-10 4-13z" fill="#eaf3ea"/></svg>')
     shutil.copytree(root / "assets" / "logo", dest / "assets/logo", dirs_exist_ok=True)
+    # cache-bust: tie asset URLs to their content so browsers never mix old and new files
+    import hashlib
+    _ver = hashlib.md5((css + SEARCH_JS + site_js + chat_js).encode()).hexdigest()[:8]
+    for _f in list(dest.rglob("*.html")):
+        _t = _f.read_text()
+        _n = re.sub(r'((?:css/site\.css|js/(?:site|chat|search-index)\.js))"', lambda m: m.group(1) + "?v=" + _ver + '"', _t)
+        if _n != _t:
+            _f.write_text(_n)
     print("site ->", dest, len(used), "images")
 
 if "--site" in sys.argv:

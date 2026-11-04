@@ -46,7 +46,7 @@ Pages are real folders with their own index.html (for example `/drops/`), so no 
 
 The page ships with built-in answers, so the chat works with no server. For live AI answers:
 
-1. Deploy `server/chat-worker.js` with `npx wrangler deploy` (run inside `server/`) and store the key with `npx wrangler secret put ANTHROPIC_API_KEY`.
+1. Deploy `server/chat-worker.js` with `npx wrangler deploy` (run inside `server/`). It uses Cloudflare Workers AI by default, which needs no key. To use Claude instead, also run `npx wrangler secret put ANTHROPIC_API_KEY`.
 2. Put your site's address in `ALLOWED_ORIGINS` in the worker.
 3. In `site/index.html`, above the chat script, add: `<script>window.HF_CHAT_ENDPOINT = "https://<your-worker>.workers.dev/";</script>` (or add it to the shell in `generator/build.py`).
 

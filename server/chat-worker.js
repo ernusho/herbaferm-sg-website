@@ -1,9 +1,11 @@
 // Herbaferm chat proxy (Cloudflare Worker). Keeps the model API key on the server.
-// Deploy: `npx wrangler deploy`, then `npx wrangler secret put ANTHROPIC_API_KEY`.
+// Free default: Cloudflare Workers AI (no key). Just run `npx wrangler deploy`.
+// Optional: `npx wrangler secret put ANTHROPIC_API_KEY` to use Claude instead.
 // Then add this line to site/index.html before the chat script:
 //   <script>window.HF_CHAT_ENDPOINT = "https://<your-worker>.workers.dev/";</script>
 const ALLOWED_ORIGINS = ["https://herbafermsg.com", "https://www.herbafermsg.com", "https://ernusho.github.io"]; // add your preview URL while testing
 const MODEL = "claude-haiku-5-5";
+const CF_MODEL = "@cf/meta/llama-3.1-8b-instruct";
 const MAX_MESSAGES = 10;
 const MAX_CHARS = 30000; // the first message carries the fact sheet
 
@@ -26,6 +28,19 @@ export default {
       .filter(m => (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
       .map(m => ({ role: m.role, content: m.content.slice(0, MAX_CHARS) }));
     if (!messages.length || messages[0].role !== "user") return new Response("Bad request", { status: 400, headers: cors });
+
+    if (!env.ANTHROPIC_API_KEY && env.AI) {
+      try {
+        // the first message carries the fact sheet and rules: send it as the system prompt
+        const out = await env.AI.run(CF_MODEL, {
+          max_tokens: 400,
+          messages: [{ role: "system", content: messages[0].content }, ...messages.slice(1)],
+        });
+        const text = (out && out.response) || "";
+        if (!text) return new Response("Upstream error", { status: 502, headers: cors });
+        return new Response(JSON.stringify({ text }), { headers: { ...cors, "content-type": "application/json" } });
+      } catch { return new Response("Upstream error", { status: 502, headers: cors }); }
+    }
 
     const res = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",

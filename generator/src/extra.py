@@ -564,6 +564,9 @@ PROD = {
 }
 
 
+VIDEO = {"drops": '''<section class="pvideo" id="drops-video"><div class="wrap"><h2>See it in use</h2><p class="pvsub">A short video showing the Drops.</p><div class="vframe"><iframe src="https://www.youtube-nocookie.com/embed/zuOQHHPyxVA?rel=0" title="Herbaferm Drops video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="pvlink"><a href="https://www.youtube.com/watch?v=zuOQHHPyxVA" target="_blank" rel="noopener">Watch on YouTube</a></p></div></section>'''}
+
+
 def prod_sections(pid, faqs):
     d = PROD[pid]
     m = d["more"]
@@ -574,7 +577,7 @@ def prod_sections(pid, faqs):
     lis = lambda a: "".join("<li>%s</li>" % t for t in a)
     also = "".join('<div><span><b>%s</b><small>%s</small></span><a class="btn btn-line sm" href="#%s">View</a><button class="btn btn-honey sm" type="button" data-add="%s">Add</button></div>' % (n, p, i, i) for i, n, p in m["also"])
     deliv = ('<ul class="pdeliv"><li><b>Delivery in Singapore</b><span>Details to follow @@TAG_SUPPLY@@</span></li><li><b>Returns</b><span>Terms to follow @@TAG_SUPPLY@@</span></li>'
-             '<li><b>Payment</b><span>Major cards and wallets @@TAG_CONFIRM@@</span></li><li><b>Reading</b><span><a href="learn/best-supplements-for-gut-health/">How to choose a gut health supplement</a></span></li><li><b>Questions?</b><span>Ask the Herbaferm assistant (bottom right) or see the <a href="#faq">FAQ</a></span></li></ul>'
+             '<li><b>Payment</b><span>Major cards and wallets @@TAG_CONFIRM@@</span></li><li><b>Reading</b><span><a href="learn/best-supplements-for-gut-health/">How to choose a gut health supplement</a></span></li><li><b>Questions?</b><span>Ask Herby (bottom right) or see the <a href="#faq">FAQ</a></span></li></ul>'
              '<div class="pbundle"><small>Goes well with</small>%s</div>') % also
     nav = ('<nav class="psub" aria-label="On this page"><div class="wrap">%s</div></nav>' % "".join(
         '<a href="#%s" data-to="%s-%s">%s</a>' % (pid, pid, s, l) for s, l in (("top", "Overview"), ("how", "How to take it"), ("fit", "Is it for you?"), ("inside", "Inside"), ("det", "Details"), ("faq", "Questions"), ("reviews", "Reviews"))))
@@ -588,10 +591,10 @@ def prod_sections(pid, faqs):
       "after": (
         '<section class="pglance"><div class="wrap"><div class="gtiles">%(glance)s</div></div></section>%(viz)s'
         '<section class="phow" id="%(p)s-how"><div class="wrap"><div class="pcols"><div><h2>How to take it</h2><ol class="psteps">%(steps)s</ol><p class="note" style="margin-top:18px">%(note)s</p></div>'
-        '<div class="pimg">%(img)s</div></div></div></section>'
+        '<div class="pimg">%(img)s</div></div></div></section>%(video)s'
         '%(fit)s<section class="pinside" id="%(p)s-inside"><div class="wrap"><div class="pbox"><h2>%(ih)s</h2><div>%(inside)s</div></div></div></section>'
-        '<section class="pdet" id="%(p)s-det"><div class="wrap"><h2>Details and safety</h2><div class="pgrid"><div class="tabs-wrap">') % dict(viz=VIZ[pid], glance=glance, steps=steps, note=d["stepnote"], img=d["img"], ih=d["inside_h"], inside=d["inside"], p=pid, fit=fit),
-      "faq": '<section class="pfaq" id="%s-faq"><div class="wrap"><h2>Questions before you buy</h2><div class="faq" style="margin-top:22px">%s</div><p class="note" style="margin-top:16px">More answers on the <a href="#faq">FAQ page</a>, or ask the Herbaferm assistant.</p></div></section>' % (pid, faq),
+        '<section class="pdet" id="%(p)s-det"><div class="wrap"><h2>Details and safety</h2><div class="pgrid"><div class="tabs-wrap">') % dict(video=VIDEO.get(pid, ''), viz=VIZ[pid], glance=glance, steps=steps, note=d["stepnote"], img=d["img"], ih=d["inside_h"], inside=d["inside"], p=pid, fit=fit),
+      "faq": '<section class="pfaq" id="%s-faq"><div class="wrap"><h2>Questions before you buy</h2><div class="faq" style="margin-top:22px">%s</div><p class="note" style="margin-top:16px">More answers on the <a href="#faq">FAQ page</a>, or ask Herby.</p></div></section>' % (pid, faq),
       "pt": d["pt"],
     }
 

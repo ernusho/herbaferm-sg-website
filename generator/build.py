@@ -116,11 +116,19 @@ patch("science", '<section class="alt"><div class="wrap">\n  <p class="eyebrow">
       SEC % ("", '<h2>From herb to bottle</h2><p class="lede">Select a step, or let it play.</p>' + X.stepper()))
 
 # ---------- SEO: blog under Learn (articles are real pages at learn/<slug>/) ----------
+CARDIMG = {"microbiome-test-singapore": "ai-clinic", "best-supplements-for-gut-health": "ai-shelf", "natural-supplements-for-gut-health": "ai-herbs",
+           "gut-health-supplement-reviews": "ai-chamomile", "best-probiotics-for-gut-health": "ai-fridge",
+           "best-supplements-for-gut-health-and-weight-loss": "ai-porridge", "what-is-gut-health": "ai-field",
+           "how-to-improve-gut-health": "ai-morning", "fermented-foods-gut-health": "ai-jars", "microbial-dysbiosis": "ai-meadow"}
+
+
 def _bcard(a, i):
-    return ('<a class="jcard rv" href="learn/%s/" data-c="Blog"><div class="cover cv%d"><span>%s</span></div><div><small>%s</small><h3>%s</h3><p>%s</p></div></a>'
-            % (a["slug"], (i % 6) + 1, a["kw"][0].upper() + a["kw"][1:], a["cat"], a["title"], a["dek"]))
+    _ph = CARDIMG.get(a["slug"])
+    _im = ('<img class="cimg" src="@@img:%s@@" alt="" loading="lazy" decoding="async">' % _ph) if _ph else ""
+    return (('<a class="jcard rv" href="learn/%s/" data-c="Blog"><div class="cover cv%d%s">' % (a["slug"], (i % 6) + 1, " has-img" if _ph else "")) + _im
+            + '<span>%s</span></div><div><small>%s</small><h3>%s</h3><p>%s</p></div></a>' % (a["kw"][0].upper() + a["kw"][1:], a["cat"], a["title"], a["dek"]))
 _BL = B.ARTICLES
-BLOG = ('<section><div class="wrap"><a class="jfeat rv" href="learn/microbial-dysbiosis/"><div class="cover cv4"><span>Microbial dysbiosis</span></div><div><p class="kicker" style="color:var(--leaf)">Start here</p>'
+BLOG = ('<section><div class="wrap"><a class="jfeat rv" href="learn/microbial-dysbiosis/"><div class="cover cv4 has-img"><img class="cimg" src="@@img:ai-meadow@@" alt="" loading="lazy" decoding="async"><span>Microbial dysbiosis</span></div><div><p class="kicker" style="color:var(--leaf)">Start here</p>'
         '<h2>%s</h2><p>%s</p><p><span class="more">Read the explainer</span></p></div></a>'
         '<h3 style="margin-top:48px">Questions people search for</h3><div class="jgrid" id="b-grid">%s</div>'
         '<p class="note" style="margin-top:36px">Articles are drafts written from published research for Herbaferm to review. Each names its sources, and a medical reviewer is still to be added. @@TAG_CONFIRM@@</p></div></section>'

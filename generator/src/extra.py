@@ -136,8 +136,10 @@ def article_page(i):
 
 
 def jcard(a):
-    return ('<a class="jcard rv" href="#%s" data-c="%s"><div class="cover %s"><span>%s</span></div><div><small>%s</small><h3>%s</h3><p>%s</p></div></a>'
-            % (a[0], a[2], a[1], a[3], a[2], a[3], a[4]))
+    ph = GP.get(a[0])
+    im = ('<img class="cimg" src="@@img:%s@@" alt="" loading="lazy" decoding="async">' % ph[0]) if ph else ""
+    return (('<a class="jcard rv" href="#%s" data-c="%s"><div class="cover %s%s">' % (a[0], a[2], a[1], " has-img" if ph else "")) + im
+            + '<span>%s</span></div><div><small>%s</small><h3>%s</h3><p>%s</p></div></a>' % (a[3], a[2], a[3], a[4]))
 
 
 # ---------------------------------------------------------------- interactive blocks

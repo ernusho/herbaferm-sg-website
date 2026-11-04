@@ -49,6 +49,21 @@
 <h2>Frequently asked questions</h2><div class="faqs"><details><summary>What is the fastest way to improve gut health?</summary><p>There is no instant fix. Research shows diet can shift the gut microbiome within days, and the usual advice is a wide variety of plant foods, fibre and fermented foods.</p></details><details><summary>Do fermented foods improve gut health?</summary><p>In one 10-week trial, a high fermented-food diet increased microbiome diversity in healthy adults. It was a small study, and results in other groups may differ.</p></details></div>
 <h2>References</h2><ol class="refs"><li id="ref-1">David LA, et al. Diet rapidly and reproducibly alters the human gut microbiome. <i>Nature</i> 2014;505:559-563. <a href="https://doi.org/10.1038/nature12820" target="_blank" rel="noopener">Source</a></li><li id="ref-2">Zmora N, Suez J, Elinav E. You are what you eat: diet, health and the gut microbiota. <i>Nat Rev Gastroenterol Hepatol</i> 2019;16:35-56. <a href="https://doi.org/10.1038/s41575-018-0061-2" target="_blank" rel="noopener">Source</a></li><li id="ref-3">Wastyk HC, et al. Gut-microbiota-targeted diets modulate human immune status. <i>Cell</i> 2021;184:4137-4153. <a href="https://doi.org/10.1016/j.cell.2021.06.019" target="_blank" rel="noopener">Source</a></li><li id="ref-4">Reynolds A, et al. Carbohydrate quality and human health: a series of systematic reviews and meta-analyses. <i>Lancet</i> 2019;393:434-445. <a href="https://doi.org/10.1016/S0140-6736(18)31809-9" target="_blank" rel="noopener">Source</a></li><li id="ref-5">Dethlefsen L, Relman DA. Incomplete recovery and individualized responses of the human distal gut microbiota to repeated antibiotic perturbation. <i>Proc Natl Acad Sci USA</i> 2011;108(Suppl 1):4554-4561. <a href="https://doi.org/10.1073/pnas.1000087107" target="_blank" rel="noopener">Source</a></li></ol>
 <p class="note">This article is general information, not medical advice. Herbaferm products are food supplements and are not intended to diagnose, treat, cure or prevent any disease. Speak to a doctor or pharmacist if you have a medical condition, are pregnant or take medication.</p>
+
+<section class="rvs rv-art" data-rv="article" data-rv-kind="comment"><div>
+  <h2>Was this article helpful?</h2>
+  <div class="rv-vote" role="group" aria-label="Was this article helpful?"><button type="button" data-v="yes">Yes, it helped</button><button type="button" data-v="no">Not really</button><span class="rv-thanks" aria-live="polite" hidden>Thank you, that helps us improve it.</span></div>
+  <h3>Questions or comments</h3>
+  <p class="rv-hint">Ask us something or tell us what is missing. Please do not share personal health details. Comments are read by our team before they appear.</p>
+  <div class="rv-list" aria-live="polite"><div class="rv-empty"><p>No comments yet. Be the first to ask a question.</p></div></div>
+  <form class="rv-form rv-open-form" novalidate>
+    <div class="rv-row"><label>First name or initial<input name="name" maxlength="30" required></label><label>Email <em>(private, optional)</em><input name="email" type="email" maxlength="80"></label></div>
+    <label>Your question or comment<textarea name="body" rows="4" maxlength="500" required></textarea><span class="rv-count">0 / 500</span></label>
+    <p class="rv-err" role="alert" hidden></p>
+    <div class="rv-actions"><button type="submit" class="btn btn-honey">Post comment</button></div>
+    <p class="rv-proto">Prototype: nothing is sent yet. Your comment stays in this browser as a private preview.</p>
+  </form>
+</div></section>
 <h2>Read next</h2><div class="rnext"><a href="../gut-health-supplement-reviews/"><small>Supplements</small>Gut health supplement reviews: how to read them and what to check first</a><a href="../best-probiotics-for-gut-health/"><small>Supplements</small>Best probiotics for gut health: what to look for before you buy</a></div>
 </article></div></section>
 </main>
@@ -61,5 +76,58 @@
   </div>
   <div class="legal"><p>These products are food supplements. They are not intended to diagnose, treat, cure or prevent any disease and are not a substitute for a varied diet or medical advice. Speak to a healthcare professional if you are pregnant, breastfeeding, have a medical condition or take medication. Some scene and ingredient images on this site are AI-generated illustrations.</p><p>&copy; 2026 Herbaferm Pte. Ltd. Prototype built for the NUS FSP4003 consulting project. </p></div>
 </div></footer><script>(function(){var r=document.documentElement,t=document.getElementById("theme"),b=document.getElementById("burger");function d(){var a=r.getAttribute("data-theme");return a?a==="dark":matchMedia("(prefers-color-scheme: dark)").matches}function l(){t.textContent=d()?"Light":"Dark";t.setAttribute("aria-label",d()?"Switch to light mode":"Switch to dark mode")}t.addEventListener("click",function(){r.setAttribute("data-theme",d()?"light":"dark");l()});l();b.addEventListener("click",function(){document.querySelector(".mnav").classList.toggle("on")})})();</script>
+<script>/* reviews and comments: front end only, drafts live in this browser. Set window.HF_REVIEW_ENDPOINT to post to a backend. */
+(function(){
+  var STAR='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.7 6.1 20.8l1.2-6.5L2.5 9.7l6.6-.9z"/></svg>';
+  var CLAIM=/\b(cure[sd]?|curing|heal(s|ed|ing)?|treat(s|ed|ing|ment)?|prevent(s|ed|ing)?|diagnos\w*|disease|cancer|diabet\w*|ibs|crohn\w*|colitis|infection|medicat\w*|prescri\w*|anxiety|depress\w*)\b/i;
+  function $(s,r){return (r||document).querySelector(s)}
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  function load(k){try{return JSON.parse(localStorage.getItem("hf-rv-"+k)||"[]")}catch(e){return[]}}
+  function save(k,v){try{localStorage.setItem("hf-rv-"+k,JSON.stringify(v))}catch(e){}}
+  function stars(n){var h="";for(var i=1;i<=5;i++)h+='<span class="rv-s'+(i<=n?" on":"")+'">'+STAR+'</span>';return '<span class="rv-stars" role="img" aria-label="'+n+' out of 5 stars">'+h+'</span>'}
+  function render(box){
+    var k=box.getAttribute("data-rv"),kind=box.getAttribute("data-rv-kind"),items=load(k),list=$(".rv-list",box);
+    if(!list)return;
+    var empty=list.getAttribute("data-empty");if(empty===null){list.setAttribute("data-empty",list.innerHTML);empty=list.innerHTML}
+    if(!items.length){list.innerHTML=empty}
+    else list.innerHTML=items.map(function(r,i){
+      return '<article class="rv-item"><div class="rv-badge">Your private preview, not published</div>'+
+        (kind==="review"?'<div class="rv-top">'+stars(r.rating)+'<b>'+esc(r.title)+'</b></div>':'')+
+        '<p>'+esc(r.body)+'</p><p class="rv-by">'+esc(r.name)+(r.used?' &middot; used '+esc(r.used.toLowerCase()):'')+' &middot; '+esc(r.date)+
+        ' <button type="button" class="rv-del" data-i="'+i+'">Delete</button></p></article>'}).join("");
+  }
+  function msg(f,t){var e=$(".rv-err",f);if(!e)return;e.textContent=t||"";e.hidden=!t}
+  function field(f,n){var e=f.elements[n];return e?(e.value||"").trim():""}
+  function submit(f){
+    var box=f.closest(".rvs"),k=box.getAttribute("data-rv"),kind=box.getAttribute("data-rv-kind");
+    var r={name:field(f,"name"),body:field(f,"body"),title:field(f,"title"),used:field(f,"used"),email:field(f,"email"),date:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})};
+    if(kind==="review"){var c=f.querySelector("input[type=radio]:checked");r.rating=c?+c.value:0;if(!r.rating)return msg(f,"Please choose a star rating."),void 0}
+    if(kind==="review"&&!r.title)return msg(f,"Please add a short headline."),void 0;
+    if(!r.name)return msg(f,"Please add your first name or initial."),void 0;
+    if(r.body.length<(kind==="review"?20:8))return msg(f,"Please write a little more so others can learn from it."),void 0;
+    if(CLAIM.test(r.title+" "+r.body))return msg(f,"Please remove wording about treating, curing, preventing or medical conditions. We cannot publish those. Describe your routine and what you liked instead."),void 0;
+    if(r.email&&!/^\S+@\S+\.\S+$/.test(r.email))return msg(f,"That email does not look right, or leave it empty."),void 0;
+    if(f.elements.ok&&!f.elements.ok.checked)return msg(f,"Please tick the box to agree."),void 0;
+    msg(f,"");
+    if(window.HF_REVIEW_ENDPOINT){try{fetch(window.HF_REVIEW_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({page:k,kind:kind,review:r,url:location.href})})}catch(e){}}
+    var all=load(k);all.unshift(r);save(k,all);
+    f.reset();var cnt=$(".rv-count",f);if(cnt)cnt.textContent="0 / "+f.elements.body.maxLength;
+    if(kind==="review"){f.hidden=true;var b=$(".rv-open",box);if(b)b.setAttribute("aria-expanded","false")}
+    render(box);var first=$(".rv-item",box);if(first){first.scrollIntoView({block:"center",behavior:"smooth"})}
+  }
+  document.addEventListener("click",function(e){
+    var t=e.target;if(!t.closest)return;
+    var o=t.closest(".rv-open");if(o){var box=o.closest(".rvs"),f=$(".rv-form",box),show=f.hidden;f.hidden=!show;o.setAttribute("aria-expanded",show?"true":"false");if(show){f.scrollIntoView({block:"center",behavior:"smooth"});var i=f.querySelector("input[type=radio]");}return}
+    var c=t.closest(".rv-cancel");if(c){var f2=c.closest("form");f2.hidden=true;msg(f2,"");var b2=$(".rv-open",f2.closest(".rvs"));if(b2)b2.setAttribute("aria-expanded","false");return}
+    var d=t.closest(".rv-del");if(d){var bx=d.closest(".rvs"),k=bx.getAttribute("data-rv"),a=load(k);a.splice(+d.getAttribute("data-i"),1);save(k,a);render(bx);return}
+    var v=t.closest(".rv-vote button");if(v){var g=v.parentNode;[].forEach.call(g.querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===v?"true":"false")});var th=$(".rv-thanks",g);if(th)th.hidden=false;try{localStorage.setItem("hf-vote-"+location.pathname,v.getAttribute("data-v"))}catch(er){}}
+  });
+  document.addEventListener("submit",function(e){var f=e.target;if(f.classList&&f.classList.contains("rv-form")){e.preventDefault();submit(f)}});
+  document.addEventListener("input",function(e){var t=e.target;if(t.tagName==="TEXTAREA"&&t.closest(".rv-form")){var c=$(".rv-count",t.parentNode);if(c)c.textContent=t.value.length+" / "+t.maxLength}});
+  function init(){[].forEach.call(document.querySelectorAll(".rvs[data-rv]"),function(b){render(b);
+    if(b.getAttribute("data-rv")==="article"){try{var s=localStorage.getItem("hf-vote-"+location.pathname);if(s){var bt=b.querySelector('.rv-vote button[data-v="'+s+'"]');if(bt){bt.setAttribute("aria-pressed","true");var th=$(".rv-thanks",b);if(th)th.hidden=false}}}catch(er){}}})}
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+})();
+</script>
 </body>
 </html>

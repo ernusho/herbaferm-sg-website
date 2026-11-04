@@ -9,8 +9,9 @@ sys.path.insert(0, str(root / "src"))
 import pages as P
 import extra as X
 import blog as B
+import reviews as RV
 
-CSS = (root / "src/site.css").read_text() + (root / "src/journey.css").read_text() + (root / "src/blog.css").read_text()
+CSS = (root / "src/site.css").read_text() + (root / "src/journey.css").read_text() + (root / "src/blog.css").read_text() + (root / "src/reviews.css").read_text()
 SITE_URL = (__import__("os").environ.get("HF_SITE_URL") or "https://ernusho.github.io/herbaferm-sg-website/").rstrip("/") + "/"  # GitHub Pages address (assumed); override with HF_SITE_URL
 
 def uri(name):
@@ -157,7 +158,7 @@ for _i, (_k, _t, _h) in enumerate(P.PAGES):
         _h = re.sub(r'<div class="tabs" role="tablist">.*?</div>', '', _h, count=1, flags=re.S)
         _h = re.sub(r'<div class="tabpanel" id="([\w-]+)"( hidden)?>', lambda m: '<div class="tabpanel dcard" id="%s"><h3>%s</h3>' % (m.group(1), _labels.get(m.group(1), "")), _h)
         _h = _h.replace('<div class="tabs-wrap">', '</div></section>' + _s["nav"] + _s["after"], 1)
-        _h, _n = re.subn(r'</div></section>\s*<section class="alt">', lambda m: _s["extra"] + '</div></div></section>' + _s["faq"] + '\n<section class="alt">', _h, count=1)
+        _h, _n = re.subn(r'</div></section>\s*<section class="alt">', lambda m: _s["extra"] + '</div></div></section>' + _s["faq"] + RV.product(_k, {"drops": "Herbaferm Drops", "fiber": "Fiber Elite", "prefer": "Prefer HF400"}[_k]) + '\n<section class="alt">', _h, count=1)
         assert _n == 1, _k
         _h = re.sub(r'<section class="(pglance|pviz|phow|pfit|pinside|pdet|pfaq)"', lambda m: '<section style="--pt:%s" class="%s"' % (_s["pt"], m.group(1)), _h)
         P.PAGES[_i] = (_k, _t, _h)
@@ -360,7 +361,7 @@ for _a in B.ARTICLES + [B.DYS]:
     idx.append({"id": _a["slug"], "t": _a["title"], "k": "Guide", "x": _txt(_a["dek"] + " " + _a["body"])[:1600], "u": "learn/%s/" % _a["slug"]})
 out_js_pending = True
 SEARCH_JS = "window.HFIDX=" + json.dumps(idx, ensure_ascii=False, separators=(",", ":")) + ";\n"
-out = out.replace("__JS__", SEARCH_JS + ((root / "src/site.js").read_text() + "\n" + (root / "src/journey.js").read_text()) + "\n" + (root / "src/chat.js").read_text())
+out = out.replace("__JS__", SEARCH_JS + ((root / "src/site.js").read_text() + "\n" + (root / "src/journey.js").read_text() + "\n" + (root / "src/reviews.js").read_text()) + "\n" + (root / "src/chat.js").read_text())
 out_pre = out
 out = inline_imgs(out)
 leftover = set(re.findall(r"@@[A-Za-z_:\-]+@@", out))
@@ -376,7 +377,7 @@ def make_site(dest):
     for d in ("css", "js", "assets/images"):
         (dest / d).mkdir(parents=True, exist_ok=True)
     css = CSS
-    site_js = ((root / "src/site.js").read_text() + "\n" + (root / "src/journey.js").read_text())
+    site_js = ((root / "src/site.js").read_text() + "\n" + (root / "src/journey.js").read_text() + "\n" + (root / "src/reviews.js").read_text())
     chat_js = (root / "src/chat.js").read_text()
     html = out_pre
     html = html.replace("<style>\n" + css + "\n</style>", '<link rel="stylesheet" href="css/site.css">')

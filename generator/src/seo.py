@@ -2,6 +2,9 @@
 import html as _h, json, re
 import blog as B
 import figures as FG
+import reviews as RV
+import pathlib
+RV_JS = (pathlib.Path(__file__).parent / "reviews.js").read_text()
 
 ORG = {
     "@type": "Organization", "@id": "{base}#org", "name": "Herbaferm Pte. Ltd.", "alternateName": "Herbaferm Singapore",
@@ -120,8 +123,8 @@ def article_html(a, others, base, shell_head, header, footer, routes):
     main = ('<main id="main">\n<div class="phero"><div class="wrap">%s<p class="kicker">%s</p><h1>%s</h1><p class="lede">%s</p></div></div>\n'
             '<section><div class="wrap"><article class="article">%s<aside class="inshort"><b>In short</b><ul>%s</ul></aside>%s\n%s\n'
             '<h2>Frequently asked questions</h2><div class="faqs">%s</div>\n<h2>References</h2><ol class="refs">%s</ol>\n'
-            '<p class="note">%s</p>\n<h2>Read next</h2><div class="rnext">%s</div>\n</article></div></section>\n</main>\n'
-            ) % (crumb, a["cat"], a["title"], a["dek"], by, "".join("<li>%s</li>" % x for x in short), hero, body + authbox, faq, refs, B.DISCLAIM, nxt)
+            '<p class="note">%s</p>\n%s<h2>Read next</h2><div class="rnext">%s</div>\n</article></div></section>\n</main>\n'
+            ) % (crumb, a["cat"], a["title"], a["dek"], by, "".join("<li>%s</li>" % x for x in short), hero, body + authbox, faq, refs, B.DISCLAIM, RV.article(), nxt)
     # schema: Article + FAQPage + BreadcrumbList (+ Book and Person on the dysbiosis page)
     graph = []
     art = {"@context": "https://schema.org", "@type": "Article", "headline": a["title"], "description": a["desc"],
@@ -153,7 +156,7 @@ def article_html(a, others, base, shell_head, header, footer, routes):
           'function l(){t.textContent=d()?"Light":"Dark";t.setAttribute("aria-label",d()?"Switch to light mode":"Switch to dark mode")}'
           't.addEventListener("click",function(){r.setAttribute("data-theme",d()?"light":"dark");l()});l();'
           'b.addEventListener("click",function(){document.querySelector(".mnav").classList.toggle("on")})})();</script>')
-    return head + "</head>\n<body>\n" + header + main + footer + js + "\n</body>\n</html>\n"
+    return head + "</head>\n<body>\n" + header + main + footer + js + "\n<script>" + RV_JS + "</script>\n</body>\n</html>\n"
 
 
 def robots(base):

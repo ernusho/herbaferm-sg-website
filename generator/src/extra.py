@@ -578,7 +578,7 @@ def prod_sections(pid, faqs):
              '<li><b>Payment</b><span>Major cards and wallets @@TAG_CONFIRM@@</span></li><li><b>Reading</b><span><a href="learn/best-supplements-for-gut-health/">How to choose a gut health supplement</a></span></li><li><b>Questions?</b><span>Ask the Herbaferm assistant (bottom right) or see the <a href="#faq">FAQ</a></span></li></ul>'
              '<div class="pbundle"><small>Goes well with</small>%s</div>') % also
     nav = ('<nav class="psub" aria-label="On this page"><div class="wrap">%s</div></nav>' % "".join(
-        '<a href="#%s" data-to="%s-%s">%s</a>' % (pid, pid, s, l) for s, l in (("top", "Overview"), ("how", "How to take it"), ("fit", "Is it for you?"), ("inside", "Inside"), ("det", "Details"), ("faq", "Questions"))))
+        '<a href="#%s" data-to="%s-%s">%s</a>' % (pid, pid, s, l) for s, l in (("top", "Overview"), ("how", "How to take it"), ("fit", "Is it for you?"), ("inside", "Inside"), ("det", "Details"), ("faq", "Questions"), ("reviews", "Reviews"))))
     fit = ('<section class="pfit" id="%s-fit"><div class="wrap"><h2>Is it right for you?</h2><div class="fitgrid"><div class="fit yes"><h3>Suits you if&hellip;</h3><ul>%s</ul></div>'
            '<div class="fit chk"><h3>Check with a healthcare professional first if&hellip;</h3><ul>%s</ul></div></div></div></section>') % (pid, lis(m["suits"]), lis(m["check"]))
     extra = ('<div class="dcard"><h3>Storage and shelf life</h3><p>%s</p></div>'

@@ -67,3 +67,8 @@ def article():
   </form>
 </div></section>
 '''
+
+
+def jump(key):
+    return ('<a class="rv-jump" href="#%s" data-rv-go="%s-reviews"><span class="rv-stars" aria-hidden="true">%s</span>'
+            '<span>No reviews yet. <b>Write the first one</b></span></a>') % (key, key, _stars())

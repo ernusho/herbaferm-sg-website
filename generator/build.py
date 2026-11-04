@@ -153,6 +153,7 @@ for _i, (_k, _t, _h) in enumerate(P.PAGES):
         _h = _h.replace('<section style="padding-block:40px 70px">', '<section class="ptop" id="%s-top" style="--pt:%s">' % (_k, _s["pt"]), 1)
         _h = _h.replace('<div class="keyfacts">', _s["trust"] + '<div class="keyfacts">', 1)
         _h = _h.replace('<p class="note">', _s["deliv"] + '<p class="note">', 1)
+        _h = re.sub(r'(<div class="price">.*?</div>)', lambda m: m.group(1) + RV.jump(_k), _h, count=1, flags=re.S)
         # tabs become visible cards
         _labels = dict(re.findall(r'aria-controls="([\w-]+)">([^<]+)</button>', _h))
         _h = re.sub(r'<div class="tabs" role="tablist">.*?</div>', '', _h, count=1, flags=re.S)

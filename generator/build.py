@@ -273,7 +273,7 @@ DESCS = {
     "prefer": "Prefer HF400 capsules contain fermented herb fibres and are taken alongside Herbaferm Drops. Food supplement, 14 capsules.",
     "learn": "Plain-language gut health guides: microbiome tests in Singapore, supplements, probiotics, fermented foods and microbial dysbiosis, each with named sources.",
     "about": "Who is behind Herbaferm, the awards it has received and the quality documents behind its fermented herbal food supplements.",
-    "partners": "Clinics, specialists and partners: how to carry Herbaferm fermented herbal food supplements in Singapore and request the partner pack.",
+    "partners": "Clinics, pharmacies and retailers: how to stock Herbaferm fermented herbal food supplements in Singapore and request the partner pack.",
     "faq": "Answers on using, storing and buying Herbaferm Drops, Fiber Elite and Prefer HF400, and on how food supplements are regulated in Singapore.",
     "contact": "Contact Herbaferm Singapore for questions, orders and partner enquiries.",
 }

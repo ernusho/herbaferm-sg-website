@@ -357,10 +357,10 @@ HOME = '''
 <section class="ch ch-end" data-bg="#2b3a24" data-fg="#fbf4e4" data-ac="#e9b04a" data-label="Join us">
   <i class="blob b1" data-par=".1"></i>
   <div class="wrap jsplit top">
-    <div><p class="kicker jv">Partners</p><h2 class="jh2" data-split>Clinic or specialist?</h2>
+    <div><p class="kicker jv">Partners</p><h2 class="jh2" data-split>Clinic, retailer or distributor?</h2>
     <p class="jp jv">Ask for the partner evidence pack: formulation, quality, testing, shelf life and literature.</p>
     <p class="jv"><a class="jbtn" href="#partners">Become a partner</a></p></div>
-    <form class="form jform jv" data-proto="Thanks. This is a prototype, so nothing was sent." novalidate><h3>Guides and news</h3><p>An occasional email with usage guides, Fiber Elite ideas and Singapore clinic news.</p><label for="nl-email">Email address<input id="nl-email" type="email" autocomplete="email" placeholder="you@example.com"></label><button class="jbtn" type="submit">Subscribe</button><p class="note fnote">We will only use your email for Herbaferm news. @@TAG_CONFIRM@@</p></form>
+    <form class="form jform jv" data-proto="Thanks. This is a prototype, so nothing was sent." novalidate><h3>Guides and news</h3><p>An occasional email with usage guides, Fiber Elite ideas and Singapore stockist news.</p><label for="nl-email">Email address<input id="nl-email" type="email" autocomplete="email" placeholder="you@example.com"></label><button class="jbtn" type="submit">Subscribe</button><p class="note fnote">We will only use your email for Herbaferm news. @@TAG_CONFIRM@@</p></form>
   </div>
 </section>
 </div>
@@ -583,7 +583,7 @@ def prod_sections(pid, faqs):
     fit = ('<section class="pfit" id="%s-fit"><div class="wrap"><h2>Is it right for you?</h2><div class="fitgrid"><div class="fit yes"><h3>Suits you if&hellip;</h3><ul>%s</ul></div>'
            '<div class="fit chk"><h3>Check with a healthcare professional first if&hellip;</h3><ul>%s</ul></div></div></div></section>') % (pid, lis(m["suits"]), lis(m["check"]))
     extra = ('<div class="dcard"><h3>Storage and shelf life</h3><p>%s</p></div>'
-             '<div class="dcard"><h3>Delivery, returns and payment</h3><p>Singapore delivery times and fees, returns terms and payment methods will be listed here. @@TAG_SUPPLY@@</p></div>') % m["shelf"]
+             '<div class="dcard"><h3>Delivery, returns and payment</h3><p>Singapore delivery times and fees, returns terms and payment methods will be listed here. @@TAG_SUPPLY@@ Also listed on the ConnectingDNA marketplace in Singapore. @@TAG_CONFIRM@@</p></div>') % m["shelf"]
     return {
       "nav": nav, "fit": fit, "extra": extra, "deliv": deliv,
       "trust": '<ul class="ptrust">%s</ul>' % trust,

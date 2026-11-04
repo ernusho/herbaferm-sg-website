@@ -108,7 +108,7 @@ FAQS = [
     ("products", "Are Drops free from alcohol and sugar?",
      "Herbaferm describes the Drops as free from preservatives, alcohol and sugar. The leaflets confirm no preservatives. " + TC),
     ("products", "Is Herbaferm sold in Singapore yet?",
-     "Yes, early on. All three products are listed on the ConnectingDNA marketplace in Singapore, with first sales (12+, 17+ and 20+ units shown at the time of checking). Our recommendation is to sell Drops only through Herbaferm directly and through clinics and specialists, not through retailers. " + TC),
+     "Yes, early on. All three products are listed on the ConnectingDNA marketplace in Singapore, with first sales (12+, 17+ and 20+ units shown at the time of checking). Clinic and retail stockists are still being built. " + TC),
     ("products", "What are the products free from?",
      "The ConnectingDNA listings show a free-from icon set (gluten, sugar, alcohol and lactose free, vegetarian) on all three products. That conflicts with the leaflet, which says Fiber Elite contains gluten, so please rely on the pack label. " + TC),
     ("products", "What does a day cost?",
@@ -120,7 +120,7 @@ FAQS = [
     ("about", "Is Herbaferm approved by the HSA?",
      "In Singapore, health supplements do not need pre-market approval from the Health Sciences Authority, so no supplement can be described as \"HSA approved\". Herbaferm products are marketed as food supplements. " + TC),
     ("ordering", "Where can I buy Herbaferm in Singapore?",
-     "Today the range is sold through this website and on the ConnectingDNA marketplace. Our recommended approach for Drops is Herbaferm direct plus clinics and specialists, with no retail stockists. The Shop page has a sign-up for news about clinic availability. " + TC),
+     "Today the range is sold through this website and on the ConnectingDNA marketplace. Clinic, pharmacy and retail stockists are being built, and the Shop page has a sign-up for stockist news. " + TC),
     ("ordering", "How much does delivery cost, and how long does it take?",
      "Delivery details for Singapore will be listed here. " + tag("To supply")),
     ("ordering", "What is your returns policy?",
@@ -130,7 +130,7 @@ FAQS = [
     ("partners", "How can my clinic or shop stock Herbaferm?",
      "Send us an enquiry on the Partners page. We reply with the partner evidence pack: formulation, quality and safety information, testing, shelf life and available literature."),
     ("partners", "Do you offer samples for practitioners?",
-     "Sample availability for practitioners and partners will be confirmed. " + TC),
+     "Sample availability for practitioners and retail buyers will be confirmed. " + TC),
 ]
 
 NAV = [("shop", "Shop"), ("learn", "Learn"), ("about", "About"), ("partners", "Partners")]
@@ -224,11 +224,11 @@ PAGES.append(("home", "Herbaferm Singapore", '''
 </div></section>
 
 <section class="alt"><div class="wrap">
-  <div class="cta"><div><h2>Clinic or specialist?</h2><p>Request the partner evidence pack: formulation, quality, testing, shelf life and literature.</p></div><a class="btn btn-honey" href="#partners">Become a partner</a></div>
+  <div class="cta"><div><h2>Clinic, retailer or distributor?</h2><p>Request the partner evidence pack: formulation, quality, testing, shelf life and literature.</p></div><a class="btn btn-honey" href="#partners">Become a partner</a></div>
 </div></section>
 
 <section><div class="wrap split top">
-  <div><p class="eyebrow">Stay in touch</p><h2>Guides and news, no noise</h2><p class="lede">Occasional emails with usage guides, Fiber Elite ideas and Singapore clinic news.</p></div>
+  <div><p class="eyebrow">Stay in touch</p><h2>Guides and news, no noise</h2><p class="lede">Occasional emails with usage guides, Fiber Elite ideas and Singapore stockist news.</p></div>
   <form class="form" data-proto="Thanks. This is a prototype, so nothing was sent." novalidate><label for="nl-email">Email address<input id="nl-email" type="email" autocomplete="email" placeholder="you@example.com"></label><button class="btn btn-forest" type="submit">Subscribe</button><p class="note fnote">We will only use your email for Herbaferm news. @@TAG_CONFIRM@@</p></form>
 </div></section>
 '''))
@@ -248,8 +248,8 @@ PAGES.append(("shop", "Shop | Herbaferm Singapore", '''
 
 <section class="alt" style="padding-block:44px"><div class="wrap">
   <div class="where">
-    <div><h3>Buy online now</h3><p>The whole range ships from this store. Buying direct is the recommended route for Drops.</p></div>
-    <div><h3>Clinics and specialists</h3><p>Being built. Drops are recommended for Herbaferm direct and clinics and specialists only. Leave your email for clinic news.</p></div>
+    <div><h3>Buy online now</h3><p>The whole range ships from this store. It is also listed on the ConnectingDNA marketplace in Singapore.</p></div>
+    <div><h3>Clinics and stockists</h3><p>Being built. Leave your email for stockist news.</p></div>
     <form class="form inline" data-proto="Thanks. This is a prototype, so nothing was sent." novalidate><label for="st-email">Email address<input id="st-email" type="email" autocomplete="email" placeholder="you@example.com"></label><button class="btn btn-forest" type="submit">Tell me</button></form>
   </div>
 </div></section>
@@ -598,8 +598,8 @@ PAGES.append(("partners", "Partners | Herbaferm Singapore", '''
   <p class="eyebrow">Who we work with</p><h2>Three kinds of partner</h2>
   <div class="three" style="margin-top:30px">
     <div class="card"><div class="ic">@@USERS@@</div><h3>Clinics and practitioners</h3><p>Longevity clinics and GPs who offer microbiome testing, personalised nutrition or structured protocols, and recommend supplements to their patients.</p></div>
-    <div class="card"><div class="ic">@@GLOBE@@</div><h3>Retailers</h3><p>Specialist health stores and premium retail, for Fiber Elite and Prefer HF400 only. We recommend that Drops stay with Herbaferm direct and clinics and specialists, not retail shelves.</p></div>
-    <div class="card"><div class="ic">@@DOC@@</div><h3>Distributors</h3><p>Bulk and regional partners, and marketplace sellers for the ambient products only. Not for Drops.</p></div>
+    <div class="card"><div class="ic">@@GLOBE@@</div><h3>Retailers</h3><p>Specialist health stores and premium retail. Drops need chilled shelves. Fiber Elite and Prefer HF400 suit ambient shelves.</p></div>
+    <div class="card"><div class="ic">@@DOC@@</div><h3>Distributors</h3><p>Bulk and regional partners, and marketplace sellers for the ambient products.</p></div>
   </div>
 </div></section>
 
@@ -634,21 +634,21 @@ PAGES.append(("partners", "Partners | Herbaferm Singapore", '''
 
 <section><div class="wrap">
   <p class="eyebrow">Where we are heading</p><h2>Six places to find Herbaferm</h2>
-  <p class="lede">The Singapore plan starts with practitioners, then widens for the ambient products. Our recommendation is that Drops are sold only through Herbaferm direct and clinics and specialists. These are target channels, not confirmed stockists.</p>
+  <p class="lede">The Singapore plan starts with practitioners, then widens. These are target channels, not confirmed stockists.</p>
   <div class="chan" style="margin-top:30px">
     <div class="card"><b class="ph1">1</b><h3>Longevity and preventive clinics</h3><p>Start here: practitioner-led and evidence-minded.</p></div>
     <div class="card"><b class="ph1">1</b><h3>Specialist and gastro clinics</h3><p>Digestive, wellness and sports practices.</p></div>
     <div class="card"><b class="ph1">2</b><h3>TCM clinics</h3><p>A natural fit for fermented herbal products. Classification to confirm.</p></div>
-    <div class="card"><b class="ph1">2</b><h3>Pharmacies and health retail</h3><p>Fiber Elite and Prefer HF400 only. Drops are not planned for retail shelves.</p></div>
-    <div class="card"><b class="ph1">3</b><h3>Premium and supplement retail</h3><p>Specialist and department stores, ambient products only.</p></div>
-    <div class="card"><b class="ph1">3</b><h3>Online marketplaces</h3><p>Ambient products only. We recommend keeping Drops off marketplaces.</p></div>
+    <div class="card"><b class="ph1">2</b><h3>Pharmacies and health retail</h3><p>Chilled shelves are needed for Drops.</p></div>
+    <div class="card"><b class="ph1">3</b><h3>Premium and supplement retail</h3><p>Specialist and department stores.</p></div>
+    <div class="card"><b class="ph1">3</b><h3>Online marketplaces</h3><p>Better for the ambient products than for chilled Drops.</p></div>
   </div>
-  <p class="note" style="margin-top:14px">Numbers show the suggested order: 1 establish, 2 test, 3 scale. Taken from the project's distribution list and midterm plan, with one change: Drops go through Herbaferm direct and clinics and specialists only. This is our recommendation, not yet agreed with Herbaferm. @@TAG_CONFIRM@@</p>
+  <p class="note" style="margin-top:14px">Numbers show the suggested order: 1 establish, 2 test, 3 scale. Taken from the project's distribution list and midterm plan. @@TAG_CONFIRM@@</p>
 </div></section>
 
 <section><div class="wrap">
   <p class="eyebrow">Already in Singapore</p><h2>First listings on a Singapore marketplace</h2>
-  <p class="lede">All three products are listed on ConnectingDNA, a Singapore wellness marketplace, with next-business-day delivery shown. Early traction, not proof of demand. Our recommendation is to review the Drops listing, because Drops are meant for Herbaferm direct and clinic sales only.</p>
+  <p class="lede">All three products are listed on ConnectingDNA, a Singapore wellness marketplace, with next-business-day delivery shown. Early traction, not proof of demand.</p>
   <div class="tblwrap" style="margin-top:28px"><table>
     <thead><tr><th></th><th>Herbaferm Drops</th><th>Fiber Elite</th><th>Prefer HF400</th></tr></thead>
     <tbody>
@@ -719,7 +719,7 @@ PHEROS = {
     "LEARN": phero("Learn", "Learn", "Guides and ideas", "Starter schedules, Fiber Elite ideas and a balanced approach to everyday use."),
     "ABOUT": phero("About", "About Herbaferm", "A Hungarian formula, in Singapore", "Who we are, where the range comes from and what we stand for."),
     "QUALITY": phero("Quality", "Quality and certificates", "Quality you can check", "Registrations, lab documents and manufacturing information, with what is still being updated."),
-    "PARTNERS": phero("Partners", "For clinics, specialists and partners", "Carry Herbaferm in Singapore", "Tell us how you would stock or recommend the range, and we will send the evidence pack."),
+    "PARTNERS": phero("Partners", "For clinics, retailers and distributors", "Carry Herbaferm in Singapore", "Tell us how you would stock or recommend the range, and we will send the evidence pack."),
     "FAQ": phero("FAQ", "Help", "Questions, answered", "Using the products, safety, ordering and partnering. Search or filter by topic."),
     "CONTACT": phero("Contact", "Contact", "Get in touch", "Questions about the range, an order or a partnership."),
     "POLICIES": phero("Policies", "Legal", "Policies and health information", "Shipping, returns, privacy and terms."),

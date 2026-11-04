@@ -1,3 +1,4 @@
+window.HF_CHAT_ENDPOINT=window.HF_CHAT_ENDPOINT||"https://herbaferm-chat.ernushzy.workers.dev/";
 /* Herbaferm assistant. Calls the chat proxy at window.HF_CHAT_ENDPOINT when set,
    and falls back to a small built-in answer set so the site still works anywhere. */
 (function(){

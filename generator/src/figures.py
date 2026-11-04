@@ -125,7 +125,25 @@ PHOTOS = {
     "ai-porridge": "A spoon of fibre powder stirred into porridge with berries and seeds",
     "ai-jars": "Chamomile and yarrow fermenting in glass jars",
     "ai-meadow": "A flowering meadow with chamomile and yarrow at sunset",
+    "ai-clinic": "A calm clinic reception with plants and warm wood panelling",
+    "ai-shelf": "Glass jars of dried herbs on a rustic wooden shelf",
+    "ai-chamomile": "A wooden bowl of dried chamomile and yarrow on linen",
+    "ai-fridge": "Small dark bottles and a jar of fermented plants on a fridge door shelf",
+    "ai-field": "A flowering field of chamomile and yarrow at sunset",
 }
+BANNER = {"microbiome-test-singapore": ("ai-clinic", 900), "best-supplements-for-gut-health": ("ai-shelf", 1315),
+          "gut-health-supplement-reviews": ("ai-chamomile", 1300), "best-probiotics-for-gut-health": ("ai-fridge", 1400),
+          "what-is-gut-health": ("ai-field", 900)}
+
+
+def banner(slug):
+    if slug not in BANNER:
+        return ""
+    n, h = BANNER[slug]
+    return ('<figure class="aband"><img src="../../assets/images/%s.jpg" alt="%s" loading="eager" decoding="async">'
+            '<figcaption>Illustrative image, AI-generated</figcaption></figure>') % (n, PHOTOS[n])
+
+
 SVGS = {"kit": kit, "triad": triad, "pillars": pillars, "checklist": checklist, "evidence": evidence, "dysbiosis": dysbiosis}
 
 

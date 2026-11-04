@@ -120,11 +120,11 @@ def article_html(a, others, base, shell_head, header, footer, routes):
     nxt = "".join('<a href="../%s/"><small>%s</small>%s</a>' % (o["slug"], o["cat"], o["title"]) for o in others)
     title = "%s | Herbaferm" % B.TTL[a["slug"]]
     crumb = ('<div class="crumbs"><a href="../../#home">Home</a> / <a href="../../#learn">Learn</a> / <a href="../../#blog">Blog</a> / %s</div>' % a["cat"])
-    main = ('<main id="main">\n<div class="phero"><div class="wrap">%s<p class="kicker">%s</p><h1>%s</h1><p class="lede">%s</p></div></div>\n'
+    main = ('<main id="main">\n<div class="phero"><div class="wrap">%s<p class="kicker">%s</p><h1>%s</h1><p class="lede">%s</p></div></div>\n%s'
             '<section><div class="wrap"><article class="article">%s<aside class="inshort"><b>In short</b><ul>%s</ul></aside>%s\n%s\n'
             '<h2>Frequently asked questions</h2><div class="faqs">%s</div>\n<h2>References</h2><ol class="refs">%s</ol>\n'
             '<p class="note">%s</p>\n%s<h2>Read next</h2><div class="rnext">%s</div>\n</article></div></section>\n</main>\n'
-            ) % (crumb, a["cat"], a["title"], a["dek"], by, "".join("<li>%s</li>" % x for x in short), hero, body + authbox, faq, refs, B.DISCLAIM, RV.article(), nxt)
+            ) % (crumb, a["cat"], a["title"], a["dek"], '<div class="wrap aphoto">%s</div>\n' % FG.banner(a["slug"]) if FG.banner(a["slug"]) else "", by, "".join("<li>%s</li>" % x for x in short), hero, body + authbox, faq, refs, B.DISCLAIM, RV.article(), nxt)
     # schema: Article + FAQPage + BreadcrumbList (+ Book and Person on the dysbiosis page)
     graph = []
     art = {"@context": "https://schema.org", "@type": "Article", "headline": a["title"], "description": a["desc"],

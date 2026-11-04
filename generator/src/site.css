@@ -1096,3 +1096,10 @@ footer.site .soc{display:flex;gap:10px;margin:18px 0 0}footer.site .soc a{displa
 .drawer{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none}
 body:has(.drawer.on) .toast{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px));transform:translate(-50%,-20px)}
 body:has(.drawer.on) .toast.on{transform:translate(-50%,0)}
+
+/* photo band at the top of guides and articles */
+.aphoto{max-width:calc(700px + 2 * var(--gutter,20px));margin-top:clamp(18px,3vw,30px)}
+.aphoto:empty{display:none}
+.aband{margin:0}
+.aband img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--leafr,20px);background:var(--surface2)}
+.aband figcaption{font-size:.8125rem;color:var(--muted);margin-top:8px}

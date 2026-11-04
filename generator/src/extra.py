@@ -90,6 +90,19 @@ ARTICLES = [
 SHORT = {}
 
 
+GP = {"a-ferment": ("ai-jars", "Chamomile and yarrow fermenting in glass jars"), "a-month": ("ai-morning", "A glass of water and a dropper bottle on a kitchen counter"),
+      "a-fiber": ("ai-porridge", "A spoon of fibre powder stirred into porridge with berries and seeds"), "a-labels": ("ai-shelf", "Glass jars of dried herbs on a rustic wooden shelf"),
+      "a-herbs": ("ai-herbs", "Bowls of dried chamomile, elderflower, oak bark and rosehip on linen"), "a-gut": ("ai-meadow", "A flowering meadow with chamomile and yarrow at sunset"),
+      "a-fridge": ("ai-fridge", "Small dark bottles and a jar of fermented plants on a fridge door shelf")}
+
+
+def GPHOTO(aid):
+    if aid not in GP:
+        return ""
+    n, alt = GP[aid]
+    return '<figure class="aband"><img src="@@img:%s@@" alt="%s" decoding="async"><figcaption>Illustrative image, AI-generated</figcaption></figure>' % (n, alt)
+
+
 def article_page(i):
     aid, cv, cat, title, dek, body = ARTICLES[i]
     prev = ARTICLES[i - 1]
@@ -113,12 +126,13 @@ def article_page(i):
     return (aid, title + " | Herbaferm Journal", '''
 <div class="phero"><div class="wrap"><div class="crumbs"><a href="#home">Home</a> / <a href="#learn">Learn</a> / %s</div>
 <p class="kicker">%s</p><h1>%s</h1><p class="lede">%s</p><p class="rt">%d min read</p></div></div>
+<div class="wrap aphoto">%s</div>
 <section><div class="wrap"><article class="article"><span class="tag draft">Draft for Herbaferm review</span>
 %s%s
 %s
 <div class="apager"><a href="#%s"><small>Previous</small><b>%s</b></a><a href="#%s"><small>Next</small><b>%s</b></a></div>
 </article></div></section>
-''' % (cat, cat, title, dek, mins, box, toc, body, prev[0], prev[3], nxt[0], nxt[3]))
+''' % (cat, cat, title, dek, mins, GPHOTO(aid), box, toc, body, prev[0], prev[3], nxt[0], nxt[3]))
 
 
 def jcard(a):

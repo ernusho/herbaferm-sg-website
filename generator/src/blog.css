@@ -6,7 +6,7 @@
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .tscroll .atable{min-width:560px}
 .article h3{font-size:1.25rem;margin-top:30px}
-.cite{font-size:.72em;line-height:0;margin-left:1px}
+.cite{font-size:.75em;line-height:0;margin-left:1px}
 .cite a{text-decoration:none;color:var(--leaf);font-weight:700;padding:0 1px}
 .cite+.cite{margin-left:0}
 .byline{margin:0 0 26px;font-size:.95rem;color:var(--muted);display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center}
@@ -33,7 +33,7 @@
  .atable,.atable tbody,.atable tr,.atable td{display:block;width:100%}
  .atable tr{border-bottom:1px solid var(--line);padding:10px 0}
  .atable td{border:0;padding:4px 0;white-space:normal!important}
- .atable td::before{content:attr(data-l);display:block;font:700 .72rem var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--leaf)}
+ .atable td::before{content:attr(data-l);display:block;font:700 .75rem var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--leaf)}
  .atable td:first-child::before{display:none}
 }
 .svgfig svg{display:block;width:100%;height:auto;background:var(--surface2);border-radius:var(--leafr);padding:6px}

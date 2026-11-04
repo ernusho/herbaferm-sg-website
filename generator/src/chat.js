@@ -161,3 +161,9 @@ window.HF_CHAT_ENDPOINT=window.HF_CHAT_ENDPOINT||"https://herbaferm-chat.ernushz
   form.addEventListener("submit",function(e){e.preventDefault();if(busy&&ctl){ctl.abort();return}ask(inp.value);grow()});
 })();
 
+
+/* phones: keep the chat window inside the visible area when the keyboard opens */
+(function(){var vv=window.visualViewport,b=document.getElementById("chat");if(!vv||!b)return;
+function fit(){if(innerWidth>640){b.style.removeProperty("--vvh");b.style.removeProperty("top");return}
+b.style.setProperty("--vvh",Math.max(240,vv.height-16)+"px");b.style.top=(vv.offsetTop+8)+"px"}
+vv.addEventListener("resize",fit);vv.addEventListener("scroll",fit);addEventListener("resize",fit);fit()})();

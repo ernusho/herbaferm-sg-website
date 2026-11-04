@@ -997,3 +997,4 @@ a[href^="#ref-"]{display:inline-block;min-width:28px;min-height:28px;line-height
 :root[data-theme="dark"]{--bg:#1a1610;--surface:#241e16;--surface2:#2d261b;--fg:#f3e8d2;--muted:#bfae92;--line:#3d3426;--band:#120f0a;--band2:#231d14;--band-fg:#f3e8d2;--band-muted:#b9a98c;--forest:#9bc79a;--leaf:#9bc79a;--shadow:0 18px 40px -24px rgba(0,0,0,.8)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cta{background:#2b2217}}
 :root[data-theme="dark"] .cta{background:#2b2217}
+@media (max-width:480px){.icon-btn{padding-inline:12px;min-width:0}header.site .wrap,.hdr-in{gap:6px}#theme{padding-inline:11px}}

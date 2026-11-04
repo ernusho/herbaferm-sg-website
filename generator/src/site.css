@@ -546,7 +546,7 @@ a.card:hover{box-shadow:none;transform:translateY(-4px)}
 .chat .sugg button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:8px 13px;font:500 .86rem var(--body);cursor:pointer;text-align:left}
 .chat .sugg button:hover{border-color:var(--leaf)}
 .chat form{display:flex;gap:8px;padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
-.chat form input{flex:1;min-width:0;font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:11px 16px}
+.chat form input,.chat form textarea{flex:1;min-width:0;font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:11px 16px;resize:none;line-height:1.35;max-height:132px;overflow-y:auto;display:block}.chat form{align-items:flex-end}.chat form button{min-height:44px}
 .chat form button{flex:none;border:0;border-radius:999px;padding:0 18px;background:var(--honey);color:var(--honey-ink);font:700 .95rem var(--body);cursor:pointer}
 .chat .foot{font-size:0.8125rem;color:var(--muted);text-align:center;padding:0 14px 8px}
 @media (max-width:520px){.chat{right:0;bottom:0;width:100%;height:100%;border-radius:0}.chat-fab span{display:none}.chat-fab{padding:14px}}
@@ -999,3 +999,11 @@ a[href^="#ref-"]{display:inline-block;min-width:28px;min-height:28px;line-height
 :root[data-theme="dark"] .cta{background:#2b2217}
 @media (max-width:480px){.icon-btn{padding-inline:12px;min-width:0}header.site .wrap,.hdr-in{gap:6px}#theme{padding-inline:11px}}
 footer.site .soc{display:flex;gap:10px;margin:18px 0 0}footer.site .soc a{display:grid;place-items:center;width:40px;height:40px;margin:0;border-radius:50%;border:1px solid rgba(255,255,255,.28)}footer.site .soc a:hover,footer.site .soc a:focus-visible{background:rgba(255,255,255,.12);border-color:var(--band-fg)}footer.site .soc svg{width:20px;height:20px;fill:currentColor;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round}footer.site .soc rect,footer.site .soc circle:first-of-type{fill:none}
+.chat header button{margin-left:0}.chat header #chat-big{margin-left:auto;display:grid;place-items:center;padding:6px 8px}.chat header #chat-big svg{width:18px;height:18px}.chat #chat-big .co{display:none}.chat.wide #chat-big .ex{display:none}.chat.wide #chat-big .co{display:inline}
+.chat{transition:width .25s ease,height .25s ease,transform .25s ease,opacity .25s ease}
+.chat.wide{width:min(880px,calc(100vw - 36px));height:calc(100% - 36px)}
+.chat.wide .log{padding:22px clamp(18px,4vw,40px)}
+.chat.wide .msg{max-width:min(78%,640px)}
+@media (max-width:640px){.chat.wide{width:calc(100vw - 12px);height:calc(100% - 12px);right:6px;bottom:6px}}
+@media (prefers-reduced-motion:reduce){.chat{transition:none}}
+.chat form textarea{font:400 .97rem/1.35 var(--body)}

@@ -73,6 +73,10 @@ window.HF_CHAT_ENDPOINT=window.HF_CHAT_ENDPOINT||"https://herbaferm-chat.ernushz
   function open(on){box.classList.toggle("on",on);fab.hidden=on;if(on){if(!opened){opened=true;add("bot","Hello, I'm the Herbaferm assistant. I can answer questions about the products, how to take them, storage, our awards, the gut health articles and partnering. This is a prototype, and I can't give medical advice.");sugg.innerHTML=SUGG.map(function(s){return '<button type="button">'+s+'</button>'}).join("")}setTimeout(function(){inp.focus()},250)}else{fab.focus()}}
   fab.addEventListener("click",function(){open(true)});
   $("#chat-close").addEventListener("click",function(){open(false)});
+  var big=$("#chat-big");
+  function setBig(on,keep){box.classList.toggle("wide",on);big.setAttribute("aria-pressed",on?"true":"false");big.setAttribute("aria-label",on?"Make chat window smaller":"Expand chat window");if(!keep)try{localStorage.setItem("hf-chat-big",on?"1":"0")}catch(e){}setTimeout(function(){log.scrollTop=log.scrollHeight},280)}
+  big.addEventListener("click",function(){setBig(!box.classList.contains("wide"))});
+  try{if(localStorage.getItem("hf-chat-big")==="1")setBig(true,true)}catch(e){}
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&box.classList.contains("on"))open(false)});
   sugg.addEventListener("click",function(e){var b=e.target.closest("button");if(b)ask(b.textContent)});
   box.addEventListener("click",function(e){var a=e.target.closest("a.go");if(!a)return;if(window.hfGo&&window.HF_ROUTES&&window.HF_ROUTES[a.getAttribute("data-r")]!==undefined){e.preventDefault();window.hfGo(a.getAttribute("data-r"));window.scrollTo(0,0)}if(window.innerWidth<=520)open(false)});
@@ -105,5 +109,8 @@ window.HF_CHAT_ENDPOINT=window.HF_CHAT_ENDPOINT||"https://herbaferm-chat.ernushz
     }).then(function(){setBusy(false);ctl=null;log.scrollTop=log.scrollHeight});
   }
   function note(t){var d=document.createElement("div");d.className="foot";d.textContent=t;log.appendChild(d)}
-  form.addEventListener("submit",function(e){e.preventDefault();if(busy&&ctl){ctl.abort();return}ask(inp.value)});
+  function grow(){inp.style.height="auto";inp.style.height=Math.min(inp.scrollHeight,132)+"px"}
+  inp.addEventListener("input",grow);
+  inp.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(form.requestSubmit)form.requestSubmit();else form.dispatchEvent(new Event("submit",{cancelable:true}))}});
+  form.addEventListener("submit",function(e){e.preventDefault();if(busy&&ctl){ctl.abort();return}ask(inp.value);grow()});
 })();

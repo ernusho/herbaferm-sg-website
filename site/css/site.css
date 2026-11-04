@@ -998,6 +998,7 @@ a[href^="#ref-"]{display:inline-block;min-width:28px;min-height:28px;line-height
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cta{background:#2b2217}}
 :root[data-theme="dark"] .cta{background:#2b2217}
 @media (max-width:480px){.icon-btn{padding-inline:12px;min-width:0}header.site .wrap,.hdr-in{gap:6px}#theme{padding-inline:11px}}
+footer.site .soc{display:flex;gap:10px;margin:18px 0 0}footer.site .soc a{display:grid;place-items:center;width:40px;height:40px;margin:0;border-radius:50%;border:1px solid rgba(255,255,255,.28)}footer.site .soc a:hover,footer.site .soc a:focus-visible{background:rgba(255,255,255,.12);border-color:var(--band-fg)}footer.site .soc svg{width:20px;height:20px;fill:currentColor;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round}footer.site .soc rect,footer.site .soc circle:first-of-type{fill:none}
 
 /* ================= scroll journey (home) ================= */
 .jr{--jbg:#2b3a24;--jfg:#fbf4e4;--jac:#e9b04a;background:var(--jbg);color:var(--jfg);transition:background-color .9s ease,color .9s ease;position:relative;overflow-x:clip}

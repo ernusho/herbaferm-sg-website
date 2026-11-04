@@ -111,8 +111,8 @@ FAQS = [
      "Yes, early on. All three products are listed on the ConnectingDNA marketplace in Singapore, with first sales (12+, 17+ and 20+ units shown at the time of checking). Clinic and retail stockists are still being built. " + TC),
     ("products", "What are the products free from?",
      "The ConnectingDNA listings show a free-from icon set (gluten, sugar, alcohol and lactose free, vegetarian) on all three products. That conflicts with the leaflet, which says Fiber Elite contains gluten, so please rely on the pack label. " + TC),
-    ("products", "What does a day cost?",
-     "At list price, Drops at the regular amount are about S$1.83 a day (S$55 for about 30 days). Fiber Elite at 3.5 g a day is about S$1.54 a day. Prefer HF400 is S$3.21 per capsule. Prices are before any offers."),
+    ("products", "How much do the products cost?",
+     "Herbaferm Drops (30 ml) are S$55, Fiber Elite (125 g) is S$55 and Prefer HF400 (14 capsules) is S$45. Prices are before any offers."),
     ("products", "How should I store Herbaferm Drops?",
      "Keep the bottle in the fridge at 5 to 12 °C. The drops contain no preservatives. Check the best-before date printed on the pack."),
     ("products", "Where are the products made?",
@@ -263,7 +263,6 @@ PAGES.append(("shop", "Shop | Herbaferm Singapore", '''
   </div>
 </div></section>
 
-@@VIZ_COST@@
 <section><div class="wrap">
   <p class="eyebrow">Compare</p><h2>The range side by side</h2>
   <div class="tblwrap" style="margin-top:30px"><table>
@@ -274,7 +273,6 @@ PAGES.append(("shop", "Shop | Herbaferm Singapore", '''
       <tr><td>How you use it</td><td>8 drops in 1.5 dl of water, twice a day</td><td>3.5 g a day with a meal, stirred into food or drinks</td><td>1 capsule morning and evening</td></tr>
       <tr><td>One pack lasts</td><td>About 30 days at 8 drops twice a day</td><td>About 35 days at 3.5 g a day</td><td>7 days at 2 capsules a day</td></tr>
       <tr><td>Main ingredients</td><td>Fermented extract of 7 herbs</td><td>75% whole barley malt, 12.5% oat flour</td><td>Fermented herb fibres, fulvic acid, humic acid, vitamin C</td></tr>
-      <tr><td>Cost per day</td><td>About S$1.83</td><td>About S$1.54</td><td>About S$6.43</td></tr>
       <tr><td>Storage</td><td>Fridge, 5 to 12 °C</td><td>Cool and dry @@TAG_CONFIRM@@</td><td>Cool and dry @@TAG_CONFIRM@@</td></tr>
       <tr><td>Good to know</td><td>No preservatives</td><td>Vegan. Contains gluten</td><td>Gelatine capsule</td></tr>
     </tbody>
@@ -296,7 +294,7 @@ PAGES.append(("drops", "Herbaferm Drops | Herbaferm Singapore", '''
       <div class="price"><b>S$55</b><span>30 ml, about one month</span></div>
       <div class="buy"><div class="qty"><button type="button" data-q="-1" aria-label="Decrease quantity">&minus;</button><output>1</output><button type="button" data-q="1" aria-label="Increase quantity">+</button></div><button class="btn btn-honey" type="button" data-add="drops">Add to cart</button></div>
       <div class="keyfacts">
-        <div><small>Per bottle</small><b>About 480 drops, S$1.83 a day</b></div>
+        <div><small>Per bottle</small><b>About 480 drops</b></div>
         <div><small>Regular amount</small><b>8 drops, twice a day</b></div>
         <div><small>Storage</small><b>Fridge, 5 to 12 °C</b></div>
         <div><small>Free from</small><b>Preservatives</b></div>
@@ -339,7 +337,7 @@ PAGES.append(("fiber", "Fiber Elite | Herbaferm Singapore", '''
       <div class="price"><b>S$55</b><span>125 g, about one month</span></div>
       <div class="buy"><div class="qty"><button type="button" data-q="-1" aria-label="Decrease quantity">&minus;</button><output>1</output><button type="button" data-q="1" aria-label="Increase quantity">+</button></div><button class="btn btn-honey" type="button" data-add="fiber">Add to cart</button></div>
       <div class="keyfacts">
-        <div><small>Everyday amount</small><b>3.5 g a day, about S$1.54</b></div>
+        <div><small>Everyday amount</small><b>3.5 g a day</b></div>
         <div><small>Athletes</small><b>3.5 g, 2 to 3 times a day</b></div>
         <div><small>Made from</small><b>75% barley malt, 12.5% oat flour</b></div>
         <div><small>Allergens</small><b>Contains gluten</b></div>
@@ -383,7 +381,6 @@ PAGES.append(("prefer", "Prefer HF400 | Herbaferm Singapore", '''
         <div><small>How to take</small><b>1 capsule morning and evening</b></div>
         <div><small>Fermented herb fibres</small><b>200 mg per capsule</b></div>
         <div><small>Capsule shell</small><b>Gelatine</b></div>
-        <div><small>Price per capsule</small><b>S$3.21</b></div>
       </div>
       <p class="note">One 14-capsule pack lasts 7 days at two capsules a day, so it works as a trial pack. Food supplement. Histamine sensitivity: ask a healthcare professional first.</p>
     </div>

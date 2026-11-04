@@ -185,7 +185,6 @@ def _jh(i, h):
             '<figure class="hph ph"><img src="@@img:%s@@" style="object-position:%s" alt="%s (illustrative image)" loading="lazy"><figcaption>Illustrative image</figcaption></figure></article>') % (
             " on" if i == 0 else "", bg, fg, ac, h[1], h[2], h[4], img, pos, h[3])
 TOK["JHERBS"] = "".join(_jh(i, h) for i, h in enumerate(P.HERBS))
-TOK["VIZ_COST"] = X.VIZ_COST
 TOK["JALL"] = "".join(X.jcard(a) for a in X.ARTICLES)
 TOK["JHOME"] = TOK["JALL"] + "".join(_bcard(a, i) for i, a in enumerate(B.ARTICLES[:4] + [B.DYS]))
 

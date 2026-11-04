@@ -205,7 +205,7 @@ HOME = '''
       <h1 class="jh1"><span class="jv" data-split>Seven herbs.</span><span class="rot" aria-live="off"><b class="on">Fermented slowly.</b><b>Born in Hungary.</b><b>Now in Singapore.</b></span></h1>
       <p class="jsub jv">A fermented herbal routine for everyday gut care. Eight drops in a glass of water, morning and evening.</p>
       <div class="btns jv"><a class="jbtn" href="#shop">Shop the range</a><a class="jbtn ghost" href="#science">How it is made</a></div>
-      <ul class="jchips jv"><li>Takes about a minute a day</li><li>No preservatives or artificial colours</li><li>About S$1.83 a day</li></ul>
+      <ul class="jchips jv"><li>Takes about a minute a day</li><li>No preservatives or artificial colours</li></ul>
     </div>
     <div class="jhero-img" data-par=".08"><div class="arch"><img src="@@img:drops@@" alt="Herbaferm Drops 30 ml bottle with carton and kraft wrapper"></div></div>
   </div>
@@ -222,7 +222,7 @@ HOME = '''
       <p class="kicker jv">Meet Herbaferm Drops</p>
       <h2 class="jh2 jv">A small bottle for a simple daily habit.</h2>
       <p class="jp jv">Seven herbs, fermented slowly into a drop you stir into a glass of water.</p>
-      <ul class="jcheck jv"><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="jct"><strong>Supports everyday digestion</strong><small>Seven herbs traditionally used in Europe for gentle digestive comfort.</small></span></li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="jct"><strong>Fits into your day in a minute</strong><small>8 drops in a glass of water, morning and evening. Nothing to prepare.</small></span></li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="jct"><strong>Gentle and simple</strong><small>No preservatives, no artificial colours or additives.</small></span></li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="jct"><strong>Good for a whole month</strong><small>One 30 ml bottle, about 480 drops, from S$1.83 a day.</small></span></li></ul>
+      <ul class="jcheck jv"><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="jct"><strong>Supports everyday digestion</strong><small>Seven herbs traditionally used in Europe for gentle digestive comfort.</small></span></li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="jct"><strong>Fits into your day in a minute</strong><small>8 drops in a glass of water, morning and evening. Nothing to prepare.</small></span></li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="jct"><strong>Gentle and simple</strong><small>No preservatives, no artificial colours or additives.</small></span></li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="jct"><strong>Good for a whole month</strong><small>One 30 ml bottle, about 480 drops.</small></span></li></ul>
       <div class="jbuy2 jv"><b>S$55</b><button class="jbtn" type="button" data-add="drops">Add to cart</button><a class="jlink" href="#drops">See details</a></div>
       <p class="jnote jv">Food supplement. Speak to a healthcare professional if you are pregnant or take medication.</p>
     </div>
@@ -477,7 +477,6 @@ INSIGHT = '''
   <div class="tblwrap" style="margin-top:24px"><table class="cmp">
     <thead><tr><th>Fact</th><th>Where on the site</th><th>Source</th></tr></thead>
     <tbody>
-      <tr><td>Cost per day: Drops S$1.83, Fiber Elite S$1.54, Prefer HF400 S$3.21 per capsule</td><td>Product pages, FAQ</td><td>Our own sums from list prices and leaflet doses</td></tr>
       <tr><td>Free from preservatives, alcohol and sugar</td><td>Drops page, FAQ</td><td>Investor deck and awards submission. Leaflets confirm only no preservatives</td></tr>
       <tr><td>Shelf life: about 6 months for Drops, 1 year for capsules</td><td>FAQ</td><td>Meeting 1 notes, 4 Aug 2026</td></tr>
       <tr><td>Company started in Budapest. Hungary and UK sites listed</td><td>About</td><td>Investor deck</td></tr>
@@ -528,7 +527,7 @@ PROD = {
   also=[("fiber","Fiber Elite","S$55 \u00b7 125 g"),("prefer","Prefer HF400","S$45 \u00b7 14 capsules")]),
   pt="#c4a85a",
   trust=["No preservatives", "No artificial colours", "Registered in Hungary, 2018", "Seven herbs, naturally fermented"],
-  glance=[("8", "drops, twice a day"), ("480", "drops in a 30 ml bottle"), ("1 month", "from one bottle"), ("S$1.83", "a day")],
+  glance=[("8", "drops, twice a day"), ("480", "drops in a 30 ml bottle"), ("1 month", "from one bottle"), ("30 ml", "one bottle")],
   steps=[("Fill a glass", "About 1.5 dl of water."), ("Add 8 drops", "Morning and evening. Shake the bottle first."), ("Back in the fridge", "Keep it at 5 to 12 \u00b0C. There are no preservatives.")],
   stepnote='New to it? Start with 5 drops morning and evening and build up over two to three weeks. <a href="#a-month">Read the first-month guide</a>. @@TAG_CONFIRM@@',
   img='<img src="@@img:drops-pour@@" alt="A hand adding Herbaferm Drops to a glass of water" loading="lazy" style="object-position:55% 50%">',
@@ -542,7 +541,7 @@ PROD = {
   also=[("drops","Herbaferm Drops","S$55 \u00b7 30 ml"),("prefer","Prefer HF400","S$45 \u00b7 14 capsules")]),
   pt="#e8a33a",
   trust=["Can be heated and cooked with", "Vegan and GMO-free, per the leaflet", "Contains gluten", "Fine powder, malty aroma"],
-  glance=[("3.5 g", "a day, with a meal"), ("125 g", "pouch, 35 servings"), ("About a month", "from one pouch"), ("S$1.54", "a day")],
+  glance=[("3.5 g", "a day, with a meal"), ("125 g", "pouch, 35 servings"), ("About a month", "from one pouch"), ("Warm or cold", "stir into food or drinks")],
   steps=[("Measure 3.5 g", "A small spoonful of the fine powder."), ("Stir it in", "Porridge, yoghurt, a smoothie or a protein shake. It can be heated too."), ("On training days", "3.5 g two to three times a day, after exercise.")],
   stepnote='Need ideas? <a href="#a-fiber">Four easy ways to eat Fiber Elite</a>.',
   img='<img src="@@img:ai-porridge@@" alt="A spoonful of fine powder being stirred into porridge with berries (illustrative image)" loading="lazy"><span class="ill">Illustrative image</span>',
@@ -556,7 +555,7 @@ PROD = {
   also=[("drops","Herbaferm Drops","S$55 \u00b7 30 ml"),("fiber","Fiber Elite","S$55 \u00b7 125 g")]),
   pt="#c8a27c",
   trust=["Made to go with Drops", "A one-week trial pack", "Gelatine capsule", "Ask first if histamine-sensitive"],
-  glance=[("2", "capsules a day"), ("14", "capsules, one week"), ("200 mg", "fermented herb fibres each"), ("S$3.21", "per capsule")],
+  glance=[("2", "capsules a day"), ("14", "capsules, one week"), ("200 mg", "fermented herb fibres each"), ("Gelatine", "capsule shell")],
   steps=[("Morning", "One capsule with your glass of water."), ("Evening", "One more capsule with your second glass."), ("Alongside Drops", "Prefer HF400 was developed to complement Herbaferm Drops.")],
   stepnote='A 14-capsule pack lasts 7 days, so it works well as a trial. @@TAG_CONFIRM@@ Another Herbaferm document describes a different dose.',
   img='<img src="@@img:prefer-bark@@" alt="Prefer HF400 bottle and carton on mossy bark, with a capsule in front" loading="lazy" style="object-position:30% 55%">',
@@ -606,11 +605,6 @@ def bars(rows, unit, maxv=None, cls=""):
         out += ('<div class="brow"><span class="bl">%s</span><span class="bt"><i style="width:%.1f%%"></i></span><b>%s</b></div>' % (lab, 100.0 * v / maxv, txt))
     return '<div class="bars %s">%s</div>' % (cls, out)
 
-
-VIZ_COST = ('<section class="pviz"><div class="wrap"><h2>What a day costs</h2><p class="lede">At list price and the regular amount. Prices are before any offers.</p>'
-            + bars([("Fiber Elite, 3.5 g", 1.54, "S$1.54"), ("Herbaferm Drops, 16 drops", 1.83, "S$1.83"), ("Drops + Fiber Elite", 3.37, "S$3.37"),
-                    ("Prefer HF400, 2 capsules", 6.43, "S$6.43"), ("All three", 9.80, "S$9.80")], "S$", 9.8)
-            + '<p class="note" style="margin-top:14px">Drops: S$55 for about 30 days. Fiber Elite: S$55 for about 35 days. Prefer HF400: S$45 for 7 days at two capsules a day.</p></div></section>')
 
 VIZ = {}
 VIZ["drops"] = ('<section class="pviz"><div class="wrap"><div class="vgrid"><div><h2>How the first weeks build up</h2><p class="lede">The leaflet suggests starting small and settling at 8 drops twice a day. @@TAG_CONFIRM@@</p></div><div>'

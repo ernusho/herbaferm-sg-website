@@ -39,7 +39,7 @@ export default {
         const text = (out && out.response) || "";
         if (!text) return new Response("Upstream error", { status: 502, headers: cors });
         return new Response(JSON.stringify({ text }), { headers: { ...cors, "content-type": "application/json" } });
-      } catch { return new Response("Upstream error", { status: 502, headers: cors }); }
+      } catch (e) { return new Response("AI error: " + String((e && e.message) || e), { status: 502, headers: cors }); }
     }
 
     const res = await fetch("https://api.anthropic.com/v1/messages", {

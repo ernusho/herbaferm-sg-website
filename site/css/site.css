@@ -1032,6 +1032,7 @@ footer.site .soc{display:flex;gap:10px;margin:18px 0 0}footer.site .soc a{displa
 .chat form button:hover{filter:brightness(1.12)}
 .chat.wide .msg{font-size:1rem}
 @media (max-width:640px){.chat{width:calc(100vw - 16px);right:8px;bottom:8px;height:min(78%,640px);border-radius:22px}.chat.wide{width:calc(100vw - 16px);height:calc(100% - 16px)}}
+.chat form textarea{overflow-y:hidden;min-height:44px;scrollbar-width:thin}
 
 /* ================= scroll journey (home) ================= */
 .jr{--jbg:#2b3a24;--jfg:#fbf4e4;--jac:#e9b04a;background:var(--jbg);color:var(--jfg);transition:background-color .9s ease,color .9s ease;position:relative;overflow-x:clip}

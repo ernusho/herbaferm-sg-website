@@ -109,8 +109,9 @@ window.HF_CHAT_ENDPOINT=window.HF_CHAT_ENDPOINT||"https://herbaferm-chat.ernushz
     }).then(function(){setBusy(false);ctl=null;log.scrollTop=log.scrollHeight});
   }
   function note(t){var d=document.createElement("div");d.className="foot";d.textContent=t;log.appendChild(d)}
-  function grow(){inp.style.height="auto";inp.style.height=Math.min(inp.scrollHeight,132)+"px"}
-  inp.addEventListener("input",grow);
+  function grow(){inp.style.height="auto";var h=inp.scrollHeight;inp.style.height=Math.min(h,132)+"px";inp.style.overflowY=h>132?"auto":"hidden"}
+  inp.addEventListener("input",grow);grow();
   inp.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(form.requestSubmit)form.requestSubmit();else form.dispatchEvent(new Event("submit",{cancelable:true}))}});
   form.addEventListener("submit",function(e){e.preventDefault();if(busy&&ctl){ctl.abort();return}ask(inp.value);grow()});
 })();
+

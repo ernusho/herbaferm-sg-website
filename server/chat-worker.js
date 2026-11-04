@@ -29,7 +29,8 @@ export default {
       .map(m => ({ role: m.role, content: m.content.slice(0, MAX_CHARS) }));
     if (!messages.length || messages[0].role !== "user") return new Response("Bad request", { status: 400, headers: cors });
 
-    if (!env.ANTHROPIC_API_KEY && env.AI) {
+    if (!env.ANTHROPIC_API_KEY) {
+      if (!env.AI) return new Response("AI error: the AI binding is missing", { status: 502, headers: cors });
       try {
         // the first message carries the fact sheet and rules: send it as the system prompt
         const out = await env.AI.run(CF_MODEL, {
@@ -37,7 +38,7 @@ export default {
           messages: [{ role: "system", content: messages[0].content }, ...messages.slice(1)],
         });
         const text = (out && out.response) || "";
-        if (!text) return new Response("Upstream error", { status: 502, headers: cors });
+        if (!text) return new Response("AI error: empty reply " + JSON.stringify(out).slice(0, 300), { status: 502, headers: cors });
         return new Response(JSON.stringify({ text }), { headers: { ...cors, "content-type": "application/json" } });
       } catch (e) { return new Response("AI error: " + String((e && e.message) || e), { status: 502, headers: cors }); }
     }

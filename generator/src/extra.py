@@ -259,12 +259,11 @@ HOME = '''
 </section>
 
 <section class="ch ch-herbs" id="jr-herbs" data-label="Seven herbs" data-dyn>
-  <div class="hstage">
-    <div class="wrap hwrap">
-      <p class="kicker">Seven herbs you probably know</p>
-      <div class="hpanes">@@JHERBS@@</div>
-      <div class="hcount"><span id="hnow">1</span> / 7</div>
-    </div>
+  <div class="wrap hwrap">
+    <div class="hhead"><div><p class="kicker">Seven herbs you probably know</p><p class="hhint">Swipe, or use the arrows, to meet them one by one.</p></div>
+      <div class="hbtns"><button type="button" class="hbtn" id="hprev" aria-label="Previous herb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="hbtn" id="hnext" aria-label="Next herb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    <div class="hpanes" id="hpanes" tabindex="0" role="region" aria-roledescription="carousel" aria-label="The seven herbs">@@JHERBS@@</div>
+    <div class="hnav"><div class="hdots" role="tablist" aria-label="Choose a herb">@@JHDOTS@@</div><div class="hcount" aria-live="polite"><span id="hnow">1</span> / 7</div></div>
   </div>
 </section>
 

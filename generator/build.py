@@ -182,10 +182,11 @@ HPHOTO = {"chamomile": ("ai-chamomile", "50% 50%"), "yarrow": ("ai-field", "62% 
 def _jh(i, h):
     bg, fg, ac = HCOL[h[0]]
     img, pos = HPHOTO[h[0]]
-    return ('<article class="hpane%s" data-bg="%s" data-fg="%s" data-ac="%s"><div class="hcopy"><h2>%s</h2><p class="lat">%s</p><p class="jp">%s</p></div>'
+    return ('<article class="hslide%s" role="group" aria-roledescription="slide" aria-label="%d of 7" data-bg="%s" data-fg="%s" data-ac="%s"><div class="hcopy"><h2>%s</h2><p class="lat">%s</p><p class="jp">%s</p></div>'
             '<figure class="hph ph"><img src="@@img:%s@@" style="object-position:%s" alt="%s (illustrative image)" loading="lazy"><figcaption>Illustrative image</figcaption></figure></article>') % (
-            " on" if i == 0 else "", bg, fg, ac, h[1], h[2], h[4], img, pos, h[3])
+            " on" if i == 0 else "", i + 1, bg, fg, ac, h[1], h[2], h[4], img, pos, h[3])
 TOK["JHERBS"] = "".join(_jh(i, h) for i, h in enumerate(P.HERBS))
+TOK["JHDOTS"] = "".join('<button type="button" class="hdot%s" role="tab" aria-label="%s" aria-selected="%s" data-i="%d"></button>' % (" on" if i == 0 else "", h[1], "true" if i == 0 else "false", i) for i, h in enumerate(P.HERBS))
 TOK["JALL"] = "".join(X.jcard(a) for a in X.ARTICLES)
 TOK["JHOME"] = TOK["JALL"] + "".join(_bcard(a, i) for i, a in enumerate(B.ARTICLES[:4] + [B.DYS]))
 
@@ -321,9 +322,9 @@ __PAGES__
   <footer><div class="tot"><span>Subtotal</span><span id="cart-total">S$0.00</span></div><button class="btn btn-honey" id="cart-go" type="button">Checkout</button><p class="sent" id="cart-note" hidden>Prototype: checkout is not connected. In the live build this goes to the secure checkout.</p></footer></aside>
 <div class="toast" id="toast" role="status"></div>
 <div class="readbar" id="readbar"></div>
-<button class="chat-fab" id="chat-fab" type="button" aria-label="Ask Herbaferm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg><span>Ask Herbaferm</span></button>
-<div class="chat" id="chat" role="dialog" aria-label="Herbaferm assistant">
-  <header><div class="dot">h</div><div><b>Herbaferm assistant</b><small>Prototype. Not medical advice.</small></div><button id="chat-big" type="button" aria-label="Expand chat window" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ex" d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/><path class="co" d="M20 10h-6V4M4 14h6v6M14 10l7-7M3 21l7-7"/></svg></button><button id="chat-close" type="button" aria-label="Close chat">&times;</button></header>
+<button class="chat-fab" id="chat-fab" type="button" aria-label="Chat with Herby"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg><span>Ask Herby</span></button>
+<div class="chat" id="chat" role="dialog" aria-label="Herby, the Herbaferm assistant">
+  <header><div class="dot">h</div><div><b>Herby</b><small>Herbaferm helper. Prototype, not medical advice.</small></div><button id="chat-big" type="button" aria-label="Expand chat window" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ex" d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/><path class="co" d="M20 10h-6V4M4 14h6v6M14 10l7-7M3 21l7-7"/></svg></button><button id="chat-close" type="button" aria-label="Close chat">&times;</button></header>
   <div class="log" id="chat-log" aria-live="polite"></div>
   <div class="sugg" id="chat-sugg"></div>
   <form id="chat-form"><textarea id="chat-in" rows="1" maxlength="500" placeholder="Ask about the products" aria-label="Your question" autocomplete="off"></textarea><button id="chat-send" type="submit">Send</button></form>

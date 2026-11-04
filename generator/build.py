@@ -248,7 +248,7 @@ def _band(pid, before, img, alt, cap):
             P.PAGES[i] = (k, t, h[:at] + fig + h[at:])
             return
     raise SystemExit("band anchor not found: %s %s" % (pid, before))
-_band("partners", '<h2>Six places to find Herbaferm</h2>', "ai-jars", "Chamomile and yarrow fermenting in glass jars", "Fermented in small batches, then bottled")
+_band("partners", '<h2>Five places to find Herbaferm</h2>', "ai-jars", "Chamomile and yarrow fermenting in glass jars", "Fermented in small batches, then bottled")
 _band("about", '<section class="subhead" id="sec-awards">', "ai-field", "A flowering meadow with chamomile and yarrow", "A Hungarian formula built on traditional herbs")
 _band("learn", '<section class="subhead" id="sec-science">', "ai-kitchen", "A glass of water, a dropper bottle and a bowl of oats on a kitchen counter", "Part of an ordinary morning")
 

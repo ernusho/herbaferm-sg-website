@@ -630,12 +630,11 @@ PAGES.append(("partners", "Partners | Herbaferm Singapore", '''
 </div></section>
 
 <section><div class="wrap">
-  <p class="eyebrow">Where we are heading</p><h2>Six places to find Herbaferm</h2>
+  <p class="eyebrow">Where we are heading</p><h2>Five places to find Herbaferm</h2>
   <p class="lede">The Singapore plan starts with practitioners, then widens. These are target channels, not confirmed stockists.</p>
   <div class="chan" style="margin-top:30px">
     <div class="card"><b class="ph1">1</b><h3>Longevity and preventive clinics</h3><p>Start here: practitioner-led and evidence-minded.</p></div>
     <div class="card"><b class="ph1">1</b><h3>Specialist and gastro clinics</h3><p>Digestive, wellness and sports practices.</p></div>
-    <div class="card"><b class="ph1">2</b><h3>TCM clinics</h3><p>A natural fit for fermented herbal products. Classification to confirm.</p></div>
     <div class="card"><b class="ph1">2</b><h3>Pharmacies and health retail</h3><p>Fiber Elite and Prefer HF400 on a normal shelf.</p></div>
     <div class="card"><b class="ph1">3</b><h3>Premium and supplement retail</h3><p>Specialist and department stores.</p></div>
     <div class="card"><b class="ph1">3</b><h3>Online marketplaces</h3><p>A fit for Fiber Elite and Prefer HF400. Drops stay with our own store and clinics.</p></div>

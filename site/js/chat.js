@@ -88,7 +88,7 @@ window.HF_CHAT_ENDPOINT=window.HF_CHAT_ENDPOINT||"https://herbaferm-chat.ernushz
       fetch(window.HF_CHAT_ENDPOINT,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({messages:m2}),signal:ctl.signal})
         .then(function(r){if(!r.ok)throw new Error("bad status");return r.json()})
         .then(function(r){bub.classList.remove("think");bub.innerHTML=render(r.text);turns.push({role:"assistant",content:r.text})})
-        .catch(function(e){bub.classList.remove("think");if(e&&e.name==="AbortError"){bub.remove();turns.pop();return}var a=fallback(q);bub.innerHTML=render(a);turns.push({role:"assistant",content:a})})
+        .catch(function(e){bub.classList.remove("think");if(e&&e.name==="AbortError"){bub.remove();turns.pop();return}try{console.warn("Herbaferm chat: live answer failed, using built-in answers",e)}catch(x){}var a=fallback(q);bub.innerHTML=render(a);turns.push({role:"assistant",content:a});note("Live answers could not be reached just now, so this one is a built-in answer.")})
         .then(function(){setBusy(false);ctl=null;log.scrollTop=log.scrollHeight});
       return}
     if(!sample||!live){setTimeout(function(){bub.classList.remove("think");var a=fallback(q);bub.innerHTML=render(a);turns.push({role:"assistant",content:a});log.scrollTop=log.scrollHeight},450);return}

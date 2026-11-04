@@ -5,7 +5,7 @@
 //   <script>window.HF_CHAT_ENDPOINT = "https://<your-worker>.workers.dev/";</script>
 const ALLOWED_ORIGINS = ["https://herbafermsg.com", "https://www.herbafermsg.com", "https://ernusho.github.io"]; // add your preview URL while testing
 const MODEL = "claude-haiku-5-5";
-const CF_MODEL = "@cf/meta/llama-3.1-8b-instruct";
+const CF_MODEL = "@cf/meta/llama-3.1-8b-instruct-fp8";
 const MAX_MESSAGES = 10;
 const MAX_CHARS = 30000; // the first message carries the fact sheet
 

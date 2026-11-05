@@ -385,7 +385,7 @@ HOME = '''
 LEARN = '''
 @@PHERO_LEARN@@
 <section><div class="wrap">
-  <a class="jfeat rv" href="#a-month"><div class="cover cv2"><span>Your first month with Drops</span></div><div><p class="kicker" style="color:var(--leaf)">Featured guide</p><h2>Your first month with Drops</h2><p>How to ease in, what to expect, and when to settle on your regular amount.</p><p><span class="more">Read the guide</span></p></div></a>
+  <a class="jfeat rv" href="#a-month"><div class="cover cv2 has-img"><img class="cimg" src="@@img:ai-morning@@" alt="" loading="lazy" decoding="async"><span>Your first month with Drops</span></div><div><p class="kicker" style="color:var(--leaf)">Featured guide</p><h2>Your first month with Drops</h2><p>How to ease in, what to expect, and when to settle on your regular amount.</p><p><span class="more">Read the guide</span></p></div></a>
   <div class="faqtools"><div class="chips" id="j-chips"><button type="button" data-c="all" aria-pressed="true">All</button><button type="button" data-c="Guide" aria-pressed="false">Guides</button><button type="button" data-c="Science" aria-pressed="false">Science</button><button type="button" data-c="Kitchen" aria-pressed="false">Kitchen</button><button type="button" data-c="Ingredients" aria-pressed="false">Ingredients</button><button type="button" data-c="Practical" aria-pressed="false">Practical</button></div></div>
   <div class="jgrid" id="j-grid">@@JALL@@</div>
   <p class="note" style="margin-top:36px">Articles are drafts written from the product leaflets and published research, for Herbaferm to review and extend. @@TAG_CONFIRM@@</p>
